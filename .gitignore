@@ -1,0 +1,19 @@
+# Quarto
+/_book/
+/.quarto/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Obsidian
+.obsidian/
+
+# Curvenote/Jupyter Book leftovers (if you keep them)
+# _toc.yml
+# curvenote.yml
+# blank.mdast.json

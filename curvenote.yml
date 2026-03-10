@@ -1,0 +1,33 @@
+version: 1
+project:
+  title: Pomorstvenost i opterećenja
+  description: ''
+  short_title: ''
+  authors:
+    - userId: 46Jk7LBQqAa7FdGvB6EBuEkcEFB3
+      nameParsed:
+        literal: Josip Bašić
+        given: Josip
+        family: Bašić
+      name: Josip Bašić
+      corresponding: false
+      roles: []
+      affiliations: []
+      id: contributors-generated-uid-0
+  affiliations:
+    - id: 85e1d966-1746-40d7-afc8-fd173b1fd6ff
+      name: 85e1d966-1746-40d7-afc8-fd173b1fd6ff
+  id: RGqtVCD1TCdgRglDeB9Q
+  remote: RGqtVCD1TCdgRglDeB9Q
+site:
+  title: Pomorstvenost i opterećenja
+  options:
+    logo_text: Pomorstvenost i opterećenja
+  nav:
+    - title: Pomorstvenost i opterećenja
+      url: /pomorstvenost-i-opterecenja
+  actions:
+    - title: Learn More
+      url: https://curvenote.com/docs/web
+  domains:
+    - jobasic-seakeeping.curve.space

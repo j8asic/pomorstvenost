@@ -1,0 +1,9 @@
+# Pomorstvenost i opterećenja
+
+Dobrodošli u digitalnu skriptu kolegija **Pomorstvenost i opterećenja**.
+
+Ova knjiga sadrži teorijske osnove i vježbe iz područja dinamike broda na valovitom moru.
+
+## Sadržaj
+- [Teorijska skripta](skripta.md)
+- [Vježbe](vjezba-ponton.md)

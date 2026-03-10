@@ -1,0 +1,32 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Pomorstvenost i opterećenja"
+  author: "Josip Bašić"
+  chapters:
+    - index.qmd
+    - skripta.md
+    - part: "Vježbe"
+      chapters:
+        - vjezba-ponton.md
+        - vjezba-ljuljanje-broda.md
+        - exercise-slamming-and-green-water.md
+        - vjezba-val-na-ponton.md
+        - vjezba-kontejnerski-brod-u-maxsurf-u.md
+        - vjezba-razdioba-slucajne-varijable.md
+        - vjezba-putanja-vodenih-cestica.md
+        - exercise-tender-launching.md
+        - vjezba-opterecenje-nailaznog-vala-na-dno-pontona.md
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    code-fold: true
+
+execute:
+  enabled: true
+  freeze: auto
