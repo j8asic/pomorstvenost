@@ -1,0 +1,835 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Pomorstvenost i opterećenja",
+    "section": "",
+    "text": "Predgovor\nDobrodošli u digitalnu skriptu Pomorstvenost i opterećenja.\nOva knjiga pokriva teorijske osnove i praktične vježbe iz područja dinamike broda na valovitom moru. Namijenjena je studentima brodogradnje, ali može poslužiti i široj inženjerskoj zajednici kao uvod u tematiku pomorstvenosti.",
+    "crumbs": [
+      "Predgovor"
+    ]
+  },
+  {
+    "objectID": "index.html#struktura-knjige",
+    "href": "index.html#struktura-knjige",
+    "title": "Pomorstvenost i opterećenja",
+    "section": "Struktura knjige",
+    "text": "Struktura knjige\nKnjiga je podijeljena u dva dijela:\nI. Teorija – poglavlja koja sustavno obrađuju:\n\nOsnovni pojmovi – koordinatni sustav, stupnjevi slobode gibanja, klasifikacija opterećenja\nOpterećenja na konstrukciju – lokalna i globalna opterećenja, statička i dinamička opterećenja, pregib i progib\nMorski valovi – vrste valova, nastanak i razvoj vjetrovnih valova, mjerenje valova\nMatematički opis morskih valova – Airyjeva teorija, nelinearne teorije, Beaufortova ljestvica\nSpektralni opis stanja mora – PM i JONSWAP spektri, dijagrami raspršenja, Gaussova i Rayleighova razdioba\nOdziv broda na valovima – RAO, spektar odziva, jednadžbe gibanja, metode proračuna, slamming i green water\nUtjecaj pomorstvenosti na operativnost – kriteriji operativnosti, dodatni otpor na valovima, gubitak brzine\n\nII. Vježbe – niz proračunskih zadataka koji pokrivaju teme od ponašanja pontona na valovima, ljuljanja broda, spektralne analize, do analize opterećenja u programu Maxsurf.",
+    "crumbs": [
+      "Predgovor"
+    ]
+  },
+  {
+    "objectID": "index.html#oznake-i-konvencije",
+    "href": "index.html#oznake-i-konvencije",
+    "title": "Pomorstvenost i opterećenja",
+    "section": "Oznake i konvencije",
+    "text": "Oznake i konvencije\nKroz čitavu skriptu, uz hrvatske nazive navode se i odgovarajući engleski termini u zagradama, označeni kraticom e: (npr. pomorstvenost, e: seakeeping). Matematičke jednadžbe numerirane su po poglavljima i mogu se referencirati unutar teksta.",
+    "crumbs": [
+      "Predgovor"
+    ]
+  },
+  {
+    "objectID": "osnovni-pojmovi.html",
+    "href": "osnovni-pojmovi.html",
+    "title": "1  Osnovni pojmovi",
+    "section": "",
+    "text": "1.1 Uvod\nPomorstvenost (e: seakeeping) je grana brodograđevne znanosti koja proučava dinamičko ponašanje broda na valovitom moru. Bavi se odzivima, odnosno kretanjima broda (e: ship motions / ship responses) i dinamičkim opterećenjima (e: dynamic loads) kojima je brodska struktura izložena u stvarnim, promjenjivim morskim uvjetima (e: sea conditions), što prvenstveno uključuje djelovanje valova (e: waves), vjetra (e: wind) i morskih struja (e: ocean currents).\nProučavanje pomorstvenosti od izuzetne je inženjerske važnosti iz nekoliko razloga:\nNa karakteristike pomorstvenosti utječe niz složenih, međusobno povezanih čimbenika:",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Osnovni pojmovi</span>"
+    ]
+  },
+  {
+    "objectID": "osnovni-pojmovi.html#uvod",
+    "href": "osnovni-pojmovi.html#uvod",
+    "title": "1  Osnovni pojmovi",
+    "section": "",
+    "text": "Sigurnost i strukturni integritet (e: safety and structural integrity): Pomorstvenost je presudna za opstanak broda i sigurnost posade. Brodovi s lošim karakteristikama pomorstvenosti na valovitom moru podložni su dinamičkim pojavama koje mogu dovesti do oštećenja strukture trupa, gubitka stabiliteta, naplavljivanja (e: flooding) pa čak i prevrtanja (e: capsizing).\nRadna sposobnost i udobnost (e: operability and habitability): Kretanja broda izravno utječu na radne sposobnosti posade i udobnost putnika. Pretjerana kretanja (posebno ubrzanja) uzrokuju morsku bolest (e: seasickness / motion sickness) i kronični umor, dok dugotrajna izloženost nepovoljnim biodinamičkim odzivima može ostaviti trajne posljedice na mišićno-koštani sustav (osobito zglobove) posade. Također, prevelika kretanja mogu onemogućiti izvođenje radnih operacija na palubi.\nPlovna svojstva i performanse (e: ship performance): Pomorstvenost izravno utječe na ekonomičnost i upravljivost broda. Uslijed djelovanja valova i vjetra javlja se dodatni otpor (e: added resistance in waves). Brodovi koji doživljavaju snažne odzive često gube na brzini (tzv. voljni i nevoljni gubitak brzine – e: voluntary and involuntary speed loss) te imaju poteškoća u održavanju zadanog kursa (e: course keeping).\n\n\n\nProjekt broda (e: ship design): Parametri poput oblika trupa (e: hull form), glavnih dimenzija i rasporeda masa (e: mass distribution / weight distribution) izravno utječu na to kako će brod reagirati na uzbudne sile.\nStanje mora (e: sea state): Svojstva morskih valova, prvenstveno njihova značajna visina (e: significant wave height) i period/frekvencija (e: wave period / frequency), najvažniji su vanjski uzbudni čimbenici.\nVjetar (e: wind): Aerodinamičke sile vjetra posebno su izražene kod plovila s velikim nadvođima (e: freeboard) i nadgrađima (e: superstructure), odnosno velikom površinom izloženom vjetru (e: windage area).\nStanje krcanja (e: loading condition): Količina i raspored tereta mijenjaju položaj težišta broda (e: center of gravity) i metacentarsku visinu (e: metacentric height). Primjerice, brod s previsokim težištem gubi stabilitet, dok brod s preniskim težištem (prevelikim stabilitetom) postaje prekrut (e: stiff ship) i doživljava nagla, neugodna i opasna ljuljanja s velikim ubrzanjima.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Osnovni pojmovi</span>"
+    ]
+  },
+  {
+    "objectID": "osnovni-pojmovi.html#koordinatni-sustav-i-gibanja",
+    "href": "osnovni-pojmovi.html#koordinatni-sustav-i-gibanja",
+    "title": "1  Osnovni pojmovi",
+    "section": "1.2 Koordinatni sustav i gibanja",
+    "text": "1.2 Koordinatni sustav i gibanja\nZa analizu dinamike broda na valovima, brod se promatra kao kruto tijelo (e: rigid body) u prostoru.\nGibanje krutog tijela opisuje se pomoću matematičkog modela sa šest stupnjeva slobode gibanja (e: six degrees of freedom - 6 DOF), 3 stupnja translacije (e: translation) i 3 stupnja rotacije (e: rotation). Gibanja još nazivamo i njihanje (na valovima).\nZa opisivanje ovih kretanja najčešće se koristi brodski pravokutni, odnosno Kartezijev koordinatni sustav (e: ship-fixed Cartesian coordinate system). Ishodište ovog sustava obično se postavlja u težište broda (e: centre of gravity - CG/CoG).\nOsi standardnog koordinatnog sustava definirane su na sljedeći način:\n\nOs X (uzdužna os / e: longitudinal axis): Usmjerena vodoravno prema pramcu (e: bow).\nOs Y (poprečna os / e: transverse axis): Usmjerena vodoravno prema boku broda (najčešće prema lijevom boku za desnokretni sustav / e: port side).\nOs Z (vertikalna os / e: vertical axis): Usmjerena okomito prema gore.\n\nTri translacijska gibanja predstavljaju linearna pomicanja težišta broda duž koordinatnih osi:\n\nZalijetanje (e: surge) naprijed-nazad u uzdužnom smjeru osi \\(X\\),\nZanošenje (e: sway) lijevo-desno u poprečnom smjeru osi \\(Y\\),\nPoniranje (e: heave) gore-dolje u vertikalnom smjeru osi \\(Z\\).\n\nRotacijska gibanja predstavljaju kutna zakretanja broda oko koordinatnih osi:\n\nLjuljanje ili valjanje (e: roll) oko uzdužne osi \\(X\\),\nPosrtanje (e: pitch) tj. dizanje pramca/krme oko poprečne osi \\(Y\\),\nZaošijanje (e: yaw) tj. zakretanja pramca lijevo-desno oko vertikalne osi \\(Z\\).\n\n\n\n\n\n\n\nFigure 1.1: Koordinatni sustav za pozitivne smjerove gibanja, prema definicijama DNV/GL.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Osnovni pojmovi</span>"
+    ]
+  },
+  {
+    "objectID": "osnovni-pojmovi.html#vrste-opterećenja",
+    "href": "osnovni-pojmovi.html#vrste-opterećenja",
+    "title": "1  Osnovni pojmovi",
+    "section": "1.3 Vrste opterećenja",
+    "text": "1.3 Vrste opterećenja\nTijekom svog radnog vijeka, brod je izložen složenom sustavu sila koje uzrokuju naprezanja (e: stresses) i deformacije (e: deformations) u njegovoj strukturi.\nKako bi se olakšala analiza i proračun čvrstoće, opterećenja brodskih konstrukcija (e: structural loads) sustavno se dijele prema dva osnovna kriterija: prostornom obuhvatu i vremenskoj promjenljivosti.\nPodjela prema prostornom obuhvatu, odnosno prema tome koji dio brodske konstrukcije preuzima i prenosi zadano opterećenje:\n\nGlobalna opterećenja (e: global loads) djeluju na brod kao cjelinu, pri čemu se trup broda promatra kao ekvivalentna greda (e: hull girder). Ova opterećenja uzrokuju opće uzdužno savijanje broda, poput progiba (e: sagging) i pregiba (e: hogging) na valovima, te globalno uvijanje i smicanje.\nLokalna opterećenja (e: local loads) djeluju na pojedinačne elemente brodske konstrukcije, poput limova oplate, ukrepa, rebara ili pojedinih paluba. Primjeri uključuju hidrostatski tlak mora na određeni lim vanjske oplate, težinu montiranog stroja i sl.\n\nPodjela prema vremenskoj promjenljivosti opterećenja s obzirom na to kako se njihov intenzitet, smjer i hvatište mijenjaju u vremenu:\n\nStatička opterećenja (e: static loads) koja su konstantna ili se vrlo sporo mijenjaju tijekom vremena. U ovu skupinu prvenstveno ubrajamo vlastitu masu praznog broda (e: lightship weight), masu tereta, goriva i zaliha (e: deadweight) te statički uzgon u mirnoj vodi (e: still water buoyancy).\nDinamička periodična opterećenja (e: dynamic periodic loads / cyclic loads): Opterećenja koja se kontinuirano i ciklički mijenjaju. Glavni uzročnici su prolazak morskih valova, koji neprestano mijenjaju raspodjelu uzgona duž broda, te vibracije koje proizvode glavni brodski motori i brodski vijak (e: propeller). Zbog svoje ciklične prirode, ova opterećenja su glavni uzrok zamora materijala (e: fatigue).\nDinamička udarna opterećenja (e: dynamic impact loads): Kratkotrajna, iznenadna opterećenja vrlo visokog intenziteta. Najčešće nastaju uslijed snažnog udara pramca u valove (e: slamming), zapljuskivanja palube ogromnim masama mora (e: green water on deck) ili snažnog udaranja tekućine o stjenke djelomično napunjenih brodskih tankova (e: sloshing).",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Osnovni pojmovi</span>"
+    ]
+  },
+  {
+    "objectID": "opterecenja-na-konstrukciju.html",
+    "href": "opterecenja-na-konstrukciju.html",
+    "title": "2  Opterećenja na konstrukciju",
+    "section": "",
+    "text": "2.1 Prostorna podjela opterećenja",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Opterećenja na konstrukciju</span>"
+    ]
+  },
+  {
+    "objectID": "opterecenja-na-konstrukciju.html#prostorna-podjela-opterećenja",
+    "href": "opterecenja-na-konstrukciju.html#prostorna-podjela-opterećenja",
+    "title": "2  Opterećenja na konstrukciju",
+    "section": "",
+    "text": "2.1.1 Lokalna opterećenja\nLokalna opterećenja (e: local loads) djeluju na ograničeni, specifični dio brodske strukture. Analiza ovih opterećenja provodi se kako bi se odredila naprezanja (e: stresses) i deformacije uslijed savijanja pojedinačnih elemenata pod lokalnim pritiskom (npr. hidrostatski tlak mora, pritisak tereta, težina opreme). U te elemente ubrajamo:\n\nLimove (npr. limovi oplate, palube, pregrada / e: plating)\nObične ukrepe (npr. uzdužnjaci, sponje, rebra / e: ordinary stiffeners, longitudinals, transverse beams)\nPrimarne nosive elemente (npr. okvirna rebra, proveze, pasme / e: primary supporting members, web frames, stringers).\n\nPrecizna procjena lokalnih opterećenja ključna je za dimenzioniranje detalja i sprječavanje lokalnog otkazivanja materijala (plastičnih deformacija ili pukotina) na najosjetljivijim čvorovima brodske konstrukcije.\nUkoliko promatrani lokalni element doprinosi ukupnoj uzdužnoj čvrstoći broda (tj. proteže se neprekinuto duž trupa, poput uzdužnjaka na dnu ili palubi), ukupno naprezanje u tom elementu dobiva se superpozicijom (zbrajanjem) lokalnih i globalnih naprezanja.\n\n\n2.1.2 Globalna opterećenja\nGlobalna opterećenja (e: global loads) djeluju na brod u cjelini. U ovoj analizi, složeni brodski trup idealizira se i promatra kao ekvivalentni gredni nosač (e: hull girder / equivalent beam).\nGlobalna opterećenja nastaju kao posljedica nejednolike uzdužne raspodjele lokalnih sila po duljini broda. Konkretno, razlika između lokalne težine, odnosno rasporeda masa i tereta (e: weight distribution), i lokalnog uzgona (e: buoyancy distribution) u svakom poprečnom presjeku rezultira pojavom kontinuiranog opterećenja.\nMatematičkom integracijom te razlike duž broda dobivamo krivulje unutarnjih sila:\n\nPoprečne ili smične sile (e: shear forces): Prva integracija krivulje opterećenja.\nMomente savijanja (e: bending moments): Druga integracija krivulje opterećenja.\n\nGlobalna opterećenja temelj su za dimenzioniranje glavnih uzdužnih konstrukcijskih elemenata broda (vanjske oplate, glavne palube, dvodna). Kako bi trup izdržao ova opterećenja bez loma (e: structural failure) uslijed prevelikog savijanja, proračunom je potrebno osigurati propisani minimalni moment otpora poprečnog presjeka (e: section modulus) i adekvatnu površinu poprečnog presjeka za preuzimanje smicanja (e: shear area).\nDobrom procjenom opterećenja sprječava se lom konstrukcije zbog premašivanja najvećeg dozvoljenog momenta savijanja broda (Figure 2.1).\n\n\n\n\n\n\nFigure 2.1: Lom trgovačkog broda “Prestige”",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Opterećenja na konstrukciju</span>"
+    ]
+  },
+  {
+    "objectID": "opterecenja-na-konstrukciju.html#vremenska-podjela-opterećenja",
+    "href": "opterecenja-na-konstrukciju.html#vremenska-podjela-opterećenja",
+    "title": "2  Opterećenja na konstrukciju",
+    "section": "2.2 Vremenska podjela opterećenja",
+    "text": "2.2 Vremenska podjela opterećenja\n\n2.2.1 Statička opterećenja\nStatička opterećenja (e: static loads) su ona opterećenja kod kojih se inercijske sile i dinamički efekti mogu u potpunosti zanemariti. Ova pretpostavka vrijedi za opterećenja koja su stacionarna ili se njihov intenzitet mijenja izuzetno sporo s periodom ponavljanja od nekoliko sati, dana ili duže. Takva opterećenja uključuju:\n\nOpterećenja na mirnoj vodi (e: still water loads)\nOpterećenja pri dokovanju (e: drydocking loads)\nToplinska ili termička opterećenja (e: thermal loads) koja nastaju uslijed nejednolikog zagrijavanja trupa, npr. razlika temperature uronjenog dijela i palube izložene suncu, ili utjecaja zagrijanog/ohlađenog tereta.\n\nOd navedenih, opterećenja na mirnoj vodi su najvažnija pri osnovnom projektiranju strukture broda. Ona su rezultat ravnoteže i međusobnog djelovanja vanjskih hidrostatskih tlakova (koji rezultiraju silom uzgona / e: buoyancy) i unutarnjeg rasporeda masa, koji uključuje vlastitu masu broda, tekuće terete u tankovima te koncentrirane sile tereta poput vozila, putnika ili kontejnera (koji rezultiraju silom težine / e: weight).\nOva opterećenja su nejednoliko distribuirana po duljini broda. Promjena forme trupa (e: hull form) uzrokuje nejednoliku raspodjelu uzgona, dok raspored tereta uzrokuje nejednoliku raspodjelu težine. Njihova razlika uzrokuje vertikalno savijanje trupa kao ekvivalentne grede. Problemom izračuna opterećenja, stabiliteta i plovnosti na mirnoj vodi bavi se grana brodogradnje zvana statika broda ili hidrostatika (e: ship hydrostatics). Postoje dva osnovna stanja vertikalnog savijanja broda na mirnoj vodi: pregib i progib.\nStanje pregiba (e: hogging): Trup broda se savija na način da su središnji dijelovi potisnuti prema gore, a krajevi prema dolje. U ovom stanju, glavna paluba je vlačno opterećena (e: tensile stress), dok je dno broda tlačno opterećeno (e: compressive stress). Općenito, trgovački brodovi u balastu (e: ballast condition) gotovo su uvijek u stanju pregiba jer su im pramčani i krmeni tankovi puni, dok je sredina prazna. Kontejnerski brodovi su također inherentno u stanju pregiba, što je uvjetovano njihovom specifičnom finom formom, ali i svjesnom namjerom projektanata da se široka, otvorena paluba kontejnerskih brodova (koja ima manjak materijala zbog velikih grotala) rastereti od opasnih tlačnih naprezanja koja bi mogla izazvati izvijanje (e: buckling).\nStanje progiba (e: sagging): Trup broda se savija na način da su središnji dijelovi potisnuti prema dolje, a krajevi prema gore (koncentracija mase je u sredini broda). U ovom stanju, glavna paluba je tlačno opterećena, dok je dno broda vlačno opterećeno. Primjerice, veliki tankeri (e: VLCC / ULCC) pod punim opterećenjem su tipično u stanju progiba, a istom stanju podložni su i brodovi za prijevoz rasutih tereta (e: bulk carriers) kada su im središnja skladišta nakrcana teškom rudačom.\n\n\n2.2.2 Dinamička periodička opterećenja\nDinamička periodična opterećenja (e: dynamic periodic loads) nazivaju se još i sporo promjenjivim dinamičkim opterećenjima. Njihov period ponavljanja izravno je povezan i otprilike odgovara periodu nailaska morskih valova (koji se u naravi kreće od 1 do 20 sekundi). U ovu skupinu prvenstveno ubrajamo:\n\nValna opterećenja (e: wave loads): Nastaju uslijed promjenjivih hidrodinamičkih tlakova morskih valova koji djeluju na vanjsku oplatu broda.\nSlobodne površine tekućina (e: sloshing): Zapljuskivanje tekućeg tereta, goriva ili vodenog balasta unutar djelomično napunjenih tankova. Uslijed kretanja broda na valovima, mase tekućine vrše naizmjenične udare na unutarnje elemente konstrukcije (pregrade, palube, ukrepe).\n\nPri projektiranju broda, ključni korak je procjena maksimalnih dinamičkih valnih opterećenja te njihova superpozicija (zbrajanje) sa statičkim opterećenjima na mirnoj vodi.\nNajveća opasnost za uzdužnu čvrstoću broda nastupa kada brod naiđe pramcem ili krmom na val čija je duljina približno jednaka duljini samog broda (\\(\\lambda \\approx L\\)). To možemo ilustrirati pojednostavljenim primjerom nejednoliko opterećenog pontona:\n\nMaksimalni pregib (e: maximum hogging): Pretpostavimo ponton čiji su krajevi teško opterećeni, a sredina prazna. Na mirnoj vodi on je već u stanju pregiba. Kada takav ponton na valovitom moru zajaše na brijeg vala (e: wave crest) koji prolazi točno sredinom njegove duljine, uzgon u sredini se drastično povećava, dok krajevi gube podršku mora. Tada se valni moment savijanja dodaje onom na mirnoj vodi i pregib doseže svoj apsolutni maksimum.\nMaksimalni progib (e: maximum sagging): Ako je ponton opterećen teškim teretom u sredini, na mirnoj vodi nalazi se u stanju progiba. Kada se takav ponton nađe tako da mu sredina upadne u dol vala (e: wave trough), a pramac i krma leže na susjednim brijegovima, uzgon na krajevima se povećava, a u sredini pada. Valni moment savijanja ponovno se pribraja onom na mirnoj vodi i ponton doživljava maksimalni progib.\n\nZa dimenzioniranje poprečnih presjeka brodskog trupa, najvažnija komponenta globalnog opterećenja je vertikalni valni moment savijanja (e: vertical wave bending moment - VWBM). Kod brodova s velikim palubnim otvorima, poput kontejnerskih brodova, izuzetno je opasan i moment torzije ili uvijanja (e: torsional moment). On se javlja zbog asimetričnog opterećenja pri kosom nailasku na valove te uzrokuje deformacije na krajevima teretnog prostora zbog spriječenog vitoperenja (e: warping).\n\n\n2.2.3 Brzo promjenjiva dinamička opterećenja\nOva skupina obuhvaća opterećenja koja se mijenjaju izrazito brzo, imaju visok intenzitet i uzrokuju tranzijentno ili ustaljeno vibriranje brodskog trupa. To su tzv. dinamička udarna i visokofrekventna opterećenja, a uključuju sljedeće pojave:\n\nUdar pramca o valove (e: slamming): Tijekom plovidbe velike amplitude poniranja i posrtanja mogu dovesti do potpunog izranjanja pramca te njegovog silovitog udara o slobodnu površinu pri ponovnom uranjanju. Ova složena hidrodinamička pojava stvara ogromne tlakove na dno pramca.\nPodrhtavanje trupa (e: whipping): Direktna posljedica slamminga. Snažan udar u pramcu izaziva brze, prolazne vibracije čitavog trupa. Whipping može ozbiljno ugroziti globalnu čvrstoću jer dodatno povećava momente savijanja.\n\n\n\n\n\n\nFigure 2.2: Podrhtavanje trupa kao posljedica udara pramca\n\n\n\nZalijevanje palube (e: green water): Pod zalijevanjem palube podrazumijeva se prelijevanje i udar masivnih količina morske vode preko izložene palube koje udaraju u valobran (e: breakwater) ili prednju stijenku nadgrađa uslijed udara pramca u val.\nElastično vibriranje trupa / Pružanje (e: springing): Za razliku od podrhtavanja trupa, springing je pojava ustaljenog vibriranja trupa na valovima. Nastaje kao posljedica rezonancije, odnosno kada se neka prirodna frekvencija trupa poklopi s frekvencijom nailaska valova. Ova pojava je kritična prvenstveno za vrlo dugačke i “fleksibilne” brodove, poput ultra-velikih kontejnerskih brodova (e: ULCS). Analizom springing i whipping pojava bavi se napredna znanstvena disciplina hidroelastičnost (e: hydroelasticity).\nDahtanje (e: panting): Promjenjivi lokalni hidrodinamički tlakovi na limove pramčane oplate. Nastaju uslijed naizmjeničnog uranjanja i izranjanja pramca pri posrtanju (te su i dobili naziv poput “disanja” strukture), što je posebno izraženo kod brodova vitkih, oštrih formi.\nPrisilne vibracije (e: induced vibrations) su visokofrekventna dinamička opterećenja kontinuirano pobuđena, npr. radom glavnog brodskog stroja ili hidrodinamičkim impulsima zbog tlaka koje rotirajući brodski vijak pri svakom prolazu krila prenosi na strukturu krme.\nOpterećenja pri porinuću (e: launching loads) predstavljaju kritična, jednokratna tranzijentna opterećenja na trup koja nastaju uslijed nagle preraspodjele sila težine, uzgona i reakcije saonica prilikom spuštanja novogradnje s navoza u more.\n\n\n\n\n\n\nFigure 2.3: Opterećenja pri porinuću\n\n\n\n\n\n\n2.2.4 Sprega sila, naprezanja i gibanja\nPomorstvenost se bavi analizom naprezanja i odziva/gibanja broda na morskim valovima. Dinamika broda opisuje se jednadžbama gibanja koje uravnotežuju vanjske uzbudne sile (valove) s inercijalnim i prigušnim silama samog broda.\nBudući da je uzburkano more potpuno nepravilno, ono se u modernoj brodogradnji promatra kao stohastički ili slučajni proces (e: random process). Pomoću spektralne analize (e: spectral analysis) i metoda matematičke statistike, inženjeri procjenjuju ekstremne vrijednosti (e: extreme values) valnih opterećenja koja imaju vrlo malu vjerojatnost premašivanja (e: probability of exceedance) u predviđenom životnom vijeku broda (obično 20-25 godina). Klasifikacijska društva temelje svoja pravila i približne formule upravo na ovim statističkim metodama pomorstvenosti.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Opterećenja na konstrukciju</span>"
+    ]
+  },
+  {
+    "objectID": "morski-valovi.html",
+    "href": "morski-valovi.html",
+    "title": "3  Morski valovi",
+    "section": "",
+    "text": "3.1 Vrste morskih valova\nGledajući makroskopsku dinamiku oceana, razlikujemo strujanje velikih vodenih masa usmjerenom malom brzinom (morske struje) i lokalna, brza oscilatorna gibanja površinskih slojeva koja nazivamo morskim valovima (e: sea waves). Upravo su ovi potonji uzročnici najznačajnijih dinamičkih sila na brodove.\nMorski valovi su složen prirodni proces koji se fizički manifestira kao periodičko osciliranje čestica vode. To osciliranje vizualno primjećujemo kao naizmjenično izdizanje i spuštanje slobodne površine mora (e: free surface) tj. granice između dva medija: morske vode i zraka. Za svaki proces nastanka i širenja valova potrebno je međudjelovanje dviju suprotstavljenih sila:\nPrema dominantnoj uzbudnoj sili i tipičnom valnom periodu (T), površinske morske valove možemo podijeliti u sljedeće glavne kategorije (što ujedno čini tzv. spektar morskih valova): vjetrovni valovi (e: wind-generated waves) te ostali tipovi morskih valova.\nKao što im ime govori, vjetrovni valovi nastaju uslijed prijenosa energije s vjetra na površinu mora. Dijelimo ih prema fazi razvoja i periodu:\nOstali tipovi morskih valova su:\nU prirodi sve navedene uzbudne sile djeluju združeno i s različitim intenzitetom. Rezultat toga je da je realno more potpuno slučajne i stohastičke prirode, krajnje nepravilno po visini, periodu i smjeru. Pri projektiranju brodskih i pomorskih konstrukcija (analiza pomorstvenosti i opterećenja), inženjerima su uvjerljivo najvažniji gravitacijski vjetrom generirani valovi (živo i mrtvo more). Kod ovih valova dominantna uzbudna sila je lokalni i/ili udaljeni vjetar, dok je isključiva povratna sila teža (gravitacija).",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Morski valovi</span>"
+    ]
+  },
+  {
+    "objectID": "morski-valovi.html#vrste-morskih-valova",
+    "href": "morski-valovi.html#vrste-morskih-valova",
+    "title": "3  Morski valovi",
+    "section": "",
+    "text": "Uzbudne sile (e: disturbing / exciting forces): Sile koje narušavaju ravnotežu i izvode površinu mora iz stanja mirovanja (npr. vjetar, potresi, gravitacija nebeskih tijela, gibanje broda).\nPovratne ili umirujuće sile (e: restoring forces): Sile koje teže vratiti slobodnu površinu natrag u prvobitno, vodoravno stanje ravnoteže (prvenstveno površinska napetost, sila teža i Coriolisova sila).\n\n\n\n\nKapilarni valovi (e: capillary waves) i bore (e: ripples): (T &lt; 1 s) su prvi valovi koji nastaju, kod kojih je glavna povratna sila površinska napetost vode (a ne gravitacija!).\nValovi živog mora (e: wind sea): (1 s &lt; T &lt; 10 s) su valovi koji se nalaze pod izravnim i aktivnim utjecajem vjetra koji ih je i stvorio. Karakterizira ih velika strmina, izrazita nepravilnost i česta pojava lomljenja krijesta (e: crest).\nValovi mrtvog mora / bibavica (e: swell): (10 s &lt; T &lt; 30 s) su napustili začetni vjetrovni sustav (područje oluje gdje su nastali) ili su ostali nakon što je vjetar prestao puhati. Puno su pravilniji, manjih strmina (gotovo harmonijski) i sadrže ogromnu količinu energije koja se vrlo sporo rasipa. Mogu putovati tisućama kilometara preko oceana prije nego što se razbiju o obalu.\nMješovito more / zibine (e: mixed sea / cross sea) sadrži valove živog mora iz jednog smjera i valova mrtvog mora iz drugog smjera, što rezultira izuzetno složenim i opasnim uvjetima za plovidbu.\nValovi loma (e: surf waves): Transformacija vjetrovnih valova uslijed smanjenja dubine pri dolasku u obalno područje (plitku vodu).\n\n\n\n\n\n\n\nFigure 3.1: Tipovi vjetrovnih valova\n\n\n\n\n\nBrodski valovi (e: ship waves): (0.8 s &lt; T &lt; 2 s). Sustav valova generiran samim gibanjem brodskog trupa kroz vodu (pramčani i krmeni valni sustav).\nOlujni uspori / barički valovi (e: storm surge): (30 s &lt; T &lt; 60 min). Dugoperiodična izdizanja razine mora uzrokovana naglim padom tlaka zraka u središtima ciklona te guranjem vodenih masa jakim olujnim vjetrom prema obali.\nTsunami (e: tsunami): (5 min &lt; T &lt; 60 min). Iznimno dugi i razorni valovi koji nastaju uslijed tektonskih poremećaja (podmorski potresi, vulkanske erupcije, klizišta).\nŠćige ili seše (e: seiche): Stojni valovi (e: standing waves) u potpuno ili djelomično omeđenim bazenima (poput zaljeva ili luka), generirani naglim promjenama tlaka, vjetrom ili dugim valovima s pučine.\nValovi šelfa (e: shelf waves): (15 min &lt; T &lt; 4 h). Nastaju transformacijom i interakcijom valova s naglim promjenama dubine na kontinentalnom šelfu.\nPlimni valovi (e: tides / tidal waves): (T = 12 h 25 min ili 24 h 50 min). Nastaju uslijed nebeske mehanike, odnosno gravitacijskog privlačenja Mjeseca i Sunca u kombinaciji sa Zemljinom rotacijom.\n\n\n\n\n\n\n\nFigure 3.2: Ne-vjetrovni tipovi valova",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Morski valovi</span>"
+    ]
+  },
+  {
+    "objectID": "morski-valovi.html#nastanak-i-razvoj-vjetrovnih-valova",
+    "href": "morski-valovi.html#nastanak-i-razvoj-vjetrovnih-valova",
+    "title": "3  Morski valovi",
+    "section": "3.2 Nastanak i razvoj vjetrovnih valova",
+    "text": "3.2 Nastanak i razvoj vjetrovnih valova\nPod nastankom tj. generiranjem vjetrovnih valova (e: wave generation) podrazumijeva se proces prijenosa kinetičke energije vjetra na površinu mora. Razvoj valova očituje se u kontinuiranom povećanju njihove visine H i perioda T tijekom vremena i prostora nad kojim vjetar puše, što bi se moglo opisati na sljedeći način:\n\nPrvi valovi koji se formiraju su visokofrekventni kapilarni valovi, vrlo male duljine. Zbog njihove male brzine napredovanja (e: phase velocity), oni najlakše apsorbiraju energiju iz zraka. Kod ovako malih valova, glavna povratna sila je površinska napetost (e: surface tension), zbog čega ih i nazivamo kapilarnim. Oni sitno mreškaju morsku površinu, čime povećavaju aerodinamičko trenje vjetra, a što dodatno pospješuje prijenos energije.\nKada su jednom formirani, ovi strmi mali valovi se brzo razbijaju te pritom pretežno prenose svoju energiju na valne komponente većih duljina i nižih frekvencija.\nKako vjetar nastavlja puhati, kolebanje površine postaje sve veće, dok utjecaj površinske napetosti slabi. Glavna povratna sila postaje sila teža (gravitacija). Zbog toga se razvijeni valovi, koji predstavljaju opterećenje za brodove i pomorske konstrukcije, nazivaju gravitacijskim valovima (e: gravity waves). Energija se nastavlja prenositi prema sve većim valovima sve dok njihova brzina napredovanja ne dosegne brzinu samog vjetra (nakon čega vjetar više ne može direktno dodavati energiju tom valu).\n\nNa rast valova tj. stanje mora (e: sea state) primarno utječu tri faktora: brzina vjetra (e: wind speed), trajanje puhanja vjetra (e: wind duration) i duljina privjetrišta (e: fetch length - neprekinuta udaljenost otvorenog mora preko koje vjetar puše u istom smjeru). S obzirom na te faktore, razlikujemo tri stanja mora:\n\nMore ograničeno trajanjem (e: duration-limited sea) se javlja kad vjetar puše nad otvorenim oceanom (veliko privjetrište), ali nije puhao dovoljno dugo da se razviju veliki, niskofrekventni valovi. Spektar ovakvog mora dominiraju visokofrekventne komponente.\nMore ograničeno privjetrištem (e: fetch-limited sea) javlja se u zatvorenim morima (npr. Jadransko more prilikom puhanja bure) ili kada vjetar puše s bliske obale prema pučini. Bez obzira na to koliko dugo vjetar puhao, valovi ne mogu rasti unedogled jer nemaju dovoljno prostora (staze) za razvoj. Visina vala ovisi samo o brzini vjetra i duljini privjetrišta.\nPotpuno razvijeno more (e: fully developed sea) javlja se na otvorenim oceanima kada vjetar konstantne brzine puše dovoljno dugo preko dovoljno dugog privjetrišta. U ovom stanju postoji dinamička ravnoteža – energija koju vjetar predaje moru jednaka je energiji koja se rasipa razbijanjem valova (pojava bijelih krijesta). Valovi su dosegli svoj teorijski maksimum za tu brzinu vjetra i više ne rastu.\n\nKako bi se teorijski modeli mogli primijeniti u praksi, potrebno je prikupljati stvarne podatke o stanju mora. Instrumenti i metode za mjerenje karakteristika valova (e: wave measurement) uključuju:\n\nValomjerne plutače (e: wave buoys) su najčešći kontaktni instrumenti (tzv. ondografi), a sastoje se od usidrene plutače opremljene senzorima i radio-odašiljačem. Unutar plutače nalazi se vrlo osjetljivi vertikalni akcelerometar (senzor ubrzanja) koji bilježi vertikalne pomake (poniranje) plutače na valovima. Iz tih ubrzanja matematički se izvode podaci o visini i periodu vala. Ako je plutača opremljena s tri ortogonalna akcelerometra (za mjerenje poniranja, ljuljanja i posrtanja), sustav može mjeriti i usmjerenost valova (e: directional wave buoy).\nSatelitska altimetrija i radari (e: satellite altimetry / radar sensors) rade beskontaktno mjerenje iz svemira (ili s fiksnih odobalnih platformi). Satelitski radarski visinomjer emitira elektromagnetske impulse prema moru i mjeri vrijeme povratka signala, kao i omjer jačine dolaznog i odašiljanog signala. Taj omjer ovisi o hrapavosti morske površine, iz čega se precizno može izračunati značajna visina vala nad golemim oceanskim prostranstvima. Naprednijom obradom reflektiranog signala iz više smjerova moguće je odrediti i smjer napredovanja valnog sustava.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Morski valovi</span>"
+    ]
+  },
+  {
+    "objectID": "matematicki-opis-valova.html",
+    "href": "matematicki-opis-valova.html",
+    "title": "4  Matematički opis morskih valova",
+    "section": "",
+    "text": "4.1 Uvod u modeliranje stanja mora\nRealno valovito stanje mora izrazito je kaotično. Zbog toga se u inženjerskoj praksi ono matematički pretpostavlja i modelira kao superpozicija (zbrajanje) velikog broja idealnih, harmonijskih valova. Svaki od tih sastavnih valova ima različitu visinu, period, smjer napredovanja i slučajni fazni pomak. Ovakav pristup omogućava da se uzburkano more promatra kao trodimenzionalni model slučajnog procesa (e: random process / stochastic process).\nZa potrebe projektiranja brodskih i pomorskih konstrukcija, matematički opis valovitog stanja mora temelji se na tri međusobno povezana pristupa:",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Matematički opis morskih valova</span>"
+    ]
+  },
+  {
+    "objectID": "matematicki-opis-valova.html#uvod-u-modeliranje-stanja-mora",
+    "href": "matematicki-opis-valova.html#uvod-u-modeliranje-stanja-mora",
+    "title": "4  Matematički opis morskih valova",
+    "section": "",
+    "text": "Deterministička valna teorija (e: Deterministic wave theory) se primjenjuje za analizu idealnih, pravilnih dvodimenzionalnih valova:\n\nPravilne valove karakteriziraju konstantni parametri valnog profila: valna visina (\\(H\\)), valna duljina (\\(\\lambda\\)), period (\\(T\\)) i faza, te posljedično konstantni kinematički parametri gibanja vodenih čestica (putanje, brzine i ubrzanja).\nZbog svoje stroge matematičke pravilnosti, takvi se valovi nazivaju idealnim valovima (e: regular waves). U prirodi su izuzetno rijetki (najbliži im je oblik pravilnog mrtvog mora).\nOvi harmonijski valovi su temelj (tzv. komponentni valovi) iz kojih se izgrađuje model uzburkanog mora. Njihovo je poznavanje ključno za linearnu hidrodinamičku analizu jer omogućavaju računanje prijenosnih funkcija (e: Transfer Functions / RAO) i primjenu principa superpozicije.\n\nSpektralne metode (e: Spectral methods) služe za kratkoročni prikaz (e: short-term representation) realnih, nepravilnih valova na određenoj lokaciji u kratkom vremenskom prozoru (najčešće od 20 minuta do najviše 3 sata, tijekom kojih se pretpostavlja da je oluja konstantna).\n\nMatematički model zahtijeva uvođenje pretpostavki da je izdizanje morske površine slučajan proces koji je homogen, stacionaran (e: stationary) i ergodičan (e: ergodic).\nPrimjenom Wiener-Khinchinova teorema i autokorelacijske funkcije određuje se funkcija gustoće spektra (e: spectral density function), skraćeno zvana spektar valova (e: wave spectrum). Slikovito rečeno, spektar nam pokazuje kako je ukupna energija uzburkanog mora raspodijeljena po različitim frekvencijama komponentnih valova.\nUobičajeni 2D spektri koriste se za tzv. dugobregovite valove (e: long-crested waves), gdje pretpostavljamo da svi valovi dolaze iz istog smjera. Budući da u stvarnosti valovi dolaze iz više smjerova (kratkobregoviti valovi / e: short-crested waves), za preciznije analize koriste se usmjereni spektri valova (e: directional wave spectra).\n\nProbabilistički opis (e: Probabilistic description) analizira statističku raspodjelu (vjerojatnost pojavljivanja) valnih karakteristika u tom istom kratkom vremenskom razdoblju, ne zamarajući se vremenskim redoslijedom kojim se ti valovi pojavljuju.\n\nOsnovna je pretpostavka da je samo izdizanje morske površine Gaussov proces (e: Gaussian process) s nultom srednjom vrijednošću (razina mirnog mora).\nSpektralni i probabilistički opisi izravno su povezani: varijanca Gaussove razdiobe jednaka je nultom spektralnom momentu (\\(m_0\\)), odnosno ukupnoj površini ispod krivulje spektra valova.\nZa statistički opis samih amplituda valova (ili visina) koristi se Rayleighova razdioba (e: Rayleigh distribution). Njenom integracijom računaju se ključne inženjerske veličine, poput značajne visine vala (e: significant wave height - \\(H_s\\)). Probabilističkim metodama određuju se i kratkoročne prognoze ekstremnih vrijednosti (npr. očekivani najveći val u oluji od 3 sata).",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Matematički opis morskih valova</span>"
+    ]
+  },
+  {
+    "objectID": "matematicki-opis-valova.html#dugoročna-prognoza-valova",
+    "href": "matematicki-opis-valova.html#dugoročna-prognoza-valova",
+    "title": "4  Matematički opis morskih valova",
+    "section": "4.2 Dugoročna prognoza valova",
+    "text": "4.2 Dugoročna prognoza valova\nDok spektralne metode opisuju stanje mora u trajanju od par sati, dugoročna prognoza valova (e: long-term wave forecasting) je statistički postupak predviđanja valnih amplituda i stanja mora koji se primjenjuje na životni vijek broda (obično 20 do 25 godina).\nDugoročne prognoze presudne su za određivanje projektnih valnih opterećenja (e: design wave loads). Prema geografskom obuhvatu dijelimo ih na:\n\nLokalne prognoze: Odnose se na jednu specifičnu točku (npr. lokacija naftne platforme). Gotovo se isključivo koriste za projektiranje fiksnih odobalnih pomorskih konstrukcija (e: offshore structures).\nRegionalne prognoze: Odnose se na šira morska područja (npr. tablice stanja mora za Mediteran, Sjeverno more ili Jadran). Za analizu ekstremnih opterećenja trgovačkih prekooceanskih brodova standardno se koristi regionalna prognoza za Sjeverni Atlantik (e: North Atlantic wave data), jer on predstavlja najgrublje uvjete plovidbe na svijetu (tzv. IACS Rec. 34).\nGlobalne prognoze: Kombinacija klimatskih podataka svjetskih mora (npr. Global Wave Statistics). Koriste se za analizu nakupljanja oštećenja i zamora materijala (e: fatigue analysis), gdje je bitno uzeti u obzir sva umjerena stanja mora kroz koja će brod proći tijekom svoje službe na različitim rutama.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Matematički opis morskih valova</span>"
+    ]
+  },
+  {
+    "objectID": "matematicki-opis-valova.html#tablice-stanja-mora",
+    "href": "matematicki-opis-valova.html#tablice-stanja-mora",
+    "title": "4  Matematički opis morskih valova",
+    "section": "4.3 Tablice stanja mora",
+    "text": "4.3 Tablice stanja mora\nU pomorstvu je uobičajeno korištenje Beaufortove ljestvice vjetra, koja u sebi uključuje statističku vezu između brzine vjetra, stanja mora i značajne visine vala. Beaufortova ljestvica se primjenjuje za izračun brzine vjetra na moru, no vrijedi samo za valove nastale pri lokalnim sinoptičkim uvjetima, odnosno pretpostavlja da nije bilo dovoljno vremena za nastanak potpuno razvijenog mora.\n\n\n\nTable 4.1: Beaufortova ljestvica vjetra\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBf\nOpis\nV, čv\nV, m/s\nV, km/h\nUčinak\nH 1/3 , m\n\n\n\n\n0\nTišina\n0-1\n0-0.2\n0-1\nMore mirno i glatko kao zrcalo.\n0\n\n\n1\nLahor\n1-3\n0.3-1.5\n2-5\nČovjek ga još ne osjeća. Na moru mali nabori bez pjene.\n0.1-0.2\n\n\n2\nPovjetarac\n4-6\n1.6-3.3\n6-12\nUpravo se osjeća na licu. Na moru sitni valovi, kratki ali izraziti.\n0.3-0.5\n\n\n3\nSlabi vjetar\n7-10\n3.4-5.4\n13-19\nLagano pokreće zastavu. Na moru mali valovi, kreste se počinju lomiti.\n0.6-1\n\n\n4\nUmjereni vjetar\n11-16\n5.5-7.9\n20-28\nNa moru sve duži valovi, pjena česta.\n1.5\n\n\n5\nUmjereno jaki vjetar\n17-21\n8.0-10.7\n29-38\nNa moru umjereni valovi, puno pjene, moguća morska prašina.\n2\n\n\n6\nJaki vjetar\n22-27\n10.8-13.8\n39-49\nStvaraju se veliki valovi, bijele kreste svuda su rasprostranjene.\n3.5\n\n\n7\nŽestoki vjetar\n28-33\n13.9-17.1\n50-61\nMore raste. Bijela pjena javlja se u dugim prugama.\n5\n\n\n8\nOlujni vjetar\n34-40\n17.2-20.7\n53-74\nUmjereno visoki valovi. Od vrhova kresta otkidaju se vrtlozi morskih kapljica.\n7.5\n\n\n9\nJaki olujni vjetar\n41-47\n20.8-24.4\n75-87\nVisoki valovi, debele pruge pjene niz vjetar, morski dim.\n9.5\n\n\n10\nOrkanski\n48-55\n24.5-28.4\n88-102\nCijela površina mora ima bijeli izgled. Vidljivost smanjena.\n12\n\n\n11\nJaki orkanski\n56-63\n28.5-32.6\n103-117\nNeobično visoki valovi, brodovi se povremeno mogu gubiti iz vida. Posvuda se kreste valova pretvaraju u pjenu.\n15\n\n\n12\nOrkan\n64-71\n32.7-36.9\n118-133\nZrak je pun morske prašine, a more je zbog toga potpuno bijelo. Vidljivost je vrlo smanjena.\n&gt;15\n\n\n\n\n\n\nOsim Beaufortove ljestvice vjetra, u brodogradnji se koristi i međunarodna ljestvica stanja mora (e: WMO Sea State Code), koja klasificira stanje mora prema značajnoj visini vala i tipičnom vršnom periodu. Ova klasifikacija prihvaćena je od strane Svjetske meteorološke organizacije (WMO), NATO-a (STANAG 4194) i ITTC-a te se redovito koristi u specifikacijama pomorstvenosti.\n\n\n\nTable 4.2: Međunarodna ljestvica stanja mora (WMO Sea State Code)\n\n\n\n\n\nSS\nOpis\n\\(H_S\\) (m)\n\\(T_P\\) (s)\n\n\n\n\n0\nZrcalno mirno (e: calm, glassy)\n0\n–\n\n\n1\nMirno (e: calm, rippled)\n0–0.1\n–\n\n\n2\nBlago valovito (e: smooth)\n0.1–0.5\n3.3–12.8\n\n\n3\nUmjereno (e: slight)\n0.5–1.25\n5.0–14.8\n\n\n4\nDosta nemirno (e: moderate)\n1.25–2.5\n6.1–15.2\n\n\n5\nNemirno (e: rough)\n2.5–4.0\n8.3–15.5\n\n\n6\nVrlo nemirno (e: very rough)\n4.0–6.0\n9.8–16.2\n\n\n7\nVisoko (e: high)\n6.0–9.0\n11.8–18.5\n\n\n8\nVrlo visoko (e: very high)\n9.0–14.0\n14.2–18.6\n\n\n9\nFenomenalno (e: phenomenal)\n&gt;14.0\n&gt;18.6\n\n\n\n\n\n\n\n4.3.1 Jadransko more kao primjer zatvorenog mora\nJadransko more je tipičan primjer mora ograničenog privjetrištem (e: fetch-limited sea). Najveće privjetrište iznosi oko 800 km duž osi sjeverozapad–jugoistok, dok je poprečno privjetrište znatno kraće (150–200 km). Zbog toga se valovi na Jadranu razvijaju pod utjecajem dva dominantna vjetra:\n\nBura (NE): Puše okomito na istočnu obalu s vrlo kratkim privjetrištem. Stvara kratke, strme valove visokih frekvencija. Značajna visina rijetko prelazi \\(H_S = 3\\)–\\(4\\) m, a periodi su kratki (\\(T_P = 4\\)–\\(6\\) s). Za opis bure najprikladniji je JONSWAP spektar s visokim \\(\\gamma\\) (4–7).\nJugo (SE): Puše duž osi Jadrana s mnogo većim privjetrištem. Može razviti veće valove (\\(H_S\\) do 5–6 m u ekstremnim slučajevima) s duljim periodima (\\(T_P = 7\\)–\\(10\\) s). JONSWAP spektar sa \\(\\gamma = 2\\)–\\(4\\) dobro opisuje ove uvjete.\n\nUsporedba s otvorenim oceanom (Sjeverni Atlantik) gdje \\(H_S\\) rutinski doseže 8–12 m s periodima \\(T_P = 12\\)–\\(18\\) s jasno pokazuje ograničenja zatvorenih mora. Na Figure 4.1 prikazani su primjeri Pierson-Moskowitz spektara za tipična stanja mora.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef pm_spectrum(omega, Hs, Tp):\n    \"\"\"Pierson-Moskowitz (ITTC) spektar valova.\"\"\"\n    wp = 2 * np.pi / Tp\n    S = (5 / 16) * Hs**2 * wp**4 * omega**(-5) * np.exp(-5/4 * (omega / wp)**(-4))\n    return S\n\nomega = np.linspace(0.1, 2.5, 500)\n\nsea_states = {\n    \"SS 3 ($H_S$=1.0 m, $T_P$=5.5 s)\":   (1.0, 5.5),\n    \"SS 4 ($H_S$=2.0 m, $T_P$=7.5 s)\":   (2.0, 7.5),\n    \"SS 5 ($H_S$=3.0 m, $T_P$=9.0 s)\":   (3.0, 9.0),\n    \"SS 6 ($H_S$=5.0 m, $T_P$=12.0 s)\":  (5.0, 12.0),\n    \"SS 7 ($H_S$=7.5 m, $T_P$=15.0 s)\":  (7.5, 15.0),\n}\n\nfig, ax = plt.subplots(figsize=(8, 4.5))\nfor label, (Hs, Tp) in sea_states.items():\n    S = pm_spectrum(omega, Hs, Tp)\n    ax.plot(omega, S, label=label, linewidth=1.5)\n\nax.set_xlabel(r\"Kružna frekvencija, $\\omega$ (rad/s)\")\nax.set_ylabel(r\"Spektralna gustoća, $S(\\omega)$ (m$^2$s)\")\nax.set_xlim(0, 2.5)\nax.set_ylim(bottom=0)\nax.legend(fontsize=8)\nax.grid(True, alpha=0.3)\nfig.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\nFigure 4.1: Pierson-Moskowitz spektri valova za tipična stanja mora (SS 3–7).\n\n\n\n\n\nKao što je vidljivo na grafu, s porastom stanja mora (veći \\(H_S\\) i \\(T_P\\)) spektar postaje širi i viši, što znači da more sadrži više energije raspoređene na nižim frekvencijama. Stanja mora SS 3–4 tipična su za Jadran pri umjerenim vjetrovima, dok SS 6–7 odgovaraju olujnim uvjetima na otvorenom oceanu.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Matematički opis morskih valova</span>"
+    ]
+  },
+  {
+    "objectID": "matematicki-opis-valova.html#teorija-linearnih-valova",
+    "href": "matematicki-opis-valova.html#teorija-linearnih-valova",
+    "title": "4  Matematički opis morskih valova",
+    "section": "4.4 Teorija linearnih valova",
+    "text": "4.4 Teorija linearnih valova\nZa hidrodinamičku analizu opterećenja i odziva broda, složeno stanje mora potrebno je svesti na osnovnu matematičku komponentu tj. pravilni harmonijski val. Najpoznatiji i u inženjerskoj praksi najčešće korišteni model je Airyjeva teorija linearnih valova (e: Airy linear wave theory), razvijena još u 19. stoljeću. Ona se temelji na teoriji potencijalnog strujanja (e: potential flow theory) kako bi se složene jednadžbe (Navier-Stokes) mogle linearno riješiti:\n\nMorska voda se promatra kao idealna tekućina: nestlačiva (e: incompressible) i neviskozna (e: inviscid), čime se zanemaruje trenje unutar fluida.\nPretpostavlja se da je strujanje bezvrtložno (e: irrotational flow), što omogućava definiranje potencijala brzine (e: velocity potential), \\(\\Phi\\).\nKljučna pretpostavka linearizacije je mala strmina vala. Pretpostavlja se da je visina vala (\\(H\\)) mala u usporedbi s njegovom duljinom (\\(\\lambda\\)), odnosno da je strmina vala (e: wave steepness) \\(H/\\lambda \\ll 1\\). Tako se granični uvjeti na slobodnoj površini mogu primijeniti na razini mirnog mora (\\(z = 0\\)), umjesto na stvarnoj, valovitoj površini.\n\nPravilni linearni val napreduje u jednom smjeru bez promjene svog oblika. Osnovni geometrijski i kinematički parametri koji ga definiraju su:\n\nValna duljina (e: wavelength), \\(\\lambda\\): Horizontalna udaljenost između dva uzastopna brijega (ili dola) vala.\nVisina vala (e: wave height), \\(H\\): Vertikalna udaljenost od dola do brijega vala.\nAmplituda vala (e: wave amplitude), \\(\\zeta_a\\): Udaljenost od razine mirnog mora do brijega vala. Kod linearnih valova vrijedi \\(\\zeta_a = H/2\\).\nPeriod vala (e: wave period), \\(T\\): Vrijeme potrebno da val prijeđe udaljenost jedne valne duljine \\(\\lambda\\).\nBrzina faze (e: phase velocity / celerity), \\(c\\): Brzina kojom se širi profil vala, definirana kao \\(c = \\lambda / T\\).\n\nIz ovih osnovnih veličina, za potrebe matematičkih jednadžbi izvodimo:\n\nKružnu frekvenciju (e: angular frequency): \\(\\omega = \\frac{2\\pi}{T}\\)\nValni broj (e: wave number): \\(k = \\frac{2\\pi}{\\lambda}\\)\n\nJednadžba koja opisuje izdizanje slobodne površine mora (e: surface elevation), \\(\\zeta(x,t)\\), u smjeru osi \\(x\\) i u vremenu \\(t\\) zadana je jednostavnom harmonijskom funkcijom:\n\\[\\zeta(x,t) = \\zeta_a \\cos(kx - \\omega t)\\]\nNajvažniji rezultat Airyjeve teorije je povezanost između valne duljine, perioda i dubine mora (\\(d\\)). Ta se povezanost naziva disperzijska relacija (e: dispersion relation):\n\\[\\omega^2 = g k \\tanh(kd)\\]\nU brodogradnji se najčešće proučava plovidba otvorenim oceanima, gdje je dubina mora znatno veća od polovice valne duljine (\\(d &gt; \\lambda/2\\)). To područje nazivamo dubokom vodom (e: deep water). U dubokoj vodi član \\(\\tanh(kd)\\) teži prema \\(1\\), pa se disperzijska relacija drastično pojednostavljuje:\n\\[\\omega^2 = gk\\]\nIz ove relacije proizlazi temeljni inženjerski izraz za izračun valne duljine u dubokoj vodi (ako nam je poznat period, koji se najlakše mjeri):\n\\[\\lambda = \\frac{g}{2\\pi} T^2 \\approx 1.56 T^2\\]\nU dubokoj vodi, čestice vode opisuju kružne putanje (e: circular orbits). Promjer tih kružnica na samoj površini jednak je visini vala (\\(H\\)). Međutim, kako se spuštamo u dubinu mora (os \\(z\\) usmjerena prema dolje), radijus tih putanja te amplitude brzina i ubrzanja čestica opadaju po eksponencijalnom zakonu (\\(e^{kz}\\)). Već na dubini jednakoj polovici valne duljine (\\(z = -\\lambda/2\\)), gibanje čestica postaje zanemarivo (radijus putanje pada na oko 4% površinskog). Upravo zato podmornice u zaronu ne osjećaju utjecaj oluja na površini, a dinamički tlakovi valova na dno velikih brodova znatno su manji od onih na vodenoj liniji.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Matematički opis morskih valova</span>"
+    ]
+  },
+  {
+    "objectID": "matematicki-opis-valova.html#ostale-valne-teorije",
+    "href": "matematicki-opis-valova.html#ostale-valne-teorije",
+    "title": "4  Matematički opis morskih valova",
+    "section": "4.5 Ostale valne teorije",
+    "text": "4.5 Ostale valne teorije\nIako je Airyjeva linearna teorija temelj za većinu standardnih hidrodinamičkih proračuna broda na dubokoj vodi, ona postaje neprecizna kada valovi postanu izrazito strmi (velika visina u odnosu na duljinu) ili kada se valovi šire u plitkoj vodi.\nZa razliku od idealnih sinusoida, stvarni olujni valovi su asimetrični: imaju oštre, uske i visoke brijegove te plitke, dugačke i zaravnjene dolove. Za precizan opis takvih valova, hidrodinamika koristi nelinearne valne teorije (e: non-linear wave theories).\nGlavne nelinearne teorije koje se primjenjuju u brodogradnji i odobalnom inženjerstvu su:\n\nStokesove teorije višeg reda (e: Higher-order Stokes wave theories): Matematička proširenja linearne teorije primjenom perturbacijskih metoda. U inženjerskoj praksi najčešće se koriste teorije 2., 3. i 5. reda. Prikladne su za strme valove u dubokoj i prijelaznoj vodi (e: deep and transitional water).\nKnoidalna teorija (e: Cnoidal wave theory): Temelji se na eliptičkim funkcijama (Korteweg-de Vries jednadžba). Primjenjuje se isključivo za valove u plitkoj vodi (e: shallow water), gdje Stokesove teorije prestaju vrijediti.\nTeorija usamljenog vala (e: Solitary wave theory): Predstavlja granični slučaj knoidalne teorije za izrazito plitku vodu, gdje se val sastoji samo od jednog brijega koji se kreće potpuno iznad razine mirnog mora, bez dola (npr. tsunami pri dolasku u obalno područje).\nTeorija strujne funkcije (e: Stream function theory): Numerički pristup koji je razvio R.G. Dean. Ne oslanja se na analitičke aproksimacije i pokazuje izvrsno podudaranje sa stvarnim, ekstremnim asimetričnim valovima u gotovo svim dubinama.\n\nOdabir ispravne matematičke teorije ključan je korak prije početka bilo kakvog proračuna opterećenja. U tu se svrhu u inženjerskoj praksi standardno koristi dijagram područja primjenjivosti (najpoznatiji je tzv. Le Méhautéov dijagram).\nDijagram jasno razgraničava koja je teorija fizikalno najtočnija u ovisnosti o dva bezdimenzionalna parametra:\n\nParametar plitkosti / relativne dubine vode: \\(d / (gT^2)\\)\nParametar strmine vala: \\(H / (gT^2)\\)\n\nPored granica pojedinih teorija, ovaj dijagram definira i apsolutnu fizikalnu granicu loma vala (e: breaking limit), iznad koje val više ne može postojati u zadanom obliku već se ruši i pretvara u bijelu pjenu.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Matematički opis morskih valova</span>"
+    ]
+  },
+  {
+    "objectID": "spektralni-opis.html",
+    "href": "spektralni-opis.html",
+    "title": "5  Spektralni opis stanja mora",
+    "section": "",
+    "text": "5.1 Spektri valova\nSpektar valova (e: wave spectrum), odnosno funkcija spektralne gustoće, predstavlja matematičku raspodjelu valne energije (točnije, varijance izdizanja površine mora) po pojedinim frekvencijama valova u stacionarnom stanju mora. Mjerna jedinica spektralne gustoće obično je \\(m^2s\\) (ili \\(m^2/Hz\\)).\nPostoji niz standardiziranih idealiziranih spektara, a za analizu brodskih i pomorskih konstrukcija najrelevantniji su Pierson–Moskowitz (PM), odnosno njegova dvoparametarska modifikacija poznata kao Bretschneiderov/ITTC spektar, te JONSWAP spektar. To su jednosmjerni spektri (e: uni-directional spectra), što znači da se radi o jednodimenzionalnim spektrima s jednim vrhom (e: single-peaked spectra), kod kojih nije uključen utjecaj širenja energije valova u raznim smjerovima.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Spektralni opis stanja mora</span>"
+    ]
+  },
+  {
+    "objectID": "spektralni-opis.html#spektri-valova",
+    "href": "spektralni-opis.html#spektri-valova",
+    "title": "5  Spektralni opis stanja mora",
+    "section": "",
+    "text": "5.1.1 Pierson-Moskowitz (PM) spektar\nPM spektar valova koristi se za opisivanje potpuno razvijenog mora (e: fully developed sea), karakterističnog za velika oceanska prostranstva gdje vjetar puše dugo i bez ograničenja privjetrišta. Njegov standardni dvoparametarski ITTC oblik (ovisan o značajnoj visini i periodu) zadan je izrazom:\n\\[\nS_{PM}(\\omega)=\\frac{5}{16}\\cdot H_{S}^{2}\\omega_{p}^{4}\\cdot\\omega^{-5}\\exp\\left(-\\frac{5}{4}\\left(\\frac{\\omega}{\\omega_{p}}\\right)^{-4}\\right)\n\\tag{5.1}\\]\ngdje je:\n\n\\(S_{PM}(\\omega)\\) – spektralna gustoća energije valova\n\\(\\omega\\) – kružna frekvencija valova u \\(rad/s\\)\n\\(H_S\\) – značajna visina vala (e: significant wave height) u metrima\n\\(\\omega_p = 2\\pi / T_P\\) – spektralna vršna frekvencija (e: peak frequency), gdje je \\(T_P\\) vršni period vala.\n\nKao što je vidljivo iz jednadžbe, oblik “repa” spektra pri višim frekvencijama opada razmjerno s \\(\\omega^{-5}\\), što je fizikalna karakteristika gravitacijskih valova u ravnoteži.\n\n\n5.1.2 JONSWAP spektar\nJONSWAP (Joint North Sea Wave Project) valni spektar formuliran je kao empirijska modifikacija PM spektra. On predstavlja stanje mora u razvoju (e: developing sea), karakteristično za ograničena područja s kraćim privjetrištem, poput Sjevernog ili Jadranskog mora. Zadan je izrazom:\n\\[\nS_{J}(\\omega)=A_{\\gamma}S_{PM}(\\omega)\\gamma^{\\exp\\left(-0.5\\left(\\frac{\\omega-\\omega_{p}}{\\sigma\\omega_{p}}\\right)^{2}\\right)}\n\\tag{5.2}\\]\ngdje su dodatni parametri:\n\n\\(\\gamma\\) – bezdimenzionalni parametar vršnog pojačanja (e: peak enhancement factor), koji obično iznosi od 1 do 7 (prosjek \\(\\gamma = 3.3\\)).\n\\(\\sigma\\) – parametar širine spektra (e: spectral width parameter), koji iznosi \\(\\sigma = 0.07\\) za \\(\\omega \\le \\omega_p\\), te \\(\\sigma = 0.09\\) za \\(\\omega &gt; \\omega_p\\).\n\\(A_\\gamma = 1 - 0.287 \\ln \\gamma\\) – faktor normiranja (e: normalization factor) koji osigurava da ukupna energija spektra (površina ispod krivulje) ostane konzistentna sa zadanom značajnom visinom \\(H_S\\).\n\nPrema izrazu gore, JONSWAP skalira PM spektar. Za slučaj kada je \\(\\gamma = 1\\), JONSWAP spektar se u potpunosti reducira u PM spektar. JONSWAP spektar daje fizikalno realne rezultate u inženjerskim proračunima samo ako parametri zadovoljavaju granice strmine vala, obično kada vrijedi:\n\\[3.6 &lt; \\frac{T_P}{\\sqrt{H_S}} &lt; 5\\]\nNa priloženom grafu zorno je prikazano kako parametar \\(\\gamma &gt; 1\\) drastično pojačava i izoštrava vrh (e: spectral peak) JONSWAP spektra u odnosu na ravniji i širi Pierson-Moskowitz spektar (\\(\\gamma = 1\\)) za iste ulazne vrijednosti (\\(H_S = 4.0\\text{ m}\\), \\(T_P = 8.0\\text{ s}\\)). Zbog ove oštrine, brodovi projektirani za oceansku plovidbu (PM spektar) ponekad mogu doživjeti snažniju rezonanciju i opasnija kretanja u zatvorenim morima (JONSWAP spektar) ako im se prirodna frekvencija poklopi s uskim vrhom spektra.\n\n\n\n\n\n\nFigure 5.1: Graf JONSWAP spektra valova za \\(H_{S} = 4.0\\) m, \\(T_{P} = 8.0\\) s i \\(\\gamma = 1, 2, 5\\).",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Spektralni opis stanja mora</span>"
+    ]
+  },
+  {
+    "objectID": "spektralni-opis.html#dijagram-raspršenja",
+    "href": "spektralni-opis.html#dijagram-raspršenja",
+    "title": "5  Spektralni opis stanja mora",
+    "section": "5.2 Dijagram raspršenja",
+    "text": "5.2 Dijagram raspršenja\nZa opis dugoročne klime valova na nekom geografskom području koristi se dijagram raspršenja (e: wave scatter diagram). On definira statističku vjerojatnost pojave (ili učestalost pojavljivanja) različitih stacionarnih stanja mora tijekom dužeg vremenskog perioda (npr. jedne godine ili cijelog životnog vijeka broda).\nSvako pojedino stanje mora u dijagramu definirano je kombinacijom dva parametra: značajnom visinom valova (\\(H_S\\)) na jednoj osi i nultim periodom (\\(T_Z\\)) (ili vršnim periodom \\(T_P\\)) na drugoj osi. Dijagram je zapravo dvodimenzionalna tablica (matrica) u kojoj svaki broj predstavlja koliko se puta određena kombinacija visine i perioda vala pojavila na svakih 100,000 ili 1,000,000 promatranja.\nNa slici je prikazan važan referentni dijagram raspršenja (definiran kroz IACS Rec. 34), koji predstavlja najgrublje uvjete plovidbe i koristi se kao standard za proračun ekstremnih globalnih opterećenja brodskog trupa i procjenu zamora materijala.\n\n\n\n\n\n\nFigure 5.2: Dijagram raspršenja za Sjeverni Atlantik.\n\n\n\nOceani su podijeljeni u specifične nautičke zone (e: nautical zones / wave areas) prema Global Wave Statistics, a za svaku zonu postoji pripadajući dijagram raspršenja. Kombiniranjem dijagrama iz zona kroz koje brod planira ploviti, dobiva se operativni profil specifičan za taj projekt.\n\n\n\n\n\n\nFigure 5.3: Nautičke zone.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Spektralni opis stanja mora</span>"
+    ]
+  },
+  {
+    "objectID": "spektralni-opis.html#kratkoročna-statistika-slučajnog-stanja-mora",
+    "href": "spektralni-opis.html#kratkoročna-statistika-slučajnog-stanja-mora",
+    "title": "5  Spektralni opis stanja mora",
+    "section": "5.3 Kratkoročna statistika slučajnog stanja mora",
+    "text": "5.3 Kratkoročna statistika slučajnog stanja mora\nDok spektar valova daje raspodjelu energije po frekvencijama, vjerojatnosni ili probabilistički pristup analizira statističku raspodjelu samih kinematičkih veličina (elevacija, amplituda, visina) u kratkom vremenskom prozoru (npr. 3 sata), ne uzimajući u obzir redoslijed kojim se te vrijednosti pojavljuju u vremenu.\n\n5.3.1 Gaussova razdioba za elevaciju površine\nOsnovna je pretpostavka da je izdizanje morske površine, \\(\\eta(t)\\), stacionaran slučajan proces distribuiran po zakonu Gaussove funkcije gustoće vjerojatnosti (e: Gaussian probability density function - PDF) s nultom srednjom vrijednosti (razina mirnog mora). To je moguće jer se uzburkano more sastoji od beskonačnog broja harmonika sa slučajnim faznim pomacima.\nFunkcija gustoće vjerojatnosti, \\(f(\\eta)\\), koja opisuje vjerojatnost da izdizanje mora poprimi određenu vrijednost glasi:\n\\[f(\\eta) = \\frac{1}{\\sqrt{2\\pi m_0}} \\exp\\left(-\\frac{\\eta^2}{2m_0}\\right)\\]\ngdje je \\(m_0\\) nulti spektralni moment tj. ukupna površina ispod krivulje spektra. Iz ove jednadžbe proizlazi ključna veza spektralne i statističke analize: \\(m_0\\) je jednak varijanci slučajnog procesa \\(\\eta(t)\\).\n\n\n5.3.2 Rayleighova razdioba za amplitude i visine valova\nDok se sama površina mora ponaša po Gaussovom zakonu, za statistički opis amplituda valova (\\(a\\)) i valnih visina (\\(H\\)) godinama se uspješno koristi Rayleighova razdioba (e: Rayleigh distribution). Da bi se Rayleighova razdioba mogla primijeniti, uvodi se pretpostavka o uskopojasnom procesu (e: narrow-band process). To znači da su valne frekvencije grupirane blizu jedne dominantne frekvencije. U tom slučaju, valna visina može se aproksimirati kao dvostruka amplituda, tj. \\(H = 2a\\).\nOpćeniti izraz za funkciju gustoće vjerojatnosti Rayleighove razdiobe za amplitude valova (\\(a\\)) glasi:\n\\[f(a) = \\frac{a}{m_0} \\exp\\left(-\\frac{a^2}{2m_0}\\right)\\]\nSupstitucijom \\(a = H/2\\), dobivamo inženjerima najvažniju funkciju gustoće vjerojatnosti za visine valova (\\(H\\)):\n\\[f(H) = \\frac{H}{4m_0} \\exp\\left(-\\frac{H^2}{8m_0}\\right)\\]\nIz integracije ove Rayleighove razdiobe proizlazi najslavnija i najkorisnija formula u pomorstvenosti, koja direktno povezuje statistiku valova s valnim spektrom, a to je izraz za značajnu visinu vala (\\(H_S\\)):\n\\[H_S \\approx 4\\sqrt{m_0}\\]",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Spektralni opis stanja mora</span>"
+    ]
+  },
+  {
+    "objectID": "odziv-broda.html",
+    "href": "odziv-broda.html",
+    "title": "6  Odziv broda na valovima",
+    "section": "",
+    "text": "6.1 Pretpostavka linearnosti i frekvencija susreta\nSada kada imamo matematički opis uzburkanog mora (valni spektar), potrebno je odrediti kako će konkretan brod reagirati na to more. Ta reakcija broda naziva se odziv (e: response). Odziv može biti kinematički (npr. amplituda poniranja, kut ljuljanja, brzina, ubrzanje) ili strukturni (npr. moment savijanja trupa, poprečna sila, naprezanje u oplati).\nTemelj moderne analize pomorstvenosti je pretpostavka o linearnosti sustava. Pretpostavlja se da je odziv broda linearno proporcionalan visini (amplitudi) vala koji taj odziv uzrokuje. Ako se visina vala udvostruči, udvostručit će se i amplituda posrtanja ili moment savijanja. Ova pretpostavka vrijedi za blaga i umjerena stanja mora, dok za ekstremne oluje postaje manje točna, ali je i dalje inženjerski najkorisnija.\nBudući da brod plovi određenom brzinom (\\(V\\)) i pod određenim kutom prema valovima (tzv. kut kursa / e: heading angle, \\(\\mu\\)), brod ne “osjeća” apsolutnu frekvenciju vala (\\(\\omega\\)), već prividnu frekvenciju susreta (e: encounter frequency), \\(\\omega_e\\). Veza između njih dana je izrazom:\n\\[\\omega_e = \\omega - \\frac{\\omega^2}{g} V \\cos \\mu\\]",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Odziv broda na valovima</span>"
+    ]
+  },
+  {
+    "objectID": "odziv-broda.html#prijenosne-funkcije-rao",
+    "href": "odziv-broda.html#prijenosne-funkcije-rao",
+    "title": "6  Odziv broda na valovima",
+    "section": "6.2 Prijenosne funkcije (RAO)",
+    "text": "6.2 Prijenosne funkcije (RAO)\nPrijenosna funkcija ili Operator amplitudnog odziva (e: Response Amplitude Operator - RAO) je najvažnija karakteristika svakog broda u pomorstvenosti. RAO nam govori koliki će odziv brod ostvariti kada naiđe na pravilni harmonijski val jedinične amplitude (amplituda = 1 metar) pri određenoj frekvenciji.\nMatematički, RAO je omjer amplitude odziva (\\(\\zeta_{a,odziv}\\)) i amplitude pravilnog vala (\\(\\zeta_a\\)):\n\\[RAO(\\omega_e) = \\frac{\\zeta_{a,odziv}}{\\zeta_a}\\]\nSvaki brod ima jedinstven set RAO krivulja (za svih 6 stupnjeva slobode te za globalna opterećenja). Te krivulje nisu statične, već ovise o:\n\nFormi trupa i rasporedu masa (svaki projekt ima svoj RAO).\nBrzini broda (\\(V\\)).\nKutnom smjeru nailaska valova (\\(\\mu\\)) (npr. pramčani valovi / e: head seas, valovi u bok / e: beam seas).\nStanju krcanja (promjena gaza i težišta drastično mijenja RAO).\n\nRAO funkcije dobivaju se ili modelskim ispitivanjima u bazenu (e: towing tank tests) ili, danas najčešće, pomoću specijaliziranih hidrodinamičkih softvera koji se temelje na teoriji vrpci (e: strip theory) ili 3D panel metodama.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Odziv broda na valovima</span>"
+    ]
+  },
+  {
+    "objectID": "odziv-broda.html#spektar-odziva-response-spectrum",
+    "href": "odziv-broda.html#spektar-odziva-response-spectrum",
+    "title": "6  Odziv broda na valovima",
+    "section": "6.3 Spektar odziva (Response Spectrum)",
+    "text": "6.3 Spektar odziva (Response Spectrum)\nKada poznajemo valni spektar mora (\\(S_W\\)) i prijenosnu funkciju broda (\\(RAO\\)), možemo izračunati spektar odziva broda (e: response spectrum), \\(S_R\\).\nPrema principu linearne superpozicije, energija odziva na nekoj frekvenciji jednaka je energiji vala na toj frekvenciji pomnoženoj s kvadratom prijenosne funkcije. Ovo je temeljna jednadžba pomorstvenosti:\n\\[S_R(\\omega_e) = |RAO(\\omega_e)|^2 \\cdot S_W(\\omega_e)\\]\nOva jednadžba predstavlja elegantno inženjersko rješenje:\n\n\\(S_W(\\omega_e)\\) opisuje okoliš (stanje mora kakvo jest, neovisno o interakciji s brodom).\n\\(RAO(\\omega_e)\\) opisuje brod (njegove hidrodinamičke značajke, neovisne o trenutnom moru).\n\\(S_R(\\omega_e)\\) daje konačan rezultat, kako se taj specifični brod ponaša na tom specifičnom moru.\n\nPovršina ispod novodobivene krivulje spektra odziva predstavlja nulti spektralni moment odziva (\\(m_{0,odziv}\\)), odnosno varijancu. Iz tog momenta, primjenom Rayleighove razdiobe inženjeri računaju ključne statističke vrijednosti. Na primjer, značajnu amplitudu ljuljanja, najveći očekivani moment savijanja u 3 sata oluje ili vjerojatnost da će pramac udariti o valove (e: slamming probability).",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Odziv broda na valovima</span>"
+    ]
+  },
+  {
+    "objectID": "odziv-broda.html#jednadžbe-gibanja",
+    "href": "odziv-broda.html#jednadžbe-gibanja",
+    "title": "6  Odziv broda na valovima",
+    "section": "6.4 Jednadžbe gibanja",
+    "text": "6.4 Jednadžbe gibanja\nKada brod plovi na valovima, njegovo gibanje opisuje se sustavom diferencijalnih jednadžbi drugog reda (temeljenih na Newtonovom drugom zakonu). Za svaki stupanj slobode gibanja (\\(i = 1, \\dots, 6\\)), suma inercijalnih, prigušnih i povratnih sila mora biti u ravnoteži s vanjskom uzbudnom silom mora:\n\\[\\sum_{j=1}^{6} \\left[ (M_{ij} + A_{ij})\\ddot{\\eta}_j + B_{ij}\\dot{\\eta}_j + C_{ij}\\eta_j \\right] = F_i\\]\ngdje je \\(M_{ij}\\) matrica mase broda, \\(\\eta_j\\) pomak (kretanje), \\(\\dot{\\eta}_j\\) brzina, a \\(\\ddot{\\eta}_j\\) ubrzanje. Ostali članovi jednadžbe predstavljaju specifične hidrodinamičke i hidrostatičke sile koje dijelimo u dvije glavne skupine: uzbudne sile (desna strana jednadžbe) i radijacijske/hidrostatičke sile (lijeva strana jednadžbe).\n\n6.4.1 Uzbudne sile (e: Excitation forces)\nOvo su sile kojima nadolazeći valovi djeluju na brod, nastojeći ga pomaknuti iz stanja ravnoteže. Oznaka u jednadžbi je \\(F_i\\), a računaju se uz pretpostavku da je brod nepomičan na valovima. Sastoje se od dvije komponente:\n\nFroude-Krylovljeva sila (e: Froude-Krylov force): Sila koja nastaje uslijed neometanog tlaka samog vala. Računa se integracijom dinamičkog tlaka vala (iz Airyjeve teorije) po uronjenoj površini trupa, uz pretpostavku da prisutnost broda uopće ne ometa i ne mijenja oblik vala. Ovisi isključivo o geometriji vala i geometriji uronjenog dijela trupa.\nDifrakcijska sila (e: Diffraction force): U stvarnosti, brod je čvrsto tijelo koje predstavlja prepreku. Kada val udari u nepomični trup, on se odbija i deformira (raspršuje). Difrakcijska sila je korekcija koja uzima u obzir tu promjenu polja tlaka zbog prisutnosti broda. Za brodove čije su dimenzije velike u odnosu na duljinu vala, ova komponenta postaje izuzetno značajna.\n\n\n\n6.4.2 Hidrodinamičke sile radijacije\nOve sile reakcije (e: radiation forces) nastaju kao reakcija samog fluida na kretanje broda. Računaju se uz pretpostavku da je more mirno, a da brod prisilno oscilira. Dok brod oscilira, on “gura” vodu oko sebe, stvarajući vlastite valove i trošeći energiju. Radijacijska sila dijeli se na dvije komponente koje ulaze u matricu sustava:\n\nDodana masa (e: Added mass), \\(A_{ij}\\): Komponenta radijacijske sile koja je proporcionalna ubrzanju broda (\\(\\ddot{\\eta}_j\\)). Budući da brod pri kretanju mora ubrzavati i određenu masu vode koja ga okružuje, ta se masa vode fiktivno “dodaje” vlastitoj masi broda u jednadžbi. Ovisi o frekvenciji osciliranja i obliku trupa.\nPrigušenje (e: Radiation damping), \\(B_{ij}\\): Komponenta radijacijske sile koja je proporcionalna brzini broda (\\(\\dot{\\eta}_j\\)). Kada brod oscilira, on generira površinske valove koji putuju od broda odnoseći (zračeći) mehaničku energiju. Ovaj gubitak energije djeluje kao prigušivač kretanja broda. Najveće prigušenje javlja se pri valjanju (ljuljanju), zbog čega se često ugrađuju i dodatna viskozna prigušenja (ljuljne kobilice / e: bilge keels).\n\n\n\n6.4.3 Povratne sile (e: restoring forces)\nOve sile teže vratiti brod u početni, uspravni položaj ravnoteže nakon što ga je val pomaknuo. Oznaka u jednadžbi je \\(C_{ij}\\), a sila je proporcionalna samom pomaku (\\(\\eta_j\\)). Povratna sila (e: Restoring force/moment) je isključivo hidrostatička komponenta. Nastaje zbog promjene volumena istisnine (uzgona) i položaja težišta uzgona kada brod zaroni, izroni, nagne se ili posrne. Matrica krutosti \\(C_{ij}\\) je povezana sa hidrostatikom broda, odnosno površinom vodne linije i metacentarskom visinom (e: metacentric height - GM).",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Odziv broda na valovima</span>"
+    ]
+  },
+  {
+    "objectID": "odziv-broda.html#metode-proračuna",
+    "href": "odziv-broda.html#metode-proračuna",
+    "title": "6  Odziv broda na valovima",
+    "section": "6.5 Metode proračuna",
+    "text": "6.5 Metode proračuna\nBudući da stvarni brodovi imaju složenu, trodimenzionalnu geometriju trupa, prijenosne funkcije (RAO) nije moguće izračunati analitički (pomoću jednostavnih formula). U modernoj brodograđevnoj praksi, RAO se određuje na dva osnovna načina: eksperimentalno i numerički.\nIspitivanje fizičkih modela broda u specijaliziranim bazenima opremljenim generatorima valova (poput Brodarskog instituta). Iako su najpouzdanija metoda i služe za validaciju, izrazito su skupa i dugotrajna, pa se provode samo u završnim fazama projekta.\nZa svakodnevni inženjerski proračun pomorstvenosti koriste se računalni programi temeljeni na hidrodinamičkim teorijama različite složenosti:\n\nTeorija vrpci (e: Strip theory) je tradicionalni industrijski standard za konvencionalne, vitke brodove s brzinom napredovanja (\\(V &gt; 0\\)). Brod se reže na niz dvodimenzionalnih poprečnih presjeka (vrpci). Hidrodinamičke sile računaju se za svaku vrpcu zasebno i zatim integriraju po duljini broda. Metoda je iznimno brza i hardverski nezahtjevna. Poznati softveri: Maxsurf Motions (bivši Seakeeper), Shipmo3D, PDSTRIP (open-source), Octopus (ABB).\nPanel metoda (e: Panel method) dijeli trup broda ispod vodne linije na stotine ili tisuće malih ravnih površina (panela). Metoda promatra cijeli 3D oblik odjednom i rješava potencijal strujanja. Znatno je točnija od teorije vrpci za brodove punijih formi, katamarane te odobalne pomorske objekte (platforme) pri nultoj ili maloj brzini, no zahtijeva više računalne snage. Poznati softveri: DNV Sesam (WADAM/HydroD), WAMIT (svjetski standard za odobalne objekte), ANSYS AQWA, HydroSTAR (Bureau Veritas), Nemoh (open-source).\nRačunalna dinamika fluida (e: Computational Fluid Dynamics - CFD) je najnaprednija, ali i najsloženija metoda koja rješava Navier-Stokesove jednadžbe. Za razliku od prethodnih metoda koje pretpostavljaju idealan fluid, CFD najčešće uzima u obzir viskoznost vode, turbulentno strujanje, lomljenje valova na pramcu te snažne nelinearne efekte velikih amplituda. Zbog ogromnih zahtjeva za procesorskom snagom koristi se uglavnom za znanstvena istraživanja i specifične probleme. Poznati softveri: Siemens STAR-CCM+, OpenFOAM, ANSYS Fluent, NUMECA Fine/Marine.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Odziv broda na valovima</span>"
+    ]
+  },
+  {
+    "objectID": "odziv-broda.html#kratkoročna-statistika-odziva-broda",
+    "href": "odziv-broda.html#kratkoročna-statistika-odziva-broda",
+    "title": "6  Odziv broda na valovima",
+    "section": "6.6 Kratkoročna statistika odziva broda",
+    "text": "6.6 Kratkoročna statistika odziva broda\nNakon što smo, pomoću prijenosnih funkcija (RAO) i valnog spektra, izračunali spektar odziva (e: response spectrum), površina ispod te krivulje daje nam varijancu odziva, odnosno nulti spektralni moment odziva (\\(m_{0R}\\)).\nBudući da smo ranije utvrdili da se amplitude valova pokoravaju Rayleighovoj razdiobi, uz pretpostavku linearnosti, amplitude odziva (e: response amplitudes) također slijede Rayleighovu razdiobu. To nam omogućava izračun ključnih statističkih pokazatelja za bilo koje kretanje ili opterećenje.\nPrimjerice, značajna amplituda odziva (e: significant response amplitude) je prosjek jedne trećine najvećih amplituda u zadanom stanju mora, a računa se jednako kao i za valove:\n\\[R_s = 2 \\sqrt{m_{0R}}\\]\nOpćenito, vjerojatnost da će (bilo koja!) amplituda odziva (\\(r\\)) premašiti neku zadanu, kritičnu vrijednost (\\(R_c\\)) računa se integracijom Rayleighove razdiobe:\n\\[P(r &gt; R_c) = \\exp\\left(-\\frac{R_c^2}{2m_{0R}}\\right)\\]\nDva najvažnija i najopasnija nelinearna fenomena koja se analiziraju ovom metodom su naplavljivanje palube i udaranje pramca o valove. Za oba fenomena ključno je izračunati relativno gibanje (e: relative motion) tj. vertikalnu udaljenost između pomične površine vala i pomičnog trupa broda u određenoj točki (najčešće na pramčanoj okomici).\n\n6.6.1 Naplavljivanje palube (e: Deck wetness / Green water)\nNaplavljivanje palube događa se kada relativno gibanje mora premaši visinu pramčanog nadvođa (e: freeboard), \\(F\\). U tom trenutku goleme mase krute vode prelijevaju se preko palube, ugrožavajući opremu, teret i posadu, te uzrokujući snažna udarna opterećenja na valobran (e: breakwater) i nadgrađe.\nPretpostavimo li da je varijanca relativnog vertikalnog gibanja na pramcu \\(m_{0s}\\), vjerojatnost da će pojedinačni val uzrokovati naplavljivanje palube iznosi:\n\\[P(wet) = \\exp\\left(-\\frac{F^2}{2m_{0s}}\\right)\\]\nOvaj se izraz u projektiranju koristi za optimizaciju visine pramca, gaza broda te odabir adekvatnog nadvođa prema pravilima o teretnoj vodenoj liniji (e: Load Line Convention).\n\n\n6.6.2 Udaranje pramca o valove (e: Bow slamming)\nUdaranje pramca (slamming) znatno je složeniji i opasniji fenomen od naplavljivanja. Da bi došlo do slamminga, prema poznatoj Ochi-Motterovoj teoriji, moraju se istovremeno ispuniti dva stroga kinematička uvjeta:\n\nUvjet izranjanja: Relativno gibanje mora biti veće od lokalnog gaza broda na pramcu (\\(d\\)). Drugim riječima, dno pramca mora potpuno izaći iz vode.\nUvjet brzine udarca: Pri ponovnom uranjanju u more, relativna vertikalna brzina udara mora biti veća od određene kritične brzine (e: critical threshold velocity), \\(v_{cr}\\). Ako brod uroni polako, to nije slam, već obično poniranje. Kritična brzina ovisi o duljini i formi broda.\n\nKako su relativno gibanje i relativna brzina statistički nezavisne varijable, ukupna vjerojatnost slamminga (\\(P(slam)\\)) umnožak je vjerojatnosti ispunjavanja prvog i drugog uvjeta:\n\\[P(slam) = \\exp\\left(-\\frac{d^2}{2m_{0s}}\\right) \\cdot \\exp\\left(-\\frac{v_{cr}^2}{2m_{0v}}\\right) = \\exp\\left(-\\left(\\frac{d^2}{2m_{0s}} + \\frac{v_{cr}^2}{2m_{0v}}\\right)\\right)\\]\ngdje je:\n\n\\(m_{0s}\\) – nulti spektralni moment (varijanca) relativnog vertikalnog gibanja na pramcu.\n\\(m_{0v}\\) – nulti spektralni moment (varijanca) relativne vertikalne brzine na pramcu.\n\nU praksi, broj udara pramca u vremenskom periodu \\(T\\) računa se množenjem ove vjerojatnosti s ukupnim brojem ciklusa (susreta s valovima) u tom periodu. Ako je vjerojatnost prevelika, kapetan je prisiljen poduzeti voljni gubitak brzine (e: voluntary speed loss) ili promijeniti kurs kako bi sačuvao strukturu broda od oštećenja.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Odziv broda na valovima</span>"
+    ]
+  },
+  {
+    "objectID": "operativnost.html",
+    "href": "operativnost.html",
+    "title": "7  Utjecaj pomorstvenosti na operativnost",
+    "section": "",
+    "text": "7.1 Kriteriji operativnosti broda\nKriteriji operativnosti (e: Operability criteria / Seakeeping criteria) definiraju granične vrijednosti odziva broda iznad kojih plovni objekt, posada ili oprema više ne mogu sigurno i učinkovito obavljati svoju zadaću.\nKada statistički proračun pomorstvenosti pokaže da će brod u zadanom stanju mora premašiti ove kriterije, smatra se da brod gubi radnu sposobnost. U stvarnosti, to je trenutak kada zapovjednik mora promijeniti kurs ili namjerno usporiti brod (tzv. voljni gubitak brzine / e: voluntary speed loss).\nStandardni kriteriji operativnosti (prema preporukama klasifikacijskih društava i organizacija poput NATO-a i NORDFORSK-a) dijele se u tri glavne skupine:\n1. Strukturni kriteriji (e: Structural safety criteria) Štite trup broda od lokalnih oštećenja i prevelikih opterećenja:\n2. Kriteriji radne sposobnosti posade (e: Habitability and crew criteria) Osiguravaju da posada može sigurno hodati, obavljati radne zadatke i da nije onesposobljena umorom:\n3. Kriteriji opreme i tereta (e: Equipment and cargo criteria) Ograničavaju kretanja kako bi se spriječilo prevrtanje tereta ili omogućio rad specijalne opreme:",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Utjecaj pomorstvenosti na operativnost</span>"
+    ]
+  },
+  {
+    "objectID": "operativnost.html#kriteriji-operativnosti-broda",
+    "href": "operativnost.html#kriteriji-operativnosti-broda",
+    "title": "7  Utjecaj pomorstvenosti na operativnost",
+    "section": "",
+    "text": "Vjerojatnost udaranja pramca (e: Probability of slamming): Općenito se dopušta maksimalno 1% do 3% (odnosno 1 do 3 udara na 100 susreta s valovima) za trgovačke brodove.\nVjerojatnost naplavljivanja palube (e: Probability of deck wetness / green water): Uobičajena granica tolerancije iznosi najviše 5%.\n\n\n\nVertikalna ubrzanja (e: Vertical accelerations): Na zapovjedničkom mostu (gdje posada boravi) obično su ograničena na 0.15g do 0.2g (tzv. RMS vrijednost). Na samom pramcu dopuštaju se viša ubrzanja (do 0.4g) prije nego što postanu opasna za strukturu.\nIndeks morske bolesti (e: Motion Sickness Incidence - MSI): Statistički postotak osoba na brodu koje će povraćati unutar 2 sata izloženosti valovima. Za putničke brodove i trajekte ovaj je kriterij iznimno strog (često ograničen na ispod 10%).\n\n\n\nAmplituda ljuljanja (e: Roll amplitude): Za opću plovidbu trgovačkih brodova ograničava se na značajnu amplitudu od 6° do 8°. Međutim, za specijalne operacije (npr. spuštanje helikoptera na vojni brod ili rad s teškim odobalnim dizalicama) granica može biti vrlo stroga, iznoseći samo 2° do 3°.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Utjecaj pomorstvenosti na operativnost</span>"
+    ]
+  },
+  {
+    "objectID": "operativnost.html#gubitak-brzine-zbog-dodatnog-otpora-na-valovima",
+    "href": "operativnost.html#gubitak-brzine-zbog-dodatnog-otpora-na-valovima",
+    "title": "7  Utjecaj pomorstvenosti na operativnost",
+    "section": "7.2 Gubitak brzine zbog dodatnog otpora na valovima",
+    "text": "7.2 Gubitak brzine zbog dodatnog otpora na valovima\nPri plovidbi na uzburkanom moru, brod doživljava znatno veći otpor nego na mirnoj vodi pri istoj brzini. Ta razlika naziva se dodatni otpor na valovima (e: added resistance in waves), \\(R_{AW}\\).\nZa razliku od linearnih kretanja (poput poniranja i posrtanja) koja su proporcionalna amplitudi vala (\\(\\zeta_a\\)), dodatni otpor je nelinearna pojava drugog reda. On je proporcionalan kvadratu amplitude vala (\\(\\zeta_a^2\\)). To znači da ako se visina vala udvostruči, dodatni otpor se učetverostruči, što ima dramatičan utjecaj na potrošnju goriva.\nDodatni otpor na valovima sastoji se od dvije glavne fizikalne komponente, koje dominiraju u različitim uvjetima:\n\nEfekt refleksije i difrakcije (e: Diffraction effect / Reflection limit) je mehanizam koji dominira pri plovidbi na kratkim valovima (kada je valna duljina znatno manja od duljine broda, \\(\\lambda/L &lt; 0.5\\)). Brod u ovim uvjetima ne doživljava značajna kretanja (poniranje i posrtanje su zanemarivi), ali kratki valovi udaraju u pramac i reflektiraju se od njega. Energija vala koja se razbije o pramac izravno se pretvara u dodatni otpor. Optimizacija forme pramca (npr. okomiti pramac, X-bow, Leadge bow) danas je ključna za smanjenje ove komponente.\nEfekt kretanja broda (e: Motion-induced effect / Radiation effect) je mehanizam koji dominira na dugim valovima, a doseže svoj apsolutni maksimum u uvjetima rezonancije, odnosno kada je duljina vala približno jednaka duljini broda (\\(\\lambda/L \\approx 1.0\\)). U ovim uvjetima brod snažno posrće i ponira. Svojim kretanjem, masivni trup broda generira vlastite, radijacijske valove koje širi oko sebe. Energija potrebna za stvaranje tih valova nepovratno se gubi i manifestira se kao izuzetno velik dodatni otpor.\n\nKao izravna posljedica dodatnog otpora i pogoršanih radnih uvjeta, dolazi do smanjenja brzine broda. U inženjerskoj praksi strogo razlikujemo dva tipa gubitka brzine:\n\nNevoljni gubitak brzine (e: Involuntary speed loss): Brod gubi na brzini unatoč tome što glavni brodski motor i dalje razvija istu, konstantnu snagu (postavke snage se ne mijenjaju). Do usporavanja dolazi isključivo zbog toga što se povećao ukupan otpor trupa (\\(R_{AW}\\)), ali i zbog pada učinkovitosti brodskog vijka (e: propeller efficiency drop). Naime, zbog poniranja i posrtanja krme, vijak neravnomjerno zahvaća vodu (ili čak djelomično izranja), što drastično smanjuje njegov porivni stupanj djelovanja.\nVoljni gubitak brzine (e: Voluntary speed loss): Namjerno smanjenje snage motora koje zapovjednik naređuje kako bi zaštitio brod. Kada kretanja broda na uzburkanom moru premaše kriterije operativnosti (obrađene u prethodnom poglavlju) npr. kad udaranje pramca (slamming) ili ubrzanja postanu opasni za strukturu trupa ili teret, a jedini način da se amplituda odziva smanji je usporavanje broda ili promjena kursa.\n\nU kontekstu modernih propisa Međunarodne pomorske organizacije (IMO), precizan izračun \\(R_{AW}\\) postao je obvezan. Zbog strogih ekoloških normi poput EEDI (Indeks energetske učinkovitosti novogradnji / e: Energy Efficiency Design Index) i CII (Indeks ugljičnog intenziteta / e: Carbon Intensity Indicator), brodovi se više ne projektiraju samo za idealne uvjete na mirnoj vodi, već se njihova forma optimizira za stvarna stanja mora na njihovoj specifičnoj ruti, kako bi se minimizirala potrošnja goriva i emisija stakleničkih plinova uslijed valova.",
+    "crumbs": [
+      "Teorija",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Utjecaj pomorstvenosti na operativnost</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-hidrostatika-pontona.html",
+    "href": "vjezba-hidrostatika-pontona.html",
+    "title": "8  Vježba: Hidrostatičke značajke poprečno nagnutog pontona",
+    "section": "",
+    "text": "8.1 Koraci",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Vježba: Hidrostatičke značajke poprečno nagnutog pontona</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-hidrostatika-pontona.html#koraci",
+    "href": "vjezba-hidrostatika-pontona.html#koraci",
+    "title": "8  Vježba: Hidrostatičke značajke poprečno nagnutog pontona",
+    "section": "",
+    "text": "Otvoriti MS Excel\nDefinirati ulazne parametre – izmjere pontona:\n\nDuljina pontona, L (m)\nŠirina pontona, B (m)\nVisina pontona, D (m)\nVisina težišta od kobilice, KG (m)\n\nDefinirati ulazne parametre – nagib pontona preko gaza na lijevoj i desnoj strani:\n\nGaz na lijevoj strani, TP (m)\nGaz na desnoj strani, TS (m)\nPoprečni kut nagiba pontona se izračuna: \\(θ=tan^{−1}(\\frac{T_S−T_P}{B})\\)\n\nNacrtati presjek (generirati točke te Insert &gt; Charts &gt; Scatter with straight lines)\n\nTeoretsko rebro je određeno linijama koje povezuju točke:\n\nGornja lijeva {-B/2, D}\nDonja lijeva {-B/2, 0 }\nDonja desna {B/2, 0 }\nGornja desna {B/2, D}\n\nVodna linija je određena linijom između točaka:\n\nLijeva {-B/2, TP}\nDesna {B/2, TS}\n\nTežište mase (G) ucrtati u točki {0, KG}\n\nNumerički integrirati uronjeni presjek tj. gazove (od lijeve prema desnoj strani):\n\nIzabrati broj dijelova integrala, tj. sume, N (npr. 20)\nOdrediti širinu integracijskog koraka, dY = B / N\nIzraditi integracijsku tablicu s \\(N\\) redova prema sljedećem predlošku:\n\n\n\n\n\n\n\n\n\n\n\n\n\nKorak (i)\nPoluširina (Yi)\nGaz trake (Ti)\nPovršina (dAi)\nHoriz. moment (dAi⋅Yi)\nVert. moment (dAi⋅Ti/2)\n\n\n\n\n1\n\\(-B/2 + dY \\cdot (1 - 0.5)\\)\n\\(T_P + (T_S - T_P) \\cdot \\frac{1 - 0.5}{N}\\)\n\\(T_1 \\cdot dY\\)\n\\(dA_1 \\cdot Y_1\\)\n\\(dA_1 \\cdot (T_1 / 2)\\)\n\n\n…\n…\n…\n…\n…\n…\n\n\ni\n\\(-B/2 + dY \\cdot (i - 0.5)\\)\n\\(T_P + (T_S - T_P) \\cdot \\frac{i - 0.5}{N}\\)\n\\(T_i \\cdot dY\\)\n\\(dA_i \\cdot Y_i\\)\n\\(dA_i \\cdot (T_i / 2)\\)\n\n\n…\n…\n…\n…\n…\n…\n\n\n\\(N\\)\n\\(-B/2 + dY \\cdot (N - 0.5)\\)\n\\(T_P + (T_S - T_P) \\cdot \\frac{N - 0.5}{N}\\)\n\\(T_N \\cdot dY\\)\n\\(dA_N \\cdot Y_N\\)\n\\(dA_N \\cdot (T_N / 2)\\)\n\n\n\n\nProračun istisnine i težišta (zbrajanjem stupaca iz tablice):\n\nUronjena površinu presjeka, \\(A=∫T(Y)dY=∑T_i dY=∑dA_i\\)\nPoluširina težišta presjeka tj. istisnine, \\(y_B=∑(dA_i Y_i)/A\\)\nVisina težišta presjeka, tj. istisnine, \\(z_B=∑(dA_i T_i/2)/A\\)\nVolumen istisnine pontona,\\(∇=AL\\), a masa istisnine \\(Δ =∇ ρ\\) (gdje je gustoća vode, npr. \\(1.025 \\text{ t/m}^3\\))\n\n\n\n\n\n\n\n\nFigure 8.1: Primjer nacrtanog presjeka\n\n\n\n\n\n\n\n\n\nFigure 8.2: Shematski prikaz „midpoint-rule“ numeričke integracije\n\n\n\n\n\n\n\n\n\nFigure 8.3: Primjer nacrtanog presjeka s proračunatim težištem istisnine",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Vježba: Hidrostatičke značajke poprečno nagnutog pontona</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-hidrostatika-pontona.html#dodatni-zadatak",
+    "href": "vjezba-hidrostatika-pontona.html#dodatni-zadatak",
+    "title": "8  Vježba: Hidrostatičke značajke poprečno nagnutog pontona",
+    "section": "8.2 Dodatni zadatak",
+    "text": "8.2 Dodatni zadatak\nAko je poznat kut nagiba \\(\\theta\\), te koordinate težišta uzgona \\(B(y_B, z_B)\\) i težišta mase \\(G(0, KG)\\), potrebno je odrediti \\(GZ\\) polugu statičkog stabiliteta koristeći geometrijsku transformaciju.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Vježba: Hidrostatičke značajke poprečno nagnutog pontona</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-ljuljanje-broda.html",
+    "href": "vjezba-ljuljanje-broda.html",
+    "title": "9  Vježba: Ljuljanje broda",
+    "section": "",
+    "text": "9.1 Određivanje prirodne frekvencije ljuljanja\nCilj vježbe: Korištenjem MS Excela odrediti prirodnu frekvenciju ljuljanja broda te primjenom numeričke integracije (Eulerova metoda) simulirati slobodno prigušeno ljuljanje u vremenu. Na kraju, rezultate usporediti s analitičkim rješenjem.\nOtvorite MS Excel i u prvi dio radnog lista unesite ulazne parametre i konstante:\nIzračunajte sljedeće vrijednosti u Excelu:\nIzračunati prirodnu frekvenciju pomoću formule:\n\\[\\omega_{roll}=\\omega_0=\\sqrt{\\frac{C_{44}}{I_x+A_{44}}}\\]",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Vježba: Ljuljanje broda</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-ljuljanje-broda.html#određivanje-prirodne-frekvencije-ljuljanja",
+    "href": "vjezba-ljuljanje-broda.html#određivanje-prirodne-frekvencije-ljuljanja",
+    "title": "9  Vježba: Ljuljanje broda",
+    "section": "",
+    "text": "Definirati ulazne parametre:\n\nŠirina broda, B (m)\nIstisnina, Δ (kg)\nPoprečna metacentarska visina, GMT (m)\n\nDefinirati konstante:\n\nGravitacijska konstanta, g = 9.81 m/s^2\nKoeficijent polumjera vrtnje, a = 0.37\nKoeficijent dodatne mase, κ = 0.2\n\n\n\n\nPovratna krutost, \\(C_{44}=g \\Delta GMT\\)\nPolumjer inercije mase, \\(R_{44}=a B\\)\nMoment tromosti oko uzdužne osi x, \\(I_x= \\Delta R_{44}^2\\)\nDodatna masa (dodatna tromost), \\(A_{44}=κ I_x\\)",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Vježba: Ljuljanje broda</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-ljuljanje-broda.html#određivanje-krivulje-nagiba-broda-u-vremenu",
+    "href": "vjezba-ljuljanje-broda.html#određivanje-krivulje-nagiba-broda-u-vremenu",
+    "title": "9  Vježba: Ljuljanje broda",
+    "section": "9.2 Određivanje krivulje nagiba broda u vremenu",
+    "text": "9.2 Određivanje krivulje nagiba broda u vremenu\nCilj je numerički integrirati jednadžbu gibanja za slobodno prigušeno ljuljanje, koje je opisano diferencijalnom jednadžbom drugog reda:\n\\[\\ddot{\\phi} + 2\\zeta\\omega_0\\dot{\\phi} + \\omega_0^2\\phi = 0\\]\n\n9.2.1 Ulazni parametri\nDefinirati varijabilne ulazne parametre:\n\nPočetni nagib broda, \\(\\phi_0\\) (npr. 10°)\nPočetna brzina ljuljanja, \\(\\dot{\\phi}_0\\) (°/s, npr. ostaviti na 0)\nRelativno prigušenje, \\(\\zeta\\) (npr. oko 7 %)\nIntegracijski korak, \\(\\Delta t\\)\n\n\n\n9.2.2 Integracijska tablica\nNapraviti integracijsku tablicu prema primjeru dolje, na sljedeći način:\n\nKutno ubrzanje \\(\\ddot{\\phi}\\) se izračuna za svaki vremenski korak prema jednadžbi gibanja (prebaciti sve osim \\(\\ddot{\\phi}\\) na desnu stranu jednadžbe)\nIzračunati kutnu brzinu \\(\\dot{\\phi}(t)\\) iz jednadžbe ubrzanja, tj. derivacije brzine koristeći dva prethodna koraka, \\(\\dot{\\phi}(t) \\approx \\frac{\\phi(t) - \\phi(t - \\Delta t)}{\\Delta t}\\) (primjetite da je jedino \\(\\dot{\\phi}(t)\\) u jednadžbi nepoznato).\nPošto je kutna brzina derivacija nagiba, na sličan način dobiti nagib \\(\\phi(t)\\)\n\n\n\n\n\n\n\n\n\n\n\nKorak, \\(i\\)\nVrijeme, \\(t\\)\nUbrzanje, \\(\\ddot{\\phi}\\)\nBrzina, \\(\\dot{\\phi}\\)\nNagib, \\(\\phi\\)\n\n\n\n\n0\n0\n0\n\\(\\dot{\\phi}_0\\)\n\\(\\phi_0\\)\n\n\n1\n\\(\\Delta t_i\\)\n\\(-2 \\zeta\\omega_0 \\dot{\\phi}_{i-1} - \\omega_0^2 \\phi_{i-1}\\)\n\\(\\dot{\\phi}_{i-1} + \\ddot{\\phi}_{i} \\Delta t\\)\n\\(\\phi_{i-1} + \\dot{\\phi}_{i} \\Delta t\\)\n\n\n…\n…\n…\n…\n…\n\n\nN\n\\(\\Delta t_N\\)\n\\(-2 \\zeta\\omega_0 \\dot{\\phi}_{N-1} - \\omega_0^2 \\phi_{N-1}\\)\n\\(\\dot{\\phi}_{N-1} + \\ddot{\\phi}_{N} \\Delta t\\)\n\\(\\phi_{N-1} + \\dot{\\phi}_{N} \\Delta t\\)\n\n\n\n\n\n9.2.3 Prikaz i analiza rezultata\n\nNacrtati grafove ubrzanja, brzine i pomaka (Insert &gt; Charts &gt; Scatter &gt; Scatter wih smooth lines)\nMijenjati ulazne parametre (\\(B\\), \\(\\Delta\\), \\(GMT\\)) i {u}napisati zaključak koji objašnjava kako ljuljanje broda ovisi tim parametrima\nPrikazati analitičku krivulju na istom grafu u usporedbi sa numerički dobivenom krivuljom\n\n\n\n\n\n\n\nImportant\n\n\n\nPrisjetimo se: ako je početna brzina ljuljanja \\(\\dot{\\phi}_0 = 0\\), analitičko rješenje jednadžbe gibanja sa malim prigušenjem (\\(\\zeta &lt;&lt; 1\\)) je: \\(\\phi(t) = \\Phi_0 e^{-\\zeta\\omega_0 t} \\cos(\\sqrt{1-\\zeta^2} \\omega_0 t)\\)\n\n\n\n\n\n\n\n\nFigure 9.1: Primjer grafova pri slobodnom ljuljanju (lijevo) te graf nagiba prisilnog ljuljanja (desno)",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Vježba: Ljuljanje broda</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-ljuljanje-broda.html#zadatak-prisilno-ljuljanje",
+    "href": "vjezba-ljuljanje-broda.html#zadatak-prisilno-ljuljanje",
+    "title": "9  Vježba: Ljuljanje broda",
+    "section": "9.3 Zadatak: Prisilno ljuljanje",
+    "text": "9.3 Zadatak: Prisilno ljuljanje\nKopirajte prethodni radni list. Sada je potrebno numerički integrirati jednadžbu gibanja s vanjskom uzbudom (valovima). Desna strana jednadžbe više nije nula, već je zadana funkcijom uzbudnog momenta:\n\\[\\ddot{\\phi} + 2\\zeta\\omega_0\\dot{\\phi} + \\omega_0^2\\phi = F(t)\\]\ngdje je uzbudna funkcija:\n\\[F(t) = \\frac{\\phi_0}{3} \\sin(\\omega_F t)\\]\nKružna frekvencija uzbude \\(\\omega_F\\) neka bude jednaka jednoj petini ukupnog broja slova u vašem imenu i prezimenu.\nIzmijenite formulu za ubrzanje u tablici dodavanjem ovog člana i nacrtajte novi graf.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Vježba: Ljuljanje broda</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-slamming-green-water.html",
+    "href": "vjezba-slamming-green-water.html",
+    "title": "10  Vježba: Udaranje pramca i zalijevanje palube",
+    "section": "",
+    "text": "10.1 Cilj vježbe\nKorištenjem rezultata iz prethodnog proračuna pomorstvenosti (MaxSurf Motions), studenti će u MS Excelu izraditi kalkulator kratkoročne statistike odziva. Cilj je odrediti vjerojatnost i učestalost pojave naplavljivanja palube i udaranja pramca o valove te ocijeniti operativnost broda.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Vježba: Udaranje pramca i zalijevanje palube</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-slamming-green-water.html#vjerojatnost-premašivanja",
+    "href": "vjezba-slamming-green-water.html#vjerojatnost-premašivanja",
+    "title": "10  Vježba: Udaranje pramca i zalijevanje palube",
+    "section": "10.2 Vjerojatnost premašivanja",
+    "text": "10.2 Vjerojatnost premašivanja\nAko je provedena analiza pomorstvenosti, možemo pretpostaviti da se funkcija gustoće vjerojatnosti gibanja broda može prikazati Rayleighovom razdiobom. Tada je moguće izračunati vjerojatnost premašivanja određene (kritične) amplitude gibanja pomoću izraza:\n\\[P\\left(z&gt;z_{crit}\\right)=\\exp\\left(-\\frac{z_{crit}^{2}}{2m_{0z}}\\right)\\] gdje je:\n\n\\(z\\) amplituda promatranog odziva (gibanja),\n\\(z_{crit}\\) kritična (granična) vrijednost promatranog odziva,\n\\(m_{0z}\\) nulti spektralni moment (varijanca) promatranog odziva.\n\nAko razmatramo ukupnu vjerojatnost višestrukih uvjeta premašivanja koji međusobno nisu povezani (statistički su nezavisni), tada se njihove pojedinačne vjerojatnosti množe:\n\\[P\\left(x&gt;x_{crit},\\,y&gt;y_{crit}\\right)=P\\left(x&gt;x_{crit}\\right)\\times P\\left(y&gt;y_{crit}\\right)\\]",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Vježba: Udaranje pramca i zalijevanje palube</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-slamming-green-water.html#učestalost-premašivanja",
+    "href": "vjezba-slamming-green-water.html#učestalost-premašivanja",
+    "title": "10  Vježba: Udaranje pramca i zalijevanje palube",
+    "section": "10.3 Učestalost premašivanja",
+    "text": "10.3 Učestalost premašivanja\nAko je potrebno znati koliko će se puta neka vrijednost premašiti u zadanom vremenu, to se može izračunati korištenjem prethodno dobivene vjerojatnosti \\(P\\):\n\\[N=\\frac{\\tau}{T_{P}}\\times P\\] gdje je:\n\n\\(\\tau\\) promatrano vrijeme u sekundama (npr. 3600 s za jedan sat),\n\\(T_P\\) srednji period osciliranja (period između vrhunaca), izračunat kao, \\(T_{P}=2\\pi\\sqrt{m_{2}/m_{4}}\\),\n\\(N\\) očekivani broj premašivanja (događaja) u zadanom vremenu.\n\n\n\n\n\n\n\nImportant\n\n\n\nGornja jednadžba vrijedi za kratkoročnu prognozu, uz pretpostavku konstantnog stanja mora tijekom plovidbe.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Vježba: Udaranje pramca i zalijevanje palube</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-slamming-green-water.html#voda-na-palubi",
+    "href": "vjezba-slamming-green-water.html#voda-na-palubi",
+    "title": "10  Vježba: Udaranje pramca i zalijevanje palube",
+    "section": "10.4 Voda na palubi",
+    "text": "10.4 Voda na palubi\nPretpostavljamo da će doći do pojave naplavljivanja palube (e: green water) ako relativni vertikalni pomak pramca premaši visinu nadvođa (\\(FB\\)$). Dakle, uvjet je \\(z &gt; FB\\).\nPostupak proračuna:\n\nTijekom proračuna pomorstvenosti (u MaxSurfu), postavite mjernu točku (Remote location) za relativno gibanje na udaljenosti od 0.05L do 0.1L od pramčane okomice (FP) prema krmi.\nNakon izvođenja proračuna, očitajte dobivene vrijednosti varijance (\\(m_0\\)) i perioda (\\(T_P\\)) za relativni vertikalni pomak promatrane točke.\nU Excelu izračunajte vjerojatnost premašivanja visine nadvođa: \\(P(z &gt; FB)\\).",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Vježba: Udaranje pramca i zalijevanje palube</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-slamming-green-water.html#udaranje-pramca",
+    "href": "vjezba-slamming-green-water.html#udaranje-pramca",
+    "title": "10  Vježba: Udaranje pramca i zalijevanje palube",
+    "section": "10.5 Udaranje pramca",
+    "text": "10.5 Udaranje pramca\nPretpostavljamo da će doći do razornog udaranja pramca o valove ako su istovremeno ispunjena dva uvjeta:\n\nRelativni vertikalni pomak pramca premašuje gaz broda (\\(z &gt; T\\)), tj. pramac izranja iz vode.\nRelativna vertikalna brzina pri ponovnom uranjanju premašuje kritičnu brzinu udara (\\(u &gt; u^*\\)).\n\nKritična brzina \\(u^*\\) definirana je na temelju brojnih eksperimentalnih istraživanja (Ochi) sljedećom empirijskom jednadžbom:\n\\[u_{*}=0.0195\\frac{B}{b_{25}}\\sqrt{Lg}\\] gdje je:\n\n\\(B\\) širina broda na glavnom rebru,\n\\(b_{25}\\) poluširina rebra smještenog na 25% duljine broda od pramčane okomice (FP), mjereno na visini od 0.03B iznad kobilice,\n\\(L\\) projektna duljina broda,\n\\(g\\) ubrzanje sile teže.\n\nPostupak proračuna:\n\nKoristite istu mjernu točku na pramcu (0.05L do 0.1L od FP).\nIz MaxSurfa očitajte varijancu (\\(m_0\\)) i period (\\(T_P\\)) za relativni vertikalni pomak, ali i za relativnu brzinu.\nNa nacrtu brodskih linija (ili u MaxSurf Modeleru na Body planu) očitajte poluširinu \\(b_{25}\\) za vaš specifični trup te izračunajte kritičnu brzinu \\(u^*\\).\nIzračunajte pojedinačne vjerojatnosti za izranjanje pramca \\(P(z &gt; T)\\) te za premašivanje kritične brzine \\(P(u &gt; u^*)\\).\nUkupnu vjerojatnost slamminga dobivate njihovim množenjem: \\(P_S = P(z &gt; T) \\cdot P(u &gt; u^*)\\)\nProvjera kriterija: Provjerite premašuje li dobivena vjerojatnost maksimalno dopuštenu granicu. U inženjerskoj se praksi najčešće uzima da vjerojatnost udaranja pramca ne bi smjela biti veća od 3%. Izračunajte očekivani broj udara u jednom satu plovidbe (\\(N\\)).",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Vježba: Udaranje pramca i zalijevanje palube</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-val-na-ponton.html",
+    "href": "vjezba-val-na-ponton.html",
+    "title": "11  Vježba: Val na ponton",
+    "section": "",
+    "text": "11.1 Uvod\nOva vježba razmatra hidrodinamičko opterećenje usidrenog pontona na pravilnim valovima. Proračun se temelji na Froude-Krylovljevoj aproksimaciji, koja pretpostavlja da prisutnost broda ne ometa i ne mijenja polje tlakova nailaznog vala. Drugim riječima, u potpunosti se zanemaruje pojava difrakcije (ogibanja valova oko objekta). Ova je pretpostavka inženjerski opravdana samo u slučajevima kada su dimenzije plovnog objekta znatno manje od duljine morskog vala (\\(\\lambda \\gg L\\)).",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vježba: Val na ponton</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-val-na-ponton.html#zadatak",
+    "href": "vjezba-val-na-ponton.html#zadatak",
+    "title": "11  Vježba: Val na ponton",
+    "section": "11.2 Zadatak",
+    "text": "11.2 Zadatak\nIzraditi numerički model (MS Excel) za izračun profila vala i pripadajućeg hidrodinamičkog tlaka na dno pontona. Numeričkom integracijom potrebno je odrediti ukupnu vertikalnu Froude-Krylovljevu silu poniranja (\\(F_{FK,3}\\)) te pronaći u kojem vremenskom trenutku ona dosiže svoj maksimum.\n1. Definiranje ulaznih parametara pontona i okoliša:\n\nPonton: Duljina pontona \\(L\\) (m), širina pontona \\(B\\) (m), gaz pontona \\(d\\) (m). (Napomena: dno pontona nalazi se na vertikalnoj koordinati \\(z = -d\\)).\nMore i val: Gustoća mora \\(\\rho\\) (npr. 1025 kg/m³), dubina mora do dna \\(h\\) (m), visina pravilnog vala \\(H\\) (m), period vala \\(T\\) (s).\n\n2. Proračun kinematike vala (Airyjeva teorija):\n\nKružna frekvencija vala: \\(\\omega = \\frac{2\\pi}{T}\\)\nValna duljina (\\(\\lambda\\)) za duboku vodu služi kao početna vrijednost iteracije: \\[\\lambda_0 = \\frac{g T^2}{2\\pi}\\]\nTočna valna duljina za zadanu dubinu određuje se rekurzivnom (iterativnom) jednadžbom: \\[\\lambda_i = \\lambda_0 \\tanh\\left(\\frac{2\\pi h}{\\lambda_{i-1}}\\right)\\] U Excelu napravite otprilike 20 iteracija kako bi vrijednost konvergirala, te za konačnu valnu duljinu uzmite zadnju vrijednost \\(\\lambda = \\lambda_{20}\\).\nValni broj: \\[k = \\frac{2\\pi}{\\lambda}\\] 3. Numerička integracija tlaka po duljini pontona:\nOdaberite proizvoljni vremenski trenutak \\(t\\) (s) u rasponu od 0 do \\(T\\).\nPodijelite duljinu pontona na \\(M\\) segmenata (npr. \\(M = 50\\)) za numeričku integraciju (slično kao u prethodnoj vježbi). Korak integracije iznosi \\(dX = L / M\\).\nNapravite integracijsku tablicu s \\(M\\) redova. Za svaki segment \\(i\\) na uzdužnoj poziciji \\(x_i\\) izračunajte: Profil vala (elevacija površine): \\[\\zeta(x_i,t) = \\frac{H}{2} \\cos(k x_i - \\omega t)\\] Ukupni tlak na dno pontona \\(z = -d\\): \\[p(x_i, -d, t) = \\rho g \\zeta(x_i,t) \\frac{\\cosh(k(-d+h))}{\\cosh(kh)} - \\rho g (-d)\\]\n\nNapomena: Prvi član u jednadžbi tlaka je dinamički tlak vala, a drugi član \\(\\rho g d\\) je konstantni hidrostatički tlak.\n4. Proračun sila i analiza rezultata:\n\nUkupna vertikalna uzbudna sila (\\(F_{FK,3}\\)) dobiva se množenjem tlaka s površinom segmenta (\\(B \\cdot dX\\)) i zbrajanjem svih segmenata (integracija): \\[F_{FK,3} = \\sum_{i=1}^{M} p(x_i, -d, t) \\cdot (B \\cdot dX)\\]\nIstisninska sila pontona (težina) iznosi \\[\\Delta = L \\cdot B \\cdot d \\cdot \\rho \\cdot g\\]\nIzračunajte omjer uzbudne sile i istisninske sile pontona.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vježba: Val na ponton</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-val-na-ponton.html#samostalna-analiza",
+    "href": "vjezba-val-na-ponton.html#samostalna-analiza",
+    "title": "11  Vježba: Val na ponton",
+    "section": "11.3 Samostalna analiza",
+    "text": "11.3 Samostalna analiza\nPromijenite vremenski trenutak \\(t\\) u Excel-u nekoliko puta (ili napravite graf ovisnosti sile o vremenu \\(t\\)) i zabilježite u kojem trenutku vala je vertikalna sila najveća. Nacrtajte graf profila vala po duljini pontona za taj kritični trenutak. Komentirajte zašto je tad sila najveća.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Vježba: Val na ponton</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-kontejnerski-brod.html",
+    "href": "vjezba-kontejnerski-brod.html",
+    "title": "12  Vježba: Kontejnerski brod u MaxSurf-u",
+    "section": "",
+    "text": "12.1 Uvod\nUpoznavanje s alatima programa MaxSurf Modeler za globalnu i lokalnu modifikaciju brodske forme. Na postojećem modelu kontejnerskog broda potrebno je izvršiti parametarsku prilagodbu glavnih dimenzija i položaja težišta uzgona, kako bi pripremili jedinstven model za kasniji proračun pomorstvenosti i upravljivosti. Primjenom softverskog paketa MaxSurf Motions (bivši Seakeeper) izvršiti numerički proračun pomorstvenosti na formi.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Vježba: Kontejnerski brod u MaxSurf-u</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-kontejnerski-brod.html#početno-stanje-i-učitavanje-modela",
+    "href": "vjezba-kontejnerski-brod.html#početno-stanje-i-učitavanje-modela",
+    "title": "12  Vježba: Kontejnerski brod u MaxSurf-u",
+    "section": "12.2 Početno stanje i učitavanje modela",
+    "text": "12.2 Početno stanje i učitavanje modela\nOtvorite program MaxSurf Modeler i učitajte zadani predložak modela pod nazivom ContainerShip_1Surface. Ovaj predložak standardno se nalazi u instalacijskom direktoriju programa na putanji: MaxSurf_Instalacija \\ Sample Designs \\ Ships.\nUčitani model predstavlja kontejnerski brod sa sljedećim početnim izmjerama:\n\nDuljina na vodnoj liniji, \\(L_{WL} = 100 \\text{ m}\\)\nŠirina, \\(B = 18 \\text{ m}\\)\nGaz, \\(T = 6.6 \\text{ m}\\)\nUzdužni položaj težišta uzgona, \\(L_{CB} = 49 \\text{ m}\\) (mjereno od krmene okomice)\nMasa istisnine, \\(\\Delta = 8100 \\text{ t}\\)\n\nPrije početka rada, obratite pozornost na zadani koordinatni sustav broda, koji je postavljen na presjecište Krmene okomice (AP) i Osnovne ravnine (BL).",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Vježba: Kontejnerski brod u MaxSurf-u</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-kontejnerski-brod.html#radni-zadatak",
+    "href": "vjezba-kontejnerski-brod.html#radni-zadatak",
+    "title": "12  Vježba: Kontejnerski brod u MaxSurf-u",
+    "section": "12.3 Radni zadatak",
+    "text": "12.3 Radni zadatak\nSvaki student mora izvršiti izmjenu postojećeg modela prema individualnim parametrima iz tablice u nastavku. Strogi uvjet vježbe je da masa istisnine mora ostati nepromijenjena (\\(\\Delta = 8100 \\text{ t}\\)).",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Vježba: Kontejnerski brod u MaxSurf-u</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-kontejnerski-brod.html#postupak-modeliranja",
+    "href": "vjezba-kontejnerski-brod.html#postupak-modeliranja",
+    "title": "12  Vježba: Kontejnerski brod u MaxSurf-u",
+    "section": "12.4 Postupak modeliranja",
+    "text": "12.4 Postupak modeliranja\n\nOtključavanje modela Predlošci u MaxSurfu su zaštićeni od slučajnih promjena. Kako biste omogućili uređivanje, kliknite desnim tipkom miša bilo gdje na radni prozor i odaberite opciju Unlock.\nGlobalna promjena dimenzija Glavne izmjere modela najlakše je promijeniti globalnom transformacijom. U glavnom izborniku odaberite Surfaces -&gt; Size Surfaces. Upišite nove vrijednosti za duljinu i širinu prema vašem zadatku. Nakon ove promjene, obavezno otvorite prozor Data -&gt; Calculate Hydrostatics kako biste provjerili novu istisninu i gaz.\nLokalna prilagodba (Namještanje \\(L_{CB}\\) i istisnine) Budući da se promjenom duljine i širine promijenila i istisnina, potrebno je lokalno prilagoditi formu kako biste zadovoljili uvjete zadatka.\nUzdužna preraspodjela uzgona (\\(L_{CB}\\)): Prebacite se u Profile pogled. Uključite prikaz mreže kontrolnih točaka (ikona Net). Sada možete odabrati cijele stupce kontrolnih točaka i uzdužno ih pomicati. Pomicanjem volumena trupa prema pramcu ili krmi direktno upravljate položajem \\(L_{CB}\\).\nPodešavanje punoće (Istisnina): Prebacite se u Body Plan (nacrt rebara). Namještajte lokalnu punoću forme pomicanjem kontrolnih točaka na aktivnom rebru. Aktivno rebro mijenjate klikom na plave trokute u alatnoj traci (Prethodno/Sljedeće). Širenjem rebara povećavate istisninu, dok je sužavanjem smanjujete, bez promjene glavnih dimenzija.\n\n\n\n\n\n\n\nImportant\n\n\n\nPrilagođavanje forme trupa je iterativan i inženjerski osjetljiv proces. Glatkoća linija (tzv. fairness) važnija je od pogađanja dimenzija u milimetar. Ako imate većih problema pri “lovljenju” točnih vrijednosti istisnine i \\(L_{CB}\\) bez da pritom uništite formu broda, približite se traženim vrijednostima što je više moguće.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Vježba: Kontejnerski brod u MaxSurf-u</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-kontejnerski-brod.html#inicijalizacija-i-postavke-metode-proračuna",
+    "href": "vjezba-kontejnerski-brod.html#inicijalizacija-i-postavke-metode-proračuna",
+    "title": "12  Vježba: Kontejnerski brod u MaxSurf-u",
+    "section": "12.5 Inicijalizacija i postavke metode proračuna",
+    "text": "12.5 Inicijalizacija i postavke metode proračuna\n\nOtvorite modul MaxSurf Motions i učitajte vaš prilagođeni model kontejnerskog broda (File &gt; Open &gt; Open Design).\nKao i u ostalim MaxSurf modulima, prvo je potrebno definirati fizikalne postavke pod izbornikom Analysis:\n\nTip analize: Odaberite vrpčastu metodu (Analysis type &gt; Strip method).\nStanje krcanja: Postavite gaz do projektne vodne linije, bez uzdužnog nagiba (Draft and Trim).\nProračunska mreža: Odaberite Measure Hull kako biste brod uzdužno podijelili na vrpce (presjeke).\n\nUpisati broj vrpci (preporuka: minimalno 15 do 20).\nNapomena: Program će aproksimirati stvarne presjeke broda pomoću Lewisovih formi (e: Lewis forms) ili polinoma. Ako koristite polinome, postavite minimalno 5. stupanj. Ukoliko na modelu imate modeliran skeg (krmenu peraju) ili druge privjeske, obavezno ih isključite iz proračuna prije ovog koraka.\n\nRaspored masa (e: Mass Distribution): Karakteristike tromosti tijela dobivaju se prema centraciji broda. Za ovu vježbu koristite sljedeće inženjerske procjene:\n\nVertikalno težište mase (VCG) mora biti iznad težišta uzgona (CB). Postavite VCG = 1.3 * T (gaz).\nPolumjer inercije mase za ljuljanje (e: roll radius of gyration): 0.35 * B\nPolumjer inercije mase za poniranje/posrtanje (e: pitch/yaw radius of gyration): 0.25 * L\n\nFaktori prigušenja (e: Damping factors): Budući da se teorija vrpci temelji na potencijalnom (neviskoznom) strujanju i da smo zanemarili privjeske, sustavu moramo ručno zadati viskozno prigušenje kako rezultati u rezonanciji ne bi otišli u beskonačnost.\n\nFaktor prigušenja za ljuljanje (Roll) postavite na 7.5%.\nFaktor prigušenja za poniranje/posrtanje (Heave/Pitch) postavite na 1.0%.\n\nPod opcijama Strip Theory Method omogućite izračun za sve smjerove valova.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Vježba: Kontejnerski brod u MaxSurf-u</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-kontejnerski-brod.html#definiranje-uvjeta-plovidbe-i-okoliša-prozor-inputs",
+    "href": "vjezba-kontejnerski-brod.html#definiranje-uvjeta-plovidbe-i-okoliša-prozor-inputs",
+    "title": "12  Vježba: Kontejnerski brod u MaxSurf-u",
+    "section": "12.6 Definiranje uvjeta plovidbe i okoliša (Prozor Inputs)",
+    "text": "12.6 Definiranje uvjeta plovidbe i okoliša (Prozor Inputs)\nNakon definiranja broda, potrebno je zadati okolišne uvjete u prozoru Inputs:\n\nBrzina (tab Speeds): Odaberite Edit &gt; Add Speed i postavite brzinu napredovanja broda na 18 kts (čvorova).\nKutovi nailaska valova (tab Headings): Odaberite Edit &gt; Add Heading. Generirajte minimalno 5 smjerova valova u koracima od 45°, počevši od krmenih valova (0°) do pramčanih valova (180°).\n\nNapomena: Inženjerski standard je rad u radijanima. Ako niste sigurni u preračunavanje, naučite, ili promijenite postavke prikaza preko Data &gt; Units.\n\nStanje mora (tab Spectra): Odaberite Edit &gt; Add Spectrum i dodajte standardni jednoparametarski spektar valova (npr. ITTC ili Pierson-Moskowitz).\nReferentne točke (tab Locations): Odaberite Edit &gt; Add Remote Location kako bismo pratili odzive na specifičnim mjestima na brodu. Koordinatni ishod (ovisno o vašem modelu) najčešće je na krmenoj okomici (AP) i simetrali.\n\nLokacija 1 (Kontejner na palubi): Postavite na X = 75 m, Y = 7 m, Z = VCG + 15 m.\nLokacija 2 (Zapovjednički most / Posada): Postavite na X = 20 m, Y = 0 m, Z = VCG + 15 m.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Vježba: Kontejnerski brod u MaxSurf-u</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-kontejnerski-brod.html#proračun-i-zadaci-za-samostalni-rad",
+    "href": "vjezba-kontejnerski-brod.html#proračun-i-zadaci-za-samostalni-rad",
+    "title": "12  Vježba: Kontejnerski brod u MaxSurf-u",
+    "section": "12.7 Proračun i zadaci za samostalni rad",
+    "text": "12.7 Proračun i zadaci za samostalni rad\nPokrenite izračun odabirom Analysis &gt; Solve Seakeeping Analysis. Po završetku, rezultate možete analizirati kroz alatnu traku u nekoliko formata:\n\nTekstualno izvješće (prozor Results).\nPolarni grafovi odziva u ovisnosti o kutu valova (prozor Polar Graph).\nKrivulje prijenosnih funkcija (RAO) i rezultantnog spektra (prozor Graph).\n\n\n\n\n\n\n\nImportant\n\n\n\nProučite dobivene polarne grafove i prijenosne funkcije te ih pokušajte logički povezati s teoretskim nastavnim materijalima i User Manual-om.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Vježba: Kontejnerski brod u MaxSurf-u</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-kontejnerski-brod.html#zadaci-za-predaju",
+    "href": "vjezba-kontejnerski-brod.html#zadaci-za-predaju",
+    "title": "12  Vježba: Kontejnerski brod u MaxSurf-u",
+    "section": "12.8 Zadaci za predaju",
+    "text": "12.8 Zadaci za predaju\nPrema gore navedenoj proceduri i postavkama, iterativno izvršite sljedeće zadatke:\n\nStrukturni kriterij (Kontejner): Povećavajte značajnu visinu vala (\\(H_S\\)) u postavkama spektra sve dok najveće apsolutno ubrzanje na Lokaciji 1 ne dosegne kritičnu vrijednost od 0.5g (odnosno 4.9 m/s²). Napomena: Maksimalno ubrzanje procijenite statističkom relacijom a_max = 4 * RMS. * U izvješću navedite pri kojoj se visini vala to dogodilo te odgovorite koji je stupanj slobode gibanja (poniranje, posrtanje, ljuljanje…) i za koji napadni kut valova najnepovoljniji za ovaj kontejner.\nKriterij radne sposobnosti posade (MSI): Na sličan način, iterativno pronađite uvjete pri kojima će Indeks morske bolesti (MSI - Motion Sickness Incidence) na Lokaciji 2 premašiti 50% za vrijeme dvosatnog izlaganja (\\(t = 2\\) sata) zadanom spektru valova. U izvješću odgovorite koji napadni kut valova i koje kretanje broda najviše pridonose visokom MSI indeksu na mostu.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Vježba: Kontejnerski brod u MaxSurf-u</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-razdioba-slucajne-varijable.html",
+    "href": "vjezba-razdioba-slucajne-varijable.html",
+    "title": "13  Vježba: Razdioba slučajne varijable",
+    "section": "",
+    "text": "13.1 Cilj vježbe\nKroz praktičan eksperiment prikupiti podatke o slučajnim, diskretnim događajima te na njih primijeniti statističku analizu u MS Excelu. Vježba zorno prikazuje kako se dvodimenzionalni Gaussov proces (greška gađanja) preslikava u Rayleighovu razdiobu (radijalna udaljenost od centra), istu razdiobu kojom u pomorstvenosti opisujemo amplitude morskih valova.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Vježba: Razdioba slučajne varijable</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-razdioba-slucajne-varijable.html#cilj-vježbe",
+    "href": "vjezba-razdioba-slucajne-varijable.html#cilj-vježbe",
+    "title": "13  Vježba: Razdioba slučajne varijable",
+    "section": "",
+    "text": "Prikupljanje podataka o diskretnim događajima",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Vježba: Razdioba slučajne varijable</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-razdioba-slucajne-varijable.html#priprema-i-prikupljanje-podataka",
+    "href": "vjezba-razdioba-slucajne-varijable.html#priprema-i-prikupljanje-podataka",
+    "title": "13  Vježba: Razdioba slučajne varijable",
+    "section": "13.2 Priprema i prikupljanje podataka",
+    "text": "13.2 Priprema i prikupljanje podataka\nPotrebno je gađati metu (pikado, papirići ili kreda) i precizno zabilježiti događaje:\n\nNacrtajte metu od osam koncentričnih kružnica na ploču. Međuprostore (prstenove) označite brojevima od 1 (centar) do 9 (vanjski rub/promašaj).\nOdmaknite se na fiksnu udaljenost od mete (npr. 1500 mm).\nIzvršite minimalno 50 pokušaja gađanja, pritom uvijek ciljajući isključivo u sredinu mete (polje 1).\nZabilježite svaki događaj (upišite koji je broj polja pogođen u svakom bacanju).",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Vježba: Razdioba slučajne varijable</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-razdioba-slucajne-varijable.html#obrada-podataka-i-histogram-ms-excel",
+    "href": "vjezba-razdioba-slucajne-varijable.html#obrada-podataka-i-histogram-ms-excel",
+    "title": "13  Vježba: Razdioba slučajne varijable",
+    "section": "13.3 Obrada podataka i histogram (MS Excel)",
+    "text": "13.3 Obrada podataka i histogram (MS Excel)\nSada kada imate niz od 50+ slučajnih brojeva, otvorite MS Excel:\n\nU jednom stupcu zbrojite frekvenciju događaja (koliko ste puta pogodili polje 1, koliko puta polje 2, itd.).\nPodijelite broj pogodaka svakog polja s ukupnim brojem bacanja kako biste dobili relativnu frekvenciju (empirijsku vjerojatnost).\nOznačite te podatke i izradite histogram (Stupčasti graf / Column chart). Primijetit ćete da graf nije simetričan, već ima “rep” prema većim brojevima polja.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Vježba: Razdioba slučajne varijable</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-razdioba-slucajne-varijable.html#odabir-teorijske-razdiobe",
+    "href": "vjezba-razdioba-slucajne-varijable.html#odabir-teorijske-razdiobe",
+    "title": "13  Vježba: Razdioba slučajne varijable",
+    "section": "13.4 Odabir teorijske razdiobe",
+    "text": "13.4 Odabir teorijske razdiobe\nSada na naše eksperimentalne podatke moramo položiti teorijsku matematičku krivulju. Budući da ciljamo centar, a ruka nam neovisno griješi po X i Y osi, radijalna udaljenost pogotka prati Rayleighovu razdiobu. Funkcija gustoće vjerojatnosti (\\(f(x)\\)) za Rayleighovu razdiobu glasi:\n\\[f(x) = \\frac{x}{\\sigma^2} e^{-\\frac{x^2}{2\\sigma^2}}\\]\ngdje je:\n\n\\(x\\) – radijalna udaljenost (u našem slučaju, broj polja od 1 do 9).\n\\(\\sigma\\) – parametar razdiobe koji predstavlja standardnu devijaciju greške vaše ruke.\n\nKako pronaći vaš \\(\\sigma\\)?\nIzračunajte aritmetičku sredinu (\\(\\bar{x}\\)) svih vaših 50 pogodaka u Excelu (funkcija AVERAGE). Kod Rayleighove razdiobe postoji stroga veza između srednje vrijednosti i parametra \\(\\sigma\\):\n\\[\\bar{x} = \\sigma \\sqrt{\\frac{\\pi}{2}} \\implies \\sigma \\approx \\frac{\\bar{x}}{1.253}\\]\nIzračunajte svoj \\(\\sigma\\), ubacite ga u gornju formulu \\(f(x)\\) za svako polje (1 do 9) i nacrtajte tu teorijsku krivulju preko svog histograma. Što je vaš \\(\\sigma\\) manji, to ste bolji strelac!",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Vježba: Razdioba slučajne varijable</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-razdioba-slucajne-varijable.html#kumulativna-razdioba",
+    "href": "vjezba-razdioba-slucajne-varijable.html#kumulativna-razdioba",
+    "title": "13  Vježba: Razdioba slučajne varijable",
+    "section": "13.5 Kumulativna razdioba",
+    "text": "13.5 Kumulativna razdioba\nKumulativna razdioba nam govori: “Kolika je vjerojatnost da ću pogoditi polje X ili neko polje bliže centru?”.\n\nU Excelu napravite novi stupac gdje ćete kumulativno zbrajati relativne frekvencije iz koraka 2 (svaki redak je zbroj tog i svih prethodnih redaka). Konačni broj mora biti 1.0 (100%).\nNacrtajte graf.\nAnalitička formula za Rayleighovu kumulativnu distribuciju (CDF) glasi: \\(F(x) = 1 - e^{-\\frac{x^2}{2\\sigma^2}}\\). Nacrtajte i ovu teorijsku liniju te je usporedite sa svojim zbrojenim rezultatima!",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Vježba: Razdioba slučajne varijable</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-putanja-cestica.html",
+    "href": "vjezba-putanja-cestica.html",
+    "title": "14  Vježba: Putanja valnih čestica",
+    "section": "",
+    "text": "14.1 Cilj vježbe\nProgramskim kodiranjem (Python) izraditi vlastitu vizualizaciju kinematike vodenih čestica prema Airyjevoj linearnoj teoriji. Vizualno dokazati kako se putanje čestica mijenjaju iz kružnih u eliptične ovisno o dubini mora te kako amplituda gibanja eksponencijalno opada s dubinom.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Vježba: Putanja valnih čestica</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-putanja-cestica.html#cilj-vježbe",
+    "href": "vjezba-putanja-cestica.html#cilj-vježbe",
+    "title": "14  Vježba: Putanja valnih čestica",
+    "section": "",
+    "text": "Important\n\n\n\nKoristiti AI Studio, Gemini, Claude ili neki drugi AI vibe-coding alat.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Vježba: Putanja valnih čestica</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-putanja-cestica.html#teorijska-podloga-i-matematički-model",
+    "href": "vjezba-putanja-cestica.html#teorijska-podloga-i-matematički-model",
+    "title": "14  Vježba: Putanja valnih čestica",
+    "section": "14.2 Teorijska podloga i matematički model",
+    "text": "14.2 Teorijska podloga i matematički model\nPrema Airyjevoj teoriji, svaka vodena čestica na nekoj prosječnoj dubini \\(z\\) (gdje je površina \\(z=0\\), a dno \\(z=-d\\)) i na horizontalnoj poziciji \\(x\\), oscilira oko svog ravnotežnog položaja.\nNjezin stvarni horizontalni pomak (\\(\\xi\\)) i vertikalni pomak (\\(\\zeta\\)) u vremenu \\(t\\) zadani su jednadžbama:\nHorizontalni pomak:\n\\[\\xi(x,z,t) = - \\frac{H}{2} \\frac{\\cosh[k(z+d)]}{\\sinh(kd)} \\sin(kx - \\omega t)\\]\nVertikalni pomak:\n\\[\\zeta(x,z,t) = \\frac{H}{2} \\frac{\\sinh[k(z+d)]}{\\sinh(kd)} \\cos(kx - \\omega t)\\]\ngdje su:\n\n\\(H\\) – visina vala\n\\(k = 2\\pi/\\lambda\\) – valni broj\n\\(\\omega = 2\\pi/T\\) – kružna frekvencija vala",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Vježba: Putanja valnih čestica</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-putanja-cestica.html#radni-zadatak-vibe-coding-izazov",
+    "href": "vjezba-putanja-cestica.html#radni-zadatak-vibe-coding-izazov",
+    "title": "14  Vježba: Putanja valnih čestica",
+    "section": "14.3 Radni zadatak (“Vibe coding” izazov)",
+    "text": "14.3 Radni zadatak (“Vibe coding” izazov)\nPostavite u svom kodu sljedeće parametre:\n\nVisina vala, \\(H = 4 \\text{ m}\\)\nPeriod vala, \\(T = 8 \\text{ s}\\)\nPromatrana pozicija, \\(x = 0 \\text{ m}\\)\n\nDuboka voda (Kružne putanje):\n\nPostavite dubinu mora na \\(d = 100 \\text{ m}\\) (što je područje duboke vode jer je \\(d &gt; \\lambda/2\\)).\nOdaberite 4 čestice na dubinama: \\(z = 0 \\text{ m}\\) (površina), \\(z = -10 \\text{ m}\\), \\(z = -20 \\text{ m}\\) i \\(z = -50 \\text{ m}\\).\nNapišite for petlju koja prolazi kroz vrijeme \\(t\\) (od \\(0\\) do \\(T\\)) i izračunava \\(\\xi\\) i \\(\\zeta\\) za svaku česticu.\nNacrtajte (plotajte) njihove putanje (X vs Z).\nPitanje za analizu: Što primjećujete s oblikom putanja? Koliki je promjer kružnice na površini, a koliki na dubini od 50 metara?\n\nPlitka voda (Eliptične putanje):\n\nSada promijenite dubinu mora na samo \\(d = 10 \\text{ m}\\) (plitka voda).\nOdaberite čestice na dubinama: \\(z = 0 \\text{ m}\\), \\(z = -5 \\text{ m}\\) i \\(z = -10 \\text{ m}\\) (samo dno).\nPonovno nacrtajte putanje.\nPitanje za analizu: Kako se oblik putanja promijenio? Što se događa s vertikalnim gibanjem čestice koja se nalazi na samom dnu (\\(z = -d\\))?",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Vježba: Putanja valnih čestica</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-spustanje-tendera.html",
+    "href": "vjezba-spustanje-tendera.html",
+    "title": "15  Vježba: Spuštanje tendera",
+    "section": "",
+    "text": "15.1 Uvod\nBrodovi za podršku jahtama (e: Yacht Support Vessels - YS) projektirani su za prijevoz i spuštanje tendera i ostale opreme za luksuzne jahte. Spuštanje tendera pomoću brodske dizalice unosi moment naginjanja (e: heeling moment) koji može ugroziti stabilitet plovila. Stoga je ključno osigurati da brod ostane stabilan i unutar sigurnih operativnih granica tijekom cijelog postupka spuštanja. Ova vježba bavi se analizom stabiliteta YS broda tijekom operacije spuštanja tendera, uzimajući u obzir kritično stanje krcanja i primjenu sustava za protuuteg nagiba.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Vježba: Spuštanje tendera</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-spustanje-tendera.html#uvod",
+    "href": "vjezba-spustanje-tendera.html#uvod",
+    "title": "15  Vježba: Spuštanje tendera",
+    "section": "",
+    "text": "Figure 15.1",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Vježba: Spuštanje tendera</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-spustanje-tendera.html#scenarij",
+    "href": "vjezba-spustanje-tendera.html#scenarij",
+    "title": "15  Vježba: Spuštanje tendera",
+    "section": "15.2 Scenarij",
+    "text": "15.2 Scenarij\nTender se spušta pomoću brodske dizalice smještene na desnom boku (e: starboard side). Priručnik za rad dizalice propisuje najveći dopušteni kut nagiba od 5° tijekom operacija dizanja kako bi se osigurao siguran rad dizalice. Brod je opremljen gorivom koje se može koristiti za protuuteg momentu naginjanja tijekom spuštanja tendera, prebacivanjem goriva između lijevog i desnog tanka.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Vježba: Spuštanje tendera</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-spustanje-tendera.html#preduvjeti",
+    "href": "vjezba-spustanje-tendera.html#preduvjeti",
+    "title": "15  Vježba: Spuštanje tendera",
+    "section": "15.3 Preduvjeti",
+    "text": "15.3 Preduvjeti\n\nMaxsurf model YS broda koji uključuje oblik trupa i raspored tankova\nMasa praznog broda (e: lightship weight) i položaj težišta\nTri stanja krcanja:\n\nPolazak (100% zaliha)\nSredina putovanja (50% zaliha)\nDolazak (10% zaliha)\n\n\n\n\n\n\n\n\nImportant\n\n\n\nStanje dolaska često je kritično za stabilitet jer brod tada ima minimum potrošnih zaliha, pa je težište mase relativno više u odnosu na kobilicu. Za detalje o ovom stanju krcanja konzultirati dokument “INTACT STABILITY INFORMATION BOOKLET”.\n\n\nOgraničenja:\n\nNajveći kut nagiba: Kut nagiba tijekom spuštanja tendera ne smije premašiti 5°.\nStanje krcanja: Operacija spuštanja mora se razmotriti za sva tri stanja krcanja.\nSustav za protuuteg nagiba: Razmotriti prebacivanje goriva između tankova FOB52 i FOB53.\nPoložaj dizalice: Dizalica se nalazi na desnom boku broda prema Općem planu (e: General Arrangement).\nDoseg dizalice: Dizalica je sposobna spustiti tender na desni bok.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Vježba: Spuštanje tendera</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-spustanje-tendera.html#zadaci",
+    "href": "vjezba-spustanje-tendera.html#zadaci",
+    "title": "15  Vježba: Spuštanje tendera",
+    "section": "15.4 Zadaci",
+    "text": "15.4 Zadaci\n\nDefinirati tender u uskladištenom položaju na gornjoj palubi\n\nMasa tendera iznosi 10 tona\nOdrediti uzdužni položaj težišta (LCG), poprečni položaj težišta (TCG) i vertikalni položaj težišta (VCG) tendera\n\nDefinirati ruku dizalice u uskladištenom položaju:\n\nMasa ruke dizalice iznosi 1,5 tona\nOdrediti LCG, TCG i VCG ruke dizalice u uskladištenom položaju prema Općem planu\n\nIzračunati ravnotežu s uskladištenim tenderom i dizalicom za svako stanje krcanja:\n\nPolazak (100%)\nSredina putovanja (50%)\nDolazak (10%)\n\nPripremiti korake spuštanja tendera:\n\nRuka dizalice se produžuje do težišta tendera\nTender se veže na kuku dizalice i podiže iznad gornje palube\nRuka dizalice se zakreće prema boku broda s vezanim tenderom\nTender se spušta do vodne linije\n\nIzračunati nagib za svaki korak spuštanja u svakom stanju krcanja\nOdrediti kritične korake u kojima nagib prelazi 5° za svako stanje krcanja\nIzvršiti korekcije u tankovima goriva FOB52 i FOB53 kako bi se ispravio nagib u kritičnim koracima",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Vježba: Spuštanje tendera</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-spustanje-tendera.html#izvještaj",
+    "href": "vjezba-spustanje-tendera.html#izvještaj",
+    "title": "15  Vježba: Spuštanje tendera",
+    "section": "15.5 Izvještaj",
+    "text": "15.5 Izvještaj\nPripremiti izvještaj koji uključuje:\n\nProračuni:\n\nMasa i položaj tendera\nProračun momenta naginjanja\nKut nagiba bez protuutega\nProcjena potrebnog prebacivanja goriva za protuuteg\nKut nagiba s protuutegom\n\nSkica svakog koraka spuštanja\nZaključak: Sažeti rezultate i dati zaključak o izvedivosti i sigurnosti spuštanja tendera.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Vježba: Spuštanje tendera</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-pad-brzine.html",
+    "href": "vjezba-pad-brzine.html",
+    "title": "16  Vježba: Pad brzine broda na valovitom moru",
+    "section": "",
+    "text": "16.1 Uvod\nPri plovidbi na uzburkanom moru brod doživljava znatno veći otpor nego na mirnoj vodi. Kao posljedica toga, uz istu snagu motora brod postiže manju brzinu – taj se fenomen naziva nevoljni gubitak (pad) brzine (e: involuntary speed loss). Ova vježba prikazuje postupak izračuna pada brzine na temelju krivulja otpora i dodatnog otpora na valovima.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Vježba: Pad brzine broda na valovitom moru</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-pad-brzine.html#pojmovi",
+    "href": "vjezba-pad-brzine.html#pojmovi",
+    "title": "16  Vježba: Pad brzine broda na valovitom moru",
+    "section": "16.2 Pojmovi",
+    "text": "16.2 Pojmovi\n\n\\(R_{CW}\\) – ukupni otpor broda na mirnoj vodi (e: calm water resistance), koji uključuje otpor trupa, privjesaka, otpor zraka i sl.\n\\(R_{Wind}\\) – dodatni otpor vjetra (e: wind resistance)\n\\(\\overline{R_W}\\) – osrednjeni dodatni otpor uslijed valova (e: mean added resistance in waves)\n\\(R_T\\) – ukupni otpor na valovitom moru\n\\(P_B\\) – snaga motora na kočnici (e: brake power)\n\\(P_E\\) – efektivna (vučna) snaga (e: effective power), \\(P_E = R \\cdot V\\)\n\\(\\eta_D\\) – stupanj djelovanja propulzije (e: propulsive efficiency), \\(P_E = \\eta_D \\cdot P_B\\)\n\\(V\\) – brzina broda na mirnom moru (e: calm water speed)\n\\(V_W\\) – brzina broda na valovitom moru (e: speed in waves)\n\\(\\Delta V\\) – pad brzine (e: speed loss), \\(\\Delta V = V - V_W\\)",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Vježba: Pad brzine broda na valovitom moru</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-pad-brzine.html#metodologija",
+    "href": "vjezba-pad-brzine.html#metodologija",
+    "title": "16  Vježba: Pad brzine broda na valovitom moru",
+    "section": "16.3 Metodologija",
+    "text": "16.3 Metodologija\nZa brod u plovidbi na određenom stanju mora, ukupni otpor je zbroj svih komponenti otpora:\n\\[R_T = R_{CW} + R_{Wind} + \\overline{R_W}\\]\nPad brzine može se izračunati uz pretpostavku da motor daje jednaku snagu na mirnoj vodi kao i pri plovidbi na valovitom moru:\n\\[P_B(V) = P_{B,W}(V_W)\\]\njer je poznata snaga \\(P_B\\) za mirno more i projektnu brzinu \\(V\\).\nPad brzine je definiran kao:\n\\[\\Delta V = V - V_W\\]\nNajjednostavnija aproksimacija dobiva se uz pretpostavku da je stupanj djelovanja propulzije jednak na mirnoj vodi i valovitom moru (\\(\\eta_D \\approx \\text{const.}\\)). Tada možemo izjednačiti ne samo snage motora, već i efektivne snage \\(P_E\\), što je umnožak otpora i brzine:\n\\[R_{CW}(V) \\cdot V = R_T(V_W) \\cdot V_W\\]\nProblem je što je brzina \\(V_W\\) nepoznata i pojavljuje se i u argumentu funkcije otpora \\(R_T\\) i kao množitelj, pa se jednadžba ne može riješiti analitički. Stoga se primjenjuje iterativni postupak opisan u nastavku.\n\n\n\n\n\n\nNote\n\n\n\nU stvarnosti, propulzijski stupanj djelovanja \\(\\eta_D\\) nije konstantan jer se mijenja s brzinom i opterećenjem vijka. Za precizniji proračun potrebno je koristiti karakteristike vijka (e: propeller open water diagram) i krivulju snage motora. No, gornja aproksimacija daje dovoljno dobre rezultate za inženjersku procjenu.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Vježba: Pad brzine broda na valovitom moru</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-pad-brzine.html#procedura",
+    "href": "vjezba-pad-brzine.html#procedura",
+    "title": "16  Vježba: Pad brzine broda na valovitom moru",
+    "section": "16.4 Procedura",
+    "text": "16.4 Procedura\n\nIzračunati krivulju otpora na mirnoj vodi \\(R_{CW}(V)\\), npr. pomoću Maxsurf Resistance ili nekom drugom metodom (Holtrop-Mennen, ispitivanja u bazenu). Uključiti otpor privjesaka, korelacijski dodatak i sl.\nIzračunati krivulju dodatnog otpora na valovima \\(\\overline{R_W}(V)\\) za zadano stanje mora, npr. prema Maxsurf Motions (koji koristi Gerritsma-Beukelman metodu temeljenu na teoriji vrpci) ili nekom drugom metodom.\nIzračunati otpor vjetra \\(R_{Wind}\\) prema brzini vjetra za zadano stanje mora, projiciranoj površini broda izloženoj vjetru (e: transverse windage area) i koeficijentu otpora zraka: \\[R_{Wind} = \\frac{1}{2} \\rho_{air} \\cdot C_D \\cdot A_T \\cdot V_{wind}^2\\]\nZbrojiti krivulje u krivulju ukupnog otpora na valovitom moru: \\[R_T(V) = R_{CW}(V) + \\overline{R_W}(V) + R_{Wind}\\]\nNulta iteracija – izračunati prvu aproksimaciju brzine uvođenjem grube pretpostavke \\(V_W \\approx V\\) (tj. \\(\\Delta V \\rightarrow 0\\)), očitavanjem \\(R_{CW}\\) i \\(R_T\\) na projektnoj brzini \\(V\\): \\[V_{W,0} = V \\cdot \\frac{R_{CW}(V)}{R_T(V)}\\]\nPrva iteracija – za dobivenu brzinu \\(V_{W,0}\\) ponoviti proračun, očitavanjem otpora \\(R_T\\) na upravo izračunatoj brzini: \\[V_{W,1} = V \\cdot \\frac{R_{CW}(V)}{R_T(V_{W,0})}\\]\nPonavljati korak 6 dok se rezultat ne ustali (konvergira). Obično su dovoljne 2–3 iteracije.\nIzračunati pad brzine: \\[\\Delta V = V - V_W\\]",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Vježba: Pad brzine broda na valovitom moru</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-pad-brzine.html#zadatak",
+    "href": "vjezba-pad-brzine.html#zadatak",
+    "title": "16  Vježba: Pad brzine broda na valovitom moru",
+    "section": "16.5 Zadatak",
+    "text": "16.5 Zadatak\nPrema opisanoj proceduri i zadanom brodu potrebno je izračunati pad brzine broda uslijed valova, ukoliko brod inače plovi brzinom od 17 čvorova na mirnom moru. Razmatrati:\n\nSmjer valova: pramčani valovi (e: head seas, \\(\\mu = 180°\\))\nSpektar valova: jednoparametarski Pierson-Moskowitz spektar (potpuno razvijeno more)\nZnačajna valna visina: \\(H_S = 3\\) m\n\nKoraci:\n\nU Maxsurf Resistance izračunati krivulju otpora na mirnoj vodi \\(R_{CW}(V)\\) za raspon brzina od 0 do 20 čvorova.\nU Maxsurf Motions izračunati krivulju dodatnog otpora na valovima \\(\\overline{R_W}(V)\\) za zadano stanje mora i pramčane valove.\nZanemariti otpor vjetra (\\(R_{Wind} = 0\\)) ili ga procijeniti prema Beaufortovoj ljestvici za \\(H_S = 3\\) m (Bf 5, \\(V_{wind} \\approx 10\\) m/s).\nU MS Excelu tablično zbrojiti \\(R_{CW}\\) i \\(\\overline{R_W}\\) te nacrtati graf obje krivulje i njihov zbroj \\(R_T\\).\nPrimijeniti iterativni postupak za izračun \\(V_W\\) i \\(\\Delta V\\).\nRezultat izraziti u čvorovima i kao postotak projektne brzine.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Vježba: Pad brzine broda na valovitom moru</span>"
+    ]
+  }
+]

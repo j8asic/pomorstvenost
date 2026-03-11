@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Odziv broda na valovima – Pomorstvenost i opterećenja</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./operativnost.html" rel="next">
+<link href="./spektralni-opis.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b6a12c9578bfb722807b20cdaaf1b8df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./osnovni-pojmovi.html">Teorija</a></li><li class="breadcrumb-item"><a href="./odziv-broda.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Odziv broda na valovima</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Pomorstvenost i opterećenja</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predgovor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Teorija</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./osnovni-pojmovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Osnovni pojmovi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./opterecenja-na-konstrukciju.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Opterećenja na konstrukciju</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./morski-valovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Morski valovi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./matematicki-opis-valova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matematički opis morskih valova</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spektralni-opis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spektralni opis stanja mora</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./odziv-broda.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Odziv broda na valovima</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./operativnost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Utjecaj pomorstvenosti na operativnost</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Vježbe</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-hidrostatika-pontona.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Vježba: Hidrostatičke značajke poprečno nagnutog pontona</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-ljuljanje-broda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Vježba: Ljuljanje broda</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-slamming-green-water.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Vježba: Udaranje pramca i zalijevanje palube</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-val-na-ponton.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vježba: Val na ponton</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-kontejnerski-brod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vježba: Kontejnerski brod u MaxSurf-u</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-razdioba-slucajne-varijable.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vježba: Razdioba slučajne varijable</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-putanja-cestica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Vježba: Putanja valnih čestica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-spustanje-tendera.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Vježba: Spuštanje tendera</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vjezba-pad-brzine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Vježba: Pad brzine broda na valovitom moru</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#pretpostavka-linearnosti-i-frekvencija-susreta" id="toc-pretpostavka-linearnosti-i-frekvencija-susreta" class="nav-link active" data-scroll-target="#pretpostavka-linearnosti-i-frekvencija-susreta"><span class="header-section-number">6.1</span> Pretpostavka linearnosti i frekvencija susreta</a></li>
+  <li><a href="#prijenosne-funkcije-rao" id="toc-prijenosne-funkcije-rao" class="nav-link" data-scroll-target="#prijenosne-funkcije-rao"><span class="header-section-number">6.2</span> Prijenosne funkcije (RAO)</a></li>
+  <li><a href="#spektar-odziva-response-spectrum" id="toc-spektar-odziva-response-spectrum" class="nav-link" data-scroll-target="#spektar-odziva-response-spectrum"><span class="header-section-number">6.3</span> Spektar odziva (Response Spectrum)</a></li>
+  <li><a href="#jednadžbe-gibanja" id="toc-jednadžbe-gibanja" class="nav-link" data-scroll-target="#jednadžbe-gibanja"><span class="header-section-number">6.4</span> Jednadžbe gibanja</a>
+  <ul class="collapse">
+  <li><a href="#uzbudne-sile-e-excitation-forces" id="toc-uzbudne-sile-e-excitation-forces" class="nav-link" data-scroll-target="#uzbudne-sile-e-excitation-forces"><span class="header-section-number">6.4.1</span> Uzbudne sile (e: Excitation forces)</a></li>
+  <li><a href="#hidrodinamičke-sile-radijacije" id="toc-hidrodinamičke-sile-radijacije" class="nav-link" data-scroll-target="#hidrodinamičke-sile-radijacije"><span class="header-section-number">6.4.2</span> Hidrodinamičke sile radijacije</a></li>
+  <li><a href="#povratne-sile-e-restoring-forces" id="toc-povratne-sile-e-restoring-forces" class="nav-link" data-scroll-target="#povratne-sile-e-restoring-forces"><span class="header-section-number">6.4.3</span> Povratne sile (e: restoring forces)</a></li>
+  </ul></li>
+  <li><a href="#metode-proračuna" id="toc-metode-proračuna" class="nav-link" data-scroll-target="#metode-proračuna"><span class="header-section-number">6.5</span> Metode proračuna</a></li>
+  <li><a href="#kratkoročna-statistika-odziva-broda" id="toc-kratkoročna-statistika-odziva-broda" class="nav-link" data-scroll-target="#kratkoročna-statistika-odziva-broda"><span class="header-section-number">6.6</span> Kratkoročna statistika odziva broda</a>
+  <ul class="collapse">
+  <li><a href="#naplavljivanje-palube-e-deck-wetness-green-water" id="toc-naplavljivanje-palube-e-deck-wetness-green-water" class="nav-link" data-scroll-target="#naplavljivanje-palube-e-deck-wetness-green-water"><span class="header-section-number">6.6.1</span> Naplavljivanje palube (e: <em>Deck wetness / Green water</em>)</a></li>
+  <li><a href="#udaranje-pramca-o-valove-e-bow-slamming" id="toc-udaranje-pramca-o-valove-e-bow-slamming" class="nav-link" data-scroll-target="#udaranje-pramca-o-valove-e-bow-slamming"><span class="header-section-number">6.6.2</span> Udaranje pramca o valove (e: <em>Bow slamming</em>)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./osnovni-pojmovi.html">Teorija</a></li><li class="breadcrumb-item"><a href="./odziv-broda.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Odziv broda na valovima</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Odziv broda na valovima</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Sada kada imamo matematički opis uzburkanog mora (valni spektar), potrebno je odrediti kako će konkretan brod reagirati na to more. Ta reakcija broda naziva se <strong>odziv (e: <em>response</em>)</strong>. Odziv može biti kinematički (npr. amplituda poniranja, kut ljuljanja, brzina, ubrzanje) ili strukturni (npr. moment savijanja trupa, poprečna sila, naprezanje u oplati).</p>
+<section id="pretpostavka-linearnosti-i-frekvencija-susreta" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="pretpostavka-linearnosti-i-frekvencija-susreta"><span class="header-section-number">6.1</span> Pretpostavka linearnosti i frekvencija susreta</h2>
+<p>Temelj moderne analize pomorstvenosti je pretpostavka o linearnosti sustava. Pretpostavlja se da je odziv broda linearno proporcionalan visini (amplitudi) vala koji taj odziv uzrokuje. Ako se visina vala udvostruči, udvostručit će se i amplituda posrtanja ili moment savijanja. Ova pretpostavka vrijedi za blaga i umjerena stanja mora, dok za ekstremne oluje postaje manje točna, ali je i dalje inženjerski najkorisnija.</p>
+<p>Budući da brod plovi određenom brzinom (<span class="math inline">\(V\)</span>) i pod određenim kutom prema valovima (tzv. kut kursa / e: <em>heading angle</em>, <span class="math inline">\(\mu\)</span>), brod ne “osjeća” apsolutnu frekvenciju vala (<span class="math inline">\(\omega\)</span>), već prividnu <strong>frekvenciju susreta (e: <em>encounter frequency</em>)</strong>, <span class="math inline">\(\omega_e\)</span>. Veza između njih dana je izrazom:</p>
+<p><span class="math display">\[\omega_e = \omega - \frac{\omega^2}{g} V \cos \mu\]</span></p>
+</section>
+<section id="prijenosne-funkcije-rao" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="prijenosne-funkcije-rao"><span class="header-section-number">6.2</span> Prijenosne funkcije (RAO)</h2>
+<p><strong>Prijenosna funkcija</strong> ili <strong>Operator amplitudnog odziva (e: <em>Response Amplitude Operator - RAO</em>)</strong> je najvažnija karakteristika svakog broda u pomorstvenosti. RAO nam govori koliki će odziv brod ostvariti kada naiđe na pravilni harmonijski val jedinične amplitude (amplituda = 1 metar) pri određenoj frekvenciji.</p>
+<p>Matematički, RAO je omjer amplitude odziva (<span class="math inline">\(\zeta_{a,odziv}\)</span>) i amplitude pravilnog vala (<span class="math inline">\(\zeta_a\)</span>):</p>
+<p><span class="math display">\[RAO(\omega_e) = \frac{\zeta_{a,odziv}}{\zeta_a}\]</span></p>
+<p>Svaki brod ima jedinstven set RAO krivulja (za svih 6 stupnjeva slobode te za globalna opterećenja). Te krivulje nisu statične, već ovise o:</p>
+<ol type="1">
+<li><strong>Formi trupa i rasporedu masa</strong> (svaki projekt ima svoj RAO).</li>
+<li><strong>Brzini broda (</strong><span class="math inline">\(V\)</span><strong>)</strong>.</li>
+<li><strong>Kutnom smjeru nailaska valova (</strong><span class="math inline">\(\mu\)</span><strong>)</strong> (npr. pramčani valovi / e: <em>head seas</em>, valovi u bok / e: <em>beam seas</em>).</li>
+<li><strong>Stanju krcanja</strong> (promjena gaza i težišta drastično mijenja RAO).</li>
+</ol>
+<p>RAO funkcije dobivaju se ili modelskim ispitivanjima u bazenu (e: <em>towing tank tests</em>) ili, danas najčešće, pomoću specijaliziranih hidrodinamičkih softvera koji se temelje na teoriji vrpci (e: <em>strip theory</em>) ili 3D panel metodama.</p>
+</section>
+<section id="spektar-odziva-response-spectrum" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="spektar-odziva-response-spectrum"><span class="header-section-number">6.3</span> Spektar odziva (Response Spectrum)</h2>
+<p>Kada poznajemo valni spektar mora (<span class="math inline">\(S_W\)</span>) i prijenosnu funkciju broda (<span class="math inline">\(RAO\)</span>), možemo izračunati <strong>spektar odziva broda (e: <em>response spectrum</em>)</strong>, <span class="math inline">\(S_R\)</span>.</p>
+<p>Prema principu linearne superpozicije, energija odziva na nekoj frekvenciji jednaka je energiji vala na toj frekvenciji pomnoženoj s <em>kvadratom</em> prijenosne funkcije. Ovo je temeljna jednadžba pomorstvenosti:</p>
+<p><span class="math display">\[S_R(\omega_e) = |RAO(\omega_e)|^2 \cdot S_W(\omega_e)\]</span></p>
+<p>Ova jednadžba predstavlja elegantno inženjersko rješenje:</p>
+<ul>
+<li><span class="math inline">\(S_W(\omega_e)\)</span> opisuje <strong>okoliš</strong> (stanje mora kakvo jest, neovisno o interakciji s brodom).</li>
+<li><span class="math inline">\(RAO(\omega_e)\)</span> opisuje <strong>brod</strong> (njegove hidrodinamičke značajke, neovisne o trenutnom moru).</li>
+<li><span class="math inline">\(S_R(\omega_e)\)</span> daje konačan rezultat, <strong>kako se taj specifični brod ponaša na tom specifičnom moru</strong>.</li>
+</ul>
+<p>Površina ispod novodobivene krivulje spektra odziva predstavlja nulti spektralni moment odziva (<span class="math inline">\(m_{0,odziv}\)</span>), odnosno varijancu. Iz tog momenta, primjenom Rayleighove razdiobe inženjeri računaju ključne statističke vrijednosti. Na primjer, značajnu amplitudu ljuljanja, najveći očekivani moment savijanja u 3 sata oluje ili vjerojatnost da će pramac udariti o valove (e: <em>slamming probability</em>).</p>
+</section>
+<section id="jednadžbe-gibanja" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="jednadžbe-gibanja"><span class="header-section-number">6.4</span> Jednadžbe gibanja</h2>
+<p>Kada brod plovi na valovima, njegovo gibanje opisuje se sustavom diferencijalnih jednadžbi drugog reda (temeljenih na Newtonovom drugom zakonu). Za svaki stupanj slobode gibanja (<span class="math inline">\(i = 1, \dots, 6\)</span>), suma inercijalnih, prigušnih i povratnih sila mora biti u ravnoteži s vanjskom uzbudnom silom mora:</p>
+<p><span class="math display">\[\sum_{j=1}^{6} \left[ (M_{ij} + A_{ij})\ddot{\eta}_j + B_{ij}\dot{\eta}_j + C_{ij}\eta_j \right] = F_i\]</span></p>
+<p>gdje je <span class="math inline">\(M_{ij}\)</span> matrica mase broda, <span class="math inline">\(\eta_j\)</span> pomak (kretanje), <span class="math inline">\(\dot{\eta}_j\)</span> brzina, a <span class="math inline">\(\ddot{\eta}_j\)</span> ubrzanje. Ostali članovi jednadžbe predstavljaju specifične hidrodinamičke i hidrostatičke sile koje dijelimo u dvije glavne skupine: <strong>uzbudne sile</strong> (desna strana jednadžbe) i <strong>radijacijske/hidrostatičke sile</strong> (lijeva strana jednadžbe).</p>
+<section id="uzbudne-sile-e-excitation-forces" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="uzbudne-sile-e-excitation-forces"><span class="header-section-number">6.4.1</span> Uzbudne sile (e: Excitation forces)</h3>
+<p>Ovo su sile kojima nadolazeći valovi djeluju na brod, nastojeći ga pomaknuti iz stanja ravnoteže. Oznaka u jednadžbi je <span class="math inline">\(F_i\)</span>, a računaju se uz pretpostavku da je brod <em>nepomičan</em> na valovima. Sastoje se od dvije komponente:</p>
+<ul>
+<li><strong>Froude-Krylovljeva sila (e: <em>Froude-Krylov force</em>):</strong> Sila koja nastaje uslijed neometanog tlaka samog vala. Računa se integracijom dinamičkog tlaka vala (iz Airyjeve teorije) po uronjenoj površini trupa, uz pretpostavku da prisutnost broda uopće ne ometa i ne mijenja oblik vala. Ovisi isključivo o geometriji vala i geometriji uronjenog dijela trupa.</li>
+<li><strong>Difrakcijska sila (e: <em>Diffraction force</em>):</strong> U stvarnosti, brod je čvrsto tijelo koje predstavlja prepreku. Kada val udari u nepomični trup, on se odbija i deformira (raspršuje). Difrakcijska sila je korekcija koja uzima u obzir tu promjenu polja tlaka zbog prisutnosti broda. Za brodove čije su dimenzije velike u odnosu na duljinu vala, ova komponenta postaje izuzetno značajna.</li>
+</ul>
+</section>
+<section id="hidrodinamičke-sile-radijacije" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="hidrodinamičke-sile-radijacije"><span class="header-section-number">6.4.2</span> Hidrodinamičke sile radijacije</h3>
+<p>Ove sile reakcije (e: <em>radiation forces</em>) nastaju kao reakcija samog fluida na kretanje broda. Računaju se uz pretpostavku da je more <em>mirno</em>, a da brod prisilno oscilira. Dok brod oscilira, on “gura” vodu oko sebe, stvarajući vlastite valove i trošeći energiju. Radijacijska sila dijeli se na dvije komponente koje ulaze u matricu sustava:</p>
+<ul>
+<li><strong>Dodana masa (e: <em>Added mass</em>),</strong> <span class="math inline">\(A_{ij}\)</span><strong>:</strong> Komponenta radijacijske sile koja je proporcionalna <strong>ubrzanju</strong> broda (<span class="math inline">\(\ddot{\eta}_j\)</span>). Budući da brod pri kretanju mora ubrzavati i određenu masu vode koja ga okružuje, ta se masa vode fiktivno “dodaje” vlastitoj masi broda u jednadžbi. Ovisi o frekvenciji osciliranja i obliku trupa.</li>
+<li><strong>Prigušenje (e: <em>Radiation damping</em>),</strong> <span class="math inline">\(B_{ij}\)</span><strong>:</strong> Komponenta radijacijske sile koja je proporcionalna <strong>brzini</strong> broda (<span class="math inline">\(\dot{\eta}_j\)</span>). Kada brod oscilira, on generira površinske valove koji putuju od broda odnoseći (zračeći) mehaničku energiju. Ovaj gubitak energije djeluje kao prigušivač kretanja broda. Najveće prigušenje javlja se pri valjanju (ljuljanju), zbog čega se često ugrađuju i dodatna viskozna prigušenja (ljuljne kobilice / e: <em>bilge keels</em>).</li>
+</ul>
+</section>
+<section id="povratne-sile-e-restoring-forces" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="povratne-sile-e-restoring-forces"><span class="header-section-number">6.4.3</span> Povratne sile (e: restoring forces)</h3>
+<p>Ove sile teže vratiti brod u početni, uspravni položaj ravnoteže nakon što ga je val pomaknuo. Oznaka u jednadžbi je <span class="math inline">\(C_{ij}\)</span>, a sila je proporcionalna samom <strong>pomaku</strong> (<span class="math inline">\(\eta_j\)</span>). <strong>Povratna sila (e: <em>Restoring force/moment</em>)</strong> je isključivo <strong>hidrostatička</strong> komponenta. Nastaje zbog promjene volumena istisnine (uzgona) i položaja težišta uzgona kada brod zaroni, izroni, nagne se ili posrne. Matrica krutosti <span class="math inline">\(C_{ij}\)</span> je povezana sa hidrostatikom broda, odnosno površinom vodne linije i metacentarskom visinom (e: <em>metacentric height - GM</em>).</p>
+</section>
+</section>
+<section id="metode-proračuna" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="metode-proračuna"><span class="header-section-number">6.5</span> Metode proračuna</h2>
+<p>Budući da stvarni brodovi imaju složenu, trodimenzionalnu geometriju trupa, prijenosne funkcije (RAO) nije moguće izračunati analitički (pomoću jednostavnih formula). U modernoj brodograđevnoj praksi, RAO se određuje na dva osnovna načina: eksperimentalno i numerički.</p>
+<p>Ispitivanje fizičkih modela broda u specijaliziranim bazenima opremljenim generatorima valova (poput <em>Brodarskog instituta</em>). Iako su najpouzdanija metoda i služe za validaciju, izrazito su skupa i dugotrajna, pa se provode samo u završnim fazama projekta.</p>
+<p>Za svakodnevni inženjerski proračun pomorstvenosti koriste se računalni programi temeljeni na hidrodinamičkim teorijama različite složenosti:</p>
+<ul>
+<li><strong>Teorija vrpci (e: <em>Strip theory</em>)</strong> je tradicionalni industrijski standard za konvencionalne, vitke brodove s brzinom napredovanja (<span class="math inline">\(V &gt; 0\)</span>). Brod se reže na niz dvodimenzionalnih poprečnih presjeka (vrpci). Hidrodinamičke sile računaju se za svaku vrpcu zasebno i zatim integriraju po duljini broda. Metoda je iznimno brza i hardverski nezahtjevna. Poznati softveri: <strong>Maxsurf Motions</strong> (bivši Seakeeper), <strong>Shipmo3D</strong>, <strong>PDSTRIP</strong> (open-source), <strong>Octopus</strong> (ABB).</li>
+<li><strong>Panel metoda (e: <em>Panel method</em>)</strong> dijeli trup broda ispod vodne linije na stotine ili tisuće malih ravnih površina (panela). Metoda promatra cijeli 3D oblik odjednom i rješava potencijal strujanja. Znatno je točnija od teorije vrpci za brodove punijih formi, katamarane te odobalne pomorske objekte (platforme) pri nultoj ili maloj brzini, no zahtijeva više računalne snage. Poznati softveri: <strong>DNV Sesam (WADAM/HydroD)</strong>, <strong>WAMIT</strong> (svjetski standard za odobalne objekte), <strong>ANSYS AQWA</strong>, <strong>HydroSTAR</strong> (Bureau Veritas), <strong>Nemoh</strong> (open-source).</li>
+<li><strong>Računalna dinamika fluida (e: <em>Computational Fluid Dynamics - CFD</em>)</strong> je najnaprednija, ali i najsloženija metoda koja rješava Navier-Stokesove jednadžbe. Za razliku od prethodnih metoda koje pretpostavljaju idealan fluid, CFD najčešće uzima u obzir viskoznost vode, turbulentno strujanje, lomljenje valova na pramcu te snažne nelinearne efekte velikih amplituda. Zbog ogromnih zahtjeva za procesorskom snagom koristi se uglavnom za znanstvena istraživanja i specifične probleme. Poznati softveri: <strong>Siemens STAR-CCM+</strong>, <strong>OpenFOAM</strong>, <strong>ANSYS Fluent</strong>, <strong>NUMECA Fine/Marine</strong>.</li>
+</ul>
+</section>
+<section id="kratkoročna-statistika-odziva-broda" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="kratkoročna-statistika-odziva-broda"><span class="header-section-number">6.6</span> Kratkoročna statistika odziva broda</h2>
+<p>Nakon što smo, pomoću prijenosnih funkcija (RAO) i valnog spektra, izračunali <strong>spektar odziva (e: <em>response spectrum</em>)</strong>, površina ispod te krivulje daje nam varijancu odziva, odnosno <strong>nulti spektralni moment odziva (</strong><span class="math inline">\(m_{0R}\)</span><strong>)</strong>.</p>
+<p>Budući da smo ranije utvrdili da se amplitude valova pokoravaju Rayleighovoj razdiobi, uz pretpostavku linearnosti, <strong>amplitude odziva (e: <em>response amplitudes</em>)</strong> također slijede Rayleighovu razdiobu. To nam omogućava izračun ključnih statističkih pokazatelja za bilo koje kretanje ili opterećenje.</p>
+<p>Primjerice, <strong>značajna amplituda odziva (e: <em>significant response amplitude</em>)</strong> je prosjek jedne trećine najvećih amplituda u zadanom stanju mora, a računa se jednako kao i za valove:</p>
+<p><span class="math display">\[R_s = 2 \sqrt{m_{0R}}\]</span></p>
+<p>Općenito, vjerojatnost da će (bilo koja!) amplituda odziva (<span class="math inline">\(r\)</span>) premašiti neku zadanu, kritičnu vrijednost (<span class="math inline">\(R_c\)</span>) računa se integracijom Rayleighove razdiobe:</p>
+<p><span class="math display">\[P(r &gt; R_c) = \exp\left(-\frac{R_c^2}{2m_{0R}}\right)\]</span></p>
+<p>Dva najvažnija i najopasnija nelinearna fenomena koja se analiziraju ovom metodom su <strong>naplavljivanje palube</strong> i <strong>udaranje pramca o valove</strong>. Za oba fenomena ključno je izračunati <strong>relativno gibanje (e: <em>relative motion</em>)</strong> tj. vertikalnu udaljenost između pomične površine vala i pomičnog trupa broda u određenoj točki (najčešće na pramčanoj okomici).</p>
+<section id="naplavljivanje-palube-e-deck-wetness-green-water" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="naplavljivanje-palube-e-deck-wetness-green-water"><span class="header-section-number">6.6.1</span> Naplavljivanje palube (e: <em>Deck wetness / Green water</em>)</h3>
+<p>Naplavljivanje palube događa se kada relativno gibanje mora premaši visinu pramčanog <strong>nadvođa (e: <em>freeboard</em>)</strong>, <span class="math inline">\(F\)</span>. U tom trenutku goleme mase krute vode prelijevaju se preko palube, ugrožavajući opremu, teret i posadu, te uzrokujući snažna udarna opterećenja na valobran (e: <em>breakwater</em>) i nadgrađe.</p>
+<p>Pretpostavimo li da je varijanca relativnog vertikalnog gibanja na pramcu <span class="math inline">\(m_{0s}\)</span>, vjerojatnost da će pojedinačni val uzrokovati naplavljivanje palube iznosi:</p>
+<p><span class="math display">\[P(wet) = \exp\left(-\frac{F^2}{2m_{0s}}\right)\]</span></p>
+<p>Ovaj se izraz u projektiranju koristi za optimizaciju visine pramca, gaza broda te odabir adekvatnog nadvođa prema pravilima o teretnoj vodenoj liniji (e: <em>Load Line Convention</em>).</p>
+</section>
+<section id="udaranje-pramca-o-valove-e-bow-slamming" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="udaranje-pramca-o-valove-e-bow-slamming"><span class="header-section-number">6.6.2</span> Udaranje pramca o valove (e: <em>Bow slamming</em>)</h3>
+<p>Udaranje pramca (<em>slamming</em>) znatno je složeniji i opasniji fenomen od naplavljivanja. Da bi došlo do <em>slamminga</em>, prema poznatoj Ochi-Motterovoj teoriji, moraju se istovremeno ispuniti <strong>dva stroga kinematička uvjeta</strong>:</p>
+<ol type="1">
+<li><strong>Uvjet izranjanja:</strong> Relativno gibanje mora biti veće od lokalnog gaza broda na pramcu (<span class="math inline">\(d\)</span>). Drugim riječima, dno pramca mora potpuno izaći iz vode.</li>
+<li><strong>Uvjet brzine udarca:</strong> Pri ponovnom uranjanju u more, relativna vertikalna brzina udara mora biti veća od određene <strong>kritične brzine (e: <em>critical threshold velocity</em>)</strong>, <span class="math inline">\(v_{cr}\)</span>. Ako brod uroni polako, to nije <em>slam</em>, već obično poniranje. Kritična brzina ovisi o duljini i formi broda.</li>
+</ol>
+<p>Kako su relativno gibanje i relativna brzina statistički nezavisne varijable, ukupna vjerojatnost <em>slamminga</em> (<span class="math inline">\(P(slam)\)</span>) umnožak je vjerojatnosti ispunjavanja prvog i drugog uvjeta:</p>
+<p><span class="math display">\[P(slam) = \exp\left(-\frac{d^2}{2m_{0s}}\right) \cdot \exp\left(-\frac{v_{cr}^2}{2m_{0v}}\right) = \exp\left(-\left(\frac{d^2}{2m_{0s}} + \frac{v_{cr}^2}{2m_{0v}}\right)\right)\]</span></p>
+<p>gdje je:</p>
+<ul>
+<li><span class="math inline">\(m_{0s}\)</span> – nulti spektralni moment (varijanca) relativnog vertikalnog gibanja na pramcu.</li>
+<li><span class="math inline">\(m_{0v}\)</span> – nulti spektralni moment (varijanca) relativne vertikalne brzine na pramcu.</li>
+</ul>
+<p>U praksi, broj udara pramca u vremenskom periodu <span class="math inline">\(T\)</span> računa se množenjem ove vjerojatnosti s ukupnim brojem ciklusa (susreta s valovima) u tom periodu. Ako je vjerojatnost prevelika, kapetan je prisiljen poduzeti <strong>voljni gubitak brzine (e: <em>voluntary speed loss</em>)</strong> ili promijeniti kurs kako bi sačuvao strukturu broda od oštećenja.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./spektralni-opis.html" class="pagination-link" aria-label="Spektralni opis stanja mora">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spektralni opis stanja mora</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./operativnost.html" class="pagination-link" aria-label="Utjecaj pomorstvenosti na operativnost">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Utjecaj pomorstvenosti na operativnost</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
