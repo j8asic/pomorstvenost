@@ -5,20 +5,29 @@ project:
 book:
   title: "Pomorstvenost i opterećenja"
   author: "Josip Bašić"
+  date: "2024-01-19"
   chapters:
     - index.qmd
-    - skripta.md
+    - part: "Teorija"
+      chapters:
+        - osnovni-pojmovi.md
+        - opterecenja-na-konstrukciju.md
+        - morski-valovi.md
+        - matematicki-opis-valova.qmd
+        - spektralni-opis.md
+        - odziv-broda.md
+        - operativnost.md
     - part: "Vježbe"
       chapters:
-        - vjezba-ponton.md
+        - vjezba-hidrostatika-pontona.md
         - vjezba-ljuljanje-broda.md
-        - exercise-slamming-and-green-water.md
+        - vjezba-slamming-green-water.md
         - vjezba-val-na-ponton.md
-        - vjezba-kontejnerski-brod-u-maxsurf-u.md
+        - vjezba-kontejnerski-brod.md
         - vjezba-razdioba-slucajne-varijable.md
-        - vjezba-putanja-vodenih-cestica.md
-        - exercise-tender-launching.md
-        - vjezba-opterecenje-nailaznog-vala-na-dno-pontona.md
+        - vjezba-putanja-cestica.md
+        - vjezba-spustanje-tendera.md
+        - vjezba-pad-brzine.md
 
 format:
   html:

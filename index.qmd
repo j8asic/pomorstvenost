@@ -1,9 +1,25 @@
-# Pomorstvenost i opterećenja
+# Predgovor {.unnumbered}
 
-Dobrodošli u digitalnu skriptu kolegija **Pomorstvenost i opterećenja**.
+Dobrodošli u digitalnu skriptu **Pomorstvenost i opterećenja**.
 
-Ova knjiga sadrži teorijske osnove i vježbe iz područja dinamike broda na valovitom moru.
+Ova knjiga pokriva teorijske osnove i praktične vježbe iz područja dinamike broda na valovitom moru. Namijenjena je studentima brodogradnje, ali može poslužiti i široj inženjerskoj zajednici kao uvod u tematiku pomorstvenosti.
 
-## Sadržaj
-- [Teorijska skripta](skripta.md)
-- [Vježbe](vjezba-ponton.md)
+## Struktura knjige
+
+Knjiga je podijeljena u dva dijela:
+
+**I. Teorija** -- poglavlja koja sustavno obrađuju:
+
+1. **Osnovni pojmovi** -- koordinatni sustav, stupnjevi slobode gibanja, klasifikacija opterećenja
+2. **Opterećenja na konstrukciju** -- lokalna i globalna opterećenja, statička i dinamička opterećenja, pregib i progib
+3. **Morski valovi** -- vrste valova, nastanak i razvoj vjetrovnih valova, mjerenje valova
+4. **Matematički opis morskih valova** -- Airyjeva teorija, nelinearne teorije, Beaufortova ljestvica
+5. **Spektralni opis stanja mora** -- PM i JONSWAP spektri, dijagrami raspršenja, Gaussova i Rayleighova razdioba
+6. **Odziv broda na valovima** -- RAO, spektar odziva, jednadžbe gibanja, metode proračuna, slamming i green water
+7. **Utjecaj pomorstvenosti na operativnost** -- kriteriji operativnosti, dodatni otpor na valovima, gubitak brzine
+
+**II. Vježbe** -- niz proračunskih zadataka koji pokrivaju teme od ponašanja pontona na valovima, ljuljanja broda, spektralne analize, do analize opterećenja u programu Maxsurf.
+
+## Oznake i konvencije
+
+Kroz čitavu skriptu, uz hrvatske nazive navode se i odgovarajući engleski termini u zagradama, označeni kraticom *e:* (npr. pomorstvenost, e: *seakeeping*). Matematičke jednadžbe numerirane su po poglavljima i mogu se referencirati unutar teksta.

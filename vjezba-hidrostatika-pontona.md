@@ -34,82 +34,13 @@ keywords: []
    2. Odrediti širinu integracijskog koraka, *dY* = *B* / *N* 
    3. Izraditi integracijsku tablicu s $N$ redova prema sljedećem predlošku:
 
-~~~{list-table}
-:header-rows: 1
-
-* - **Korak (i)**
-
-  - **Poluširina (Yi)**
-
-  - **Gaz trake (Ti)**
-
-  - **Površina (dAi)**
-
-  - **Horiz. moment (dAi⋅Yi)**
-
-  - **Vert. moment (dAi⋅Ti/2)**
-
-* - 1
-
-  - $-B/2 + dY \cdot (1 - 0.5)$
-
-  - $T_P + (T_S - T_P) \cdot \frac{1 - 0.5}{N}$
-
-  - $T_1 \cdot dY$
-
-  - $dA_1 \cdot Y_1$
-
-  - $dA_1 \cdot (T_1 / 2)$
-
-* - ...
-
-  - ...
-
-  - ...
-
-  - ...
-
-  - ...
-
-  - ...
-
-* - i
-
-  - $-B/2 + dY \cdot (i - 0.5)$
-
-  - $T_P + (T_S - T_P) \cdot \frac{i - 0.5}{N}$
-
-  - $T_i \cdot dY$
-
-  - $dA_i \cdot Y_i$
-
-  - $dA_i \cdot (T_i / 2)$
-
-* - ...
-
-  - …
-
-  - ...
-
-  - ...
-
-  - ...
-
-  - ...
-
-* - $N$
-
-  - $-B/2 + dY \cdot (N - 0.5)$
-
-  - $T_P + (T_S - T_P) \cdot \frac{N - 0.5}{N}$
-
-  - $T_N \cdot dY$
-
-  - $dA_N \cdot Y_N$
-
-  - $dA_N \cdot (T_N / 2)$
-
-~~~
+| **Korak (i)** | **Poluširina (Yi)** | **Gaz trake (Ti)** | **Površina (dAi)** | **Horiz. moment (dAi⋅Yi)** | **Vert. moment (dAi⋅Ti/2)** |
+|---|---|---|---|---|---|
+| 1 | $-B/2 + dY \cdot (1 - 0.5)$ | $T_P + (T_S - T_P) \cdot \frac{1 - 0.5}{N}$ | $T_1 \cdot dY$ | $dA_1 \cdot Y_1$ | $dA_1 \cdot (T_1 / 2)$ |
+| ... | ... | ... | ... | ... | ... |
+| i | $-B/2 + dY \cdot (i - 0.5)$ | $T_P + (T_S - T_P) \cdot \frac{i - 0.5}{N}$ | $T_i \cdot dY$ | $dA_i \cdot Y_i$ | $dA_i \cdot (T_i / 2)$ |
+| ... | ... | ... | ... | ... | ... |
+| $N$ | $-B/2 + dY \cdot (N - 0.5)$ | $T_P + (T_S - T_P) \cdot \frac{N - 0.5}{N}$ | $T_N \cdot dY$ | $dA_N \cdot Y_N$ | $dA_N \cdot (T_N / 2)$ |
 
 6. Proračun istisnine i težišta (zbrajanjem stupaca iz tablice): 
    1. Uronjena površinu presjeka, $A=∫T(Y)dY=∑T_i dY=∑dA_i$
@@ -117,28 +48,15 @@ keywords: []
    3. Visina težišta presjeka, tj. istisnine, $z_B=∑(dA_i T_i/2)/A$
    4. Volumen istisnine pontona,$∇=AL$, a masa istisnine $Δ =∇ ρ$ (gdje je gustoća vode, npr. $1.025 \text{ t/m}^3$)
 
-::: {#fig-pq7GxVrNAL}
-![](images/RGqtVCD1TCdgRglDeB9Q-eaNGa97Lpi2DM3vOmFQm-v1.png){width="60%"}
-
-*Primjer nacrtanog presjeka*
-:::
+![*Primjer nacrtanog presjeka*](images/presjek-pontona.png){#fig-pq7GxVrNAL width="60%"}
 
 
-::: {#fig-KzqSNr3ZwB}
-![](images/RGqtVCD1TCdgRglDeB9Q-bifjB0wLTaX8tGn5TWlp-v1.png){width="30%"}
-
-*Shematski prikaz „midpoint-rule“ numeričke integracije*
-:::
+![*Shematski prikaz „midpoint-rule“ numeričke integracije*](images/midpoint-rule-integracija.png){#fig-KzqSNr3ZwB width="30%"}
 
 
-::: {#fig-Q6r5FUHdvN}
-![](images/RGqtVCD1TCdgRglDeB9Q-6n5RRv99XSsEg4txaaOk-v1.png){width="50%"}
-
-*Primjer nacrtanog presjeka s proračunatim težištem istisnine*
-:::
+![*Primjer nacrtanog presjeka s proračunatim težištem istisnine*](images/presjek-teziste-istisnine.png){#fig-Q6r5FUHdvN width="50%"}
 
 
-## Zadatak
+## Dodatni zadatak
 
 Ako je poznat kut nagiba $\theta$, te koordinate težišta uzgona $B(y_B, z_B)$ i težišta mase $G(0, KG)$, potrebno je odrediti $GZ$ polugu statičkog stabiliteta koristeći geometrijsku transformaciju.
-

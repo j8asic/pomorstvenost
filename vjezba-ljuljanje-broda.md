@@ -57,60 +57,12 @@ Napraviti integracijsku tablicu prema primjeru dolje, na sljedeći način:
 - Izračunati kutnu brzinu $\dot{\phi}(t)$ iz jednadžbe ubrzanja, tj. derivacije brzine koristeći dva prethodna koraka, $\dot{\phi}(t) \approx \frac{\phi(t) - \phi(t - \Delta t)}{\Delta t}$ (primjetite da je jedino $\dot{\phi}(t)$ u jednadžbi nepoznato).
 - Pošto je kutna brzina derivacija nagiba, na sličan način dobiti nagib $\phi(t)$
 
-~~~{list-table}
-:header-rows: 1
-
-* - Korak, $i$
-
-  - Vrijeme, $t$
-
-  - Ubrzanje, $\ddot{\phi}$
-
-  - Brzina, $\dot{\phi}$
-
-  - Nagib, $\phi$
-
-* - 0
-
-  - 0
-
-  - 0
-
-  - $\dot{\phi}_0$
-
-  - $\phi_0$
-
-* - 1
-
-  - $\Delta t_ i$
-
-  - $-2 \zeta\omega_0 \dot{\phi}_{i-1} – \omega_0^2 {\phi}_{i-1}$
-
-  - $\dot{\phi}_{i-1} + \ddot{\phi}_{i} \Delta t$
-
-  - $\phi_{i-1} + \dot{\phi}_{i} \Delta t$
-
-* - ...
-
-  - ...
-
-  - ...
-
-  - …
-
-  - ...
-
-* - *N*
-
-  - $\Delta t_ N$
-
-  - $-2 \zeta\omega_0 \dot{\phi}_{N-1}-\omega_0^2 \phi_{N-1}$
-
-  - $\dot{\phi}_{N-1} + \ddot{\phi}_{N} \Delta t$
-
-  - $\phi_{N-1} + \dot{\phi}_{N} \Delta t$
-
-~~~
+| Korak, $i$ | Vrijeme, $t$ | Ubrzanje, $\ddot{\phi}$ | Brzina, $\dot{\phi}$ | Nagib, $\phi$ |
+|---|---|---|---|---|
+| 0 | 0 | 0 | $\dot{\phi}_0$ | $\phi_0$ |
+| 1 | $\Delta t_i$ | $-2 \zeta\omega_0 \dot{\phi}_{i-1} - \omega_0^2 \phi_{i-1}$ | $\dot{\phi}_{i-1} + \ddot{\phi}_{i} \Delta t$ | $\phi_{i-1} + \dot{\phi}_{i} \Delta t$ |
+| ... | ... | ... | ... | ... |
+| *N* | $\Delta t_N$ | $-2 \zeta\omega_0 \dot{\phi}_{N-1} - \omega_0^2 \phi_{N-1}$ | $\dot{\phi}_{N-1} + \ddot{\phi}_{N} \Delta t$ | $\phi_{N-1} + \dot{\phi}_{N} \Delta t$ |
 
 ### Prikaz i analiza rezultata
 
@@ -118,16 +70,11 @@ Napraviti integracijsku tablicu prema primjeru dolje, na sljedeći način:
 2. Mijenjati ulazne parametre ($B$, $\Delta$, $GMT$) i {u}`napisati zaključak koji objašnjava kako ljuljanje broda ovisi tim parametrima`
 3. Prikazati analitičku krivulju na istom grafu u usporedbi sa numerički dobivenom krivuljom
 
-````{important}
+::: {.callout-important}
 Prisjetimo se: ako je početna brzina ljuljanja $\dot{\phi}_0 = 0$, analitičko rješenje jednadžbe gibanja sa malim prigušenjem ($\zeta << 1$) je: $\phi(t) = \Phi_0 e^{-\zeta\omega_0 t} \cos(\sqrt{1-\zeta^2} \omega_0 t)$
-
-````
-
-::: {#fig-QgxwESX613}
-![](images/RGqtVCD1TCdgRglDeB9Q-LTIsnmj2sNyrn8t1WCRW-v1.png){width="70%"}
-
-*Primjer grafova pri slobodnom ljuljanju (lijevo) te graf nagiba prisilnog ljuljanja (desno)*
 :::
+
+![*Primjer grafova pri slobodnom ljuljanju (lijevo) te graf nagiba prisilnog ljuljanja (desno)*](images/slobodno-ljuljanje-grafovi.png){#fig-QgxwESX613 width="70%"}
 
 
 ## Zadatak: Prisilno ljuljanje
@@ -143,4 +90,3 @@ $$F(t) = \frac{\phi_0}{3} \sin(\omega_F t)$$
 Kružna frekvencija uzbude $\omega_F$ neka bude jednaka jednoj petini ukupnog broja slova u vašem imenu i prezimenu.
 
 Izmijenite formulu za ubrzanje u tablici dodavanjem ovog člana i nacrtajte novi graf.
-

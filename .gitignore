@@ -17,3 +17,5 @@ __pycache__/
 # _toc.yml
 # curvenote.yml
 # blank.mdast.json
+
+**/*.quarto_ipynb
