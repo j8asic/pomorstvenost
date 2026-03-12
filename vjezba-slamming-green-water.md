@@ -1,8 +1,8 @@
 ---
-title: 'Vježba: Udaranje pramca i zalijevanje palube'
-description: ''
+title: Udaranje pramca i zalijevanje palube
+description: ""
 tags: []
-date: '2025-10-07'
+date: 2025-10-07
 keywords: []
 ---
 

@@ -11,13 +11,246 @@ Za potrebe projektiranja brodskih i pomorskih konstrukcija, matematički opis va
    - Zbog svoje stroge matematičke pravilnosti, takvi se valovi nazivaju **idealnim valovima (e: *regular waves*)**. U prirodi su izuzetno rijetki (najbliži im je oblik pravilnog mrtvog mora).
    - Ovi harmonijski valovi su temelj (tzv. komponentni valovi) iz kojih se izgrađuje model uzburkanog mora. Njihovo je poznavanje ključno za linearnu hidrodinamičku analizu jer omogućavaju računanje prijenosnih funkcija (e: *Transfer Functions / RAO*) i primjenu principa superpozicije.
 2. **Spektralne metode (e: *Spectral methods*)** služe za **kratkoročni prikaz (e: *short-term representation*)** realnih, nepravilnih valova na određenoj lokaciji u kratkom vremenskom prozoru (najčešće od 20 minuta do najviše 3 sata, tijekom kojih se pretpostavlja da je oluja konstantna).
-   - Matematički model zahtijeva uvođenje pretpostavki da je izdizanje morske površine slučajan proces koji je **homogen**, **stacionaran (e: *stationary*)** i **ergodičan (e: *ergodic*)**.
    - Primjenom Wiener-Khinchinova teorema i autokorelacijske funkcije određuje se **funkcija gustoće spektra (e: *spectral density function*)**, skraćeno zvana **spektar valova (e: *wave spectrum*)**. Slikovito rečeno, spektar nam pokazuje kako je ukupna energija uzburkanog mora raspodijeljena po različitim frekvencijama komponentnih valova.
    - Uobičajeni 2D spektri koriste se za tzv. **dugobregovite valove (e: *long-crested waves*)**, gdje pretpostavljamo da svi valovi dolaze iz istog smjera. Budući da u stvarnosti valovi dolaze iz više smjerova (**kratkobregoviti valovi / e: *short-crested waves***), za preciznije analize koriste se usmjereni spektri valova (e: *directional wave spectra*).
 3. **Probabilistički opis (e: *Probabilistic description*)** analizira statističku raspodjelu (vjerojatnost pojavljivanja) valnih karakteristika u tom istom kratkom vremenskom razdoblju, ne zamarajući se vremenskim redoslijedom kojim se ti valovi pojavljuju.
    - Osnovna je pretpostavka da je samo izdizanje morske površine **Gaussov proces (e: *Gaussian process*)** s nultom srednjom vrijednošću (razina mirnog mora).
    - Spektralni i probabilistički opisi izravno su povezani: varijanca Gaussove razdiobe jednaka je nultom spektralnom momentu ($m_0$), odnosno ukupnoj površini ispod krivulje spektra valova.
    - Za statistički opis samih *amplituda* valova (ili visina) koristi se **Rayleighova razdioba (e: *Rayleigh distribution*)**. Njenom integracijom računaju se ključne inženjerske veličine, poput **značajne visine vala (e: *significant wave height -*** $H_s$**)**. Probabilističkim metodama određuju se i kratkoročne prognoze ekstremnih vrijednosti (npr. očekivani najveći val u oluji od 3 sata).
+
+## Teorija linearnih valova
+
+Za hidrodinamičku analizu opterećenja i odziva broda, složeno stanje mora potrebno je svesti na osnovnu matematičku komponentu tj. pravilni harmonijski val. Najpoznatiji i u inženjerskoj praksi najčešće korišteni model je **Airyjeva teorija linearnih valova (e: *Airy linear wave theory*)**, razvijena još u 19. stoljeću. Ona se temelji na teoriji potencijalnog strujanja (e: *potential flow theory*) kako bi se složene jednadžbe (Navier-Stokes) mogle linearno riješiti:
+
+1. Morska voda se promatra kao **idealna** tekućina: **nestlačiva** (e: *incompressible*) i **neviskozna** (e: *inviscid*), čime se zanemaruje trenje unutar fluida.
+2. Pretpostavlja se da je strujanje **bezvrtložno** (e: *irrotational flow*), što omogućava definiranje potencijala brzine (e: *velocity potential*), $\Phi$.
+3. Ključna pretpostavka linearizacije je **mala strmina** vala. Pretpostavlja se da je visina vala ($H$) mala u usporedbi s njegovom duljinom ($\lambda$), odnosno da je strmina vala (e: *wave steepness*) $H/\lambda \ll 1$. Tako se granični uvjeti na slobodnoj površini mogu primijeniti na razini mirnog mora ($z = 0$), umjesto na stvarnoj, valovitoj površini.
+
+Pravilni linearni val napreduje u jednom smjeru bez promjene svog oblika. Osnovni geometrijski i kinematički parametri koji ga definiraju su:
+
+- **Valna duljina (e: *wavelength*),** $\lambda$**:** Horizontalna udaljenost između dva uzastopna brijega (ili dola) vala.
+- **Visina vala (e: *wave height*),** $H$**:** Vertikalna udaljenost od dola do brijega vala.
+- **Amplituda vala (e: *wave amplitude*),** $\zeta_a$**:** Udaljenost od razine mirnog mora do brijega vala. Kod linearnih valova vrijedi $\zeta_a = H/2$.
+- **Period vala (e: *wave period*),** $T$**:** Vrijeme potrebno da val prijeđe udaljenost jedne valne duljine $\lambda$.
+- **Brzina faze (e: *phase velocity / celerity*),** $c$**:** Brzina kojom se širi profil vala, definirana kao $c = \lambda / T$.
+
+Iz ovih osnovnih veličina, za potrebe matematičkih jednadžbi izvodimo:
+
+- **Kružnu frekvenciju (e: *angular frequency*):** $\omega = \frac{2\pi}{T}$
+- **Valni broj (e: *wave number*):** $k = \frac{2\pi}{\lambda}$
+
+Jednadžba koja opisuje izdizanje slobodne površine mora (e: *surface elevation*), $\zeta(x,t)$, u smjeru osi $x$ i u vremenu $t$ zadana je jednostavnom harmonijskom funkcijom:
+
+$$\zeta(x,t) = \zeta_a \cos(kx - \omega t)$$
+
+Najvažniji rezultat Airyjeve teorije je povezanost između valne duljine, perioda i dubine mora ($d$). Ta se povezanost naziva **disperzijska relacija (e: *dispersion relation*)**:
+
+$$\omega^2 = g k \tanh(kd)$$
+
+U brodogradnji se najčešće proučava plovidba otvorenim oceanima, gdje je dubina mora znatno veća od polovice valne duljine ($d > \lambda/2$). To područje nazivamo **dubokom vodom (e: *deep water*)**. U dubokoj vodi član $\tanh(kd)$ teži prema $1$, pa se disperzijska relacija drastično pojednostavljuje:
+
+$$\omega^2 = gk$$
+
+Iz ove relacije proizlazi temeljni inženjerki izraz za izračun valne duljine u dubokoj vodi (ako nam je poznat period, koji se najlakše mjeri):
+
+$$\lambda = \frac{g}{2\pi} T^2 \approx 1.56 T^2$$
+
+U dubokoj vodi, čestice vode opisuju **kružne putanje (e: *circular orbits*)**. Promjer tih kružnica na samoj površini jednak je visini vala ($H$). Međutim, kako se spuštamo u dubinu mora (os $z$ usmjerena prema dolje), radijus tih putanja te amplitude brzina i ubrzanja čestica opadaju po **eksponencijalnom zakonu** ($e^{kz}$). Već na dubini jednakoj polovici valne duljine ($z = -\lambda/2$), gibanje čestica postaje zanemarivo (radijus putanje pada na oko 4% površinskog). Upravo zato podmornice u zaronu ne osjećaju utjecaj oluja na površini, a dinamički tlakovi valova na dno velikih brodova znatno su manji od onih na vodenoj liniji.
+
+::: {#fig-putanje-cestica}
+```{=html}
+<div id="airy-widget" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin: 20px 0;">
+    <h4 style="margin-top: 0; color: #333;">Airyjeva teorija: Putanje čestica</h4>
+    
+    <div style="display: flex; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;">
+        <div style="flex: 1; min-width: 150px;">
+            <label style="font-weight: bold; font-size: 14px;">Dubina (d): <span id="val-d" style="color: #007acc;">50</span> m</label><br>
+            <input type="range" id="slider-d" min="5" max="100" value="50" step="1" style="width: 100%;">
+        </div>
+        <div style="flex: 1; min-width: 150px;">
+            <label style="font-weight: bold; font-size: 14px;">Visina (H): <span id="val-H" style="color: #007acc;">4</span> m</label><br>
+            <input type="range" id="slider-H" min="1" max="12" value="4" step="0.5" style="width: 100%;">
+        </div>
+        <div style="flex: 1; min-width: 150px;">
+            <label style="font-weight: bold; font-size: 14px;">Period (T): <span id="val-T" style="color: #007acc;">8</span> s</label><br>
+            <input type="range" id="slider-T" min="3" max="15" value="8" step="0.5" style="width: 100%;">
+        </div>
+    </div>
+
+    <div style="position: relative; width: 100%; padding-top: 50%;"> <canvas id="airy-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #e0f7fa; border-radius: 4px; border: 1px solid #b2ebf2;"></canvas>
+    </div>
+</div>
+
+<script>
+(function() {
+    const canvas = document.getElementById('airy-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Sliders & Labels
+    const valD = document.getElementById('val-d');
+    const valH = document.getElementById('val-H');
+    const valT = document.getElementById('val-T');
+    
+    const sldD = document.getElementById('slider-d');
+    const sldH = document.getElementById('slider-H');
+    const sldT = document.getElementById('slider-T');
+
+    // Constants
+    const g = 9.81;
+    let time = 0;
+    let lastTime = performance.now();
+
+    function resizeCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+    }
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Physics solver for Wave Number (k) using Newton-Raphson or Iteration
+    function getWaveNumber(omega, d) {
+        let k = (omega * omega) / g; // Deep water guess
+        for(let i=0; i<20; i++) {
+            k = (omega * omega) / (g * Math.tanh(k * d));
+        }
+        return k;
+    }
+
+    function draw() {
+        const now = performance.now();
+        const dt = (now - lastTime) / 1000; // in seconds
+        lastTime = now;
+        time += dt;
+
+        // Get params
+        const d = parseFloat(sldD.value);
+        const H = parseFloat(sldH.value);
+        const T = parseFloat(sldT.value);
+        
+        valD.textContent = d;
+        valH.textContent = H;
+        valT.textContent = T;
+
+        const omega = 2 * Math.PI / T;
+        const k = getWaveNumber(omega, d);
+        const amplitude = H / 2;
+
+        // Drawing settings
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.clearRect(0, 0, width, height);
+
+        // Visual scales
+        const pixelsPerMeter = height / (d + H + 10);
+        const zeroY = 30 + H * pixelsPerMeter; // Mean water level Y coordinate
+        const bottomY = zeroY + d * pixelsPerMeter;
+
+        // Draw Seabed
+        ctx.fillStyle = "#c2b280"; // sand color
+        ctx.fillRect(0, bottomY, width, height - bottomY);
+        ctx.strokeStyle = "#8d6e63";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, bottomY);
+        ctx.lineTo(width, bottomY);
+        ctx.stroke();
+
+        // Draw Wave Surface
+        ctx.beginPath();
+        ctx.moveTo(0, zeroY);
+        for(let px = 0; px <= width; px += 5) {
+            const mx = px / pixelsPerMeter; // convert screen x to meters
+            // surface elevation: zeta = A * cos(kx - wt)
+            const zeta = amplitude * Math.cos(k * mx - omega * time);
+            ctx.lineTo(px, zeroY - zeta * pixelsPerMeter); // minus because Y goes down
+        }
+        ctx.lineTo(width, bottomY);
+        ctx.lineTo(0, bottomY);
+        ctx.fillStyle = "rgba(0, 150, 255, 0.2)";
+        ctx.fill();
+        ctx.strokeStyle = "#0288d1";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Draw Particles
+        // We will place a column of 5 particles at the center of the screen
+        const midXPixels = width / 2;
+        const midX = midXPixels / pixelsPerMeter;
+        
+        // Particle depth fractions (0 = surface, 1 = bottom)
+        const fractions = [0, 0.25, 0.5, 0.75, 1.0];
+        
+        fractions.forEach(frac => {
+            const z = -d * frac;
+            
+            // Orbit semi-axes
+            const a = amplitude * (Math.cosh(k * (z + d)) / Math.sinh(k * d));
+            const b = amplitude * (Math.sinh(k * (z + d)) / Math.sinh(k * d));
+            
+            const px0 = midXPixels;
+            const py0 = zeroY - z * pixelsPerMeter;
+
+            // Draw theoretical orbit (ellipse)
+            ctx.beginPath();
+            ctx.ellipse(px0, py0, a * pixelsPerMeter, b * pixelsPerMeter, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = "rgba(0, 0, 0, 0.2)";
+            ctx.lineWidth = 1;
+            ctx.setLineDash([5, 5]);
+            ctx.stroke();
+            ctx.setLineDash([]); // reset
+
+            // Current displacement
+            const xi = -a * Math.sin(k * midX - omega * time);
+            const zeta = b * Math.cos(k * midX - omega * time);
+            
+            const pX = px0 + xi * pixelsPerMeter;
+            const pY = py0 - zeta * pixelsPerMeter; // minus because canvas Y is down
+
+            // Draw particle
+            ctx.beginPath();
+            ctx.arc(pX, pY, 6, 0, 2 * Math.PI);
+            ctx.fillStyle = "#ff5722"; // prominent orange
+            ctx.fill();
+            ctx.strokeStyle = "#fff";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    // Start loop
+    draw();
+})();
+</script>
+```
+
+Vizualizacija putanja čestica prema Airyjevoj teoriji.
+:::
+
+## Ostale valne teorije
+
+Iako je Airyjeva linearna teorija temelj za većinu standardnih hidrodinamičkih proračuna broda na dubokoj vodi, ona postaje neprecizna kada valovi postanu izrazito strmi (velika visina u odnosu na duljinu) ili kada se valovi šire u plitkoj vodi.
+
+Za razliku od idealnih sinusoida, stvarni olujni valovi su asimetrični: imaju oštre, uske i visoke brijegove te plitke, dugačke i zaravnjene dolove. Za precizan opis takvih valova, hidrodinamika koristi **nelinearne valne teorije (e: *non-linear wave theories*)**.
+
+Glavne nelinearne teorije koje se primjenjuju u brodogradnji i odobalnom inženjerstvu su:
+
+- **Stokesove teorije višeg reda (e: *Higher-order Stokes wave theories*):** Matematička proširenja linearne teorije primjenom perturbacijskih metoda. U inženjerskoj praksi najčešće se koriste teorije 2., 3. i 5. reda. Prikladne su za strme valove u dubokoj i prijelaznoj vodi (e: *deep and transitional water*).
+- **Knoidalna teorija (e: *Cnoidal wave theory*):** Temelji se na eliptičkim funkcijama (Korteweg-de Vries jednadžba). Primjenjuje se isključivo za valove u plitkoj vodi (e: *shallow water*), gdje Stokesove teorije prestaju vrijediti.
+- **Teorija usamljenog vala (e: *Solitary wave theory*):** Predstavlja granični slučaj knoidalne teorije za izrazito plitku vodu, gdje se val sastoji samo od jednog brijega koji se kreće potpuno iznad razine mirnog mora, bez dola (npr. tsunami pri dolasku u obalno područje).
+- **Teorija strujne funkcije (e: *Stream function theory*):** Numerički pristup koji je razvio R.G. Dean. Ne oslanja se na analitičke aproksimacije i pokazuje izvrsno podudaranje sa stvarnim, ekstremnim asimetričnim valovima u gotovo svim dubinama.
+
+Odabir ispravne matematičke teorije ključan je korak prije početka bilo kakvog proračuna opterećenja. U tu se svrhu u inženjerskoj praksi standardno koristi dijagram područja primjenjivosti (najpoznatiji je tzv. **Le Méhautéov dijagram**).
+
+Dijagram jasno razgraničava koja je teorija fizikalno najtočnija u ovisnosti o dva bezdimenzionalna parametra:
+
+1. **Parametar plitkosti / relativne dubine vode:** $d / (gT^2)$
+2. **Parametar strmine vala:** $H / (gT^2)$
+
+Pored granica pojedinih teorija, ovaj dijagram definira i apsolutnu fizikalnu **granicu loma vala (e: *breaking limit*)**, iznad koje val više ne može postojati u zadanom obliku već se ruši i pretvara u bijelu pjenu.
 
 ## Dugoročna prognoza valova
 
@@ -32,6 +265,8 @@ Dugoročne prognoze presudne su za određivanje **projektnih valnih opterećenja
 ## Tablice stanja mora
 
 U pomorstvu je uobičajeno korištenje Beaufortove ljestvice vjetra, koja u sebi uključuje statističku vezu između brzine vjetra, stanja mora i značajne visine vala. Beaufortova ljestvica se primjenjuje za izračun brzine vjetra na moru, no vrijedi samo za valove nastale pri lokalnim sinoptičkim uvjetima, odnosno pretpostavlja da nije bilo dovoljno vremena za nastanak potpuno razvijenog mora.
+
+![Beaufortova ljestvica vjetra i stanja mora (izvor: Wikimedia Commons).](https://upload.wikimedia.org/wikipedia/commons/e/e5/Beaufortskala.svg){#fig-beaufort width="100%"}
 
 | Bf | Opis | V, čv | V, m/s | V, km/h | Učinak | H 1/3 , m |
 |---|---|---|---|---|---|---|
@@ -67,113 +302,3 @@ Osim Beaufortove ljestvice vjetra, u brodogradnji se koristi i **međunarodna lj
 | 9 | Fenomenalno (e: *phenomenal*) | >14.0 | >18.6 |
 
 : Međunarodna ljestvica stanja mora (WMO Sea State Code) {#tbl-stanje-mora}
-
-### Jadransko more kao primjer zatvorenog mora
-
-Jadransko more je tipičan primjer **mora ograničenog privjetrištem** (e: *fetch-limited sea*). Najveće privjetrište iznosi oko 800 km duž osi sjeverozapad--jugoistok, dok je poprečno privjetrište znatno kraće (150--200 km). Zbog toga se valovi na Jadranu razvijaju pod utjecajem dva dominantna vjetra:
-
-- **Bura (NE):** Puše okomito na istočnu obalu s vrlo kratkim privjetrištem. Stvara kratke, strme valove visokih frekvencija. Značajna visina rijetko prelazi $H_S = 3$--$4$ m, a periodi su kratki ($T_P = 4$--$6$ s). Za opis bure najprikladniji je JONSWAP spektar s visokim $\gamma$ (4--7).
-- **Jugo (SE):** Puše duž osi Jadrana s mnogo većim privjetrištem. Može razviti veće valove ($H_S$ do 5--6 m u ekstremnim slučajevima) s duljim periodima ($T_P = 7$--$10$ s). JONSWAP spektar sa $\gamma = 2$--$4$ dobro opisuje ove uvjete.
-
-Usporedba s otvorenim oceanom (Sjeverni Atlantik) gdje $H_S$ rutinski doseže 8--12 m s periodima $T_P = 12$--$18$ s jasno pokazuje ograničenja zatvorenih mora. Na @fig-spektri-stanja-mora prikazani su primjeri Pierson-Moskowitz spektara za tipična stanja mora.
-
-```{python}
-#| label: fig-spektri-stanja-mora
-#| fig-cap: "Pierson-Moskowitz spektri valova za tipična stanja mora (SS 3--7)."
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-def pm_spectrum(omega, Hs, Tp):
-    """Pierson-Moskowitz (ITTC) spektar valova."""
-    wp = 2 * np.pi / Tp
-    S = (5 / 16) * Hs**2 * wp**4 * omega**(-5) * np.exp(-5/4 * (omega / wp)**(-4))
-    return S
-
-omega = np.linspace(0.1, 2.5, 500)
-
-sea_states = {
-    "SS 3 ($H_S$=1.0 m, $T_P$=5.5 s)":   (1.0, 5.5),
-    "SS 4 ($H_S$=2.0 m, $T_P$=7.5 s)":   (2.0, 7.5),
-    "SS 5 ($H_S$=3.0 m, $T_P$=9.0 s)":   (3.0, 9.0),
-    "SS 6 ($H_S$=5.0 m, $T_P$=12.0 s)":  (5.0, 12.0),
-    "SS 7 ($H_S$=7.5 m, $T_P$=15.0 s)":  (7.5, 15.0),
-}
-
-fig, ax = plt.subplots(figsize=(8, 4.5))
-for label, (Hs, Tp) in sea_states.items():
-    S = pm_spectrum(omega, Hs, Tp)
-    ax.plot(omega, S, label=label, linewidth=1.5)
-
-ax.set_xlabel(r"Kružna frekvencija, $\omega$ (rad/s)")
-ax.set_ylabel(r"Spektralna gustoća, $S(\omega)$ (m$^2$s)")
-ax.set_xlim(0, 2.5)
-ax.set_ylim(bottom=0)
-ax.legend(fontsize=8)
-ax.grid(True, alpha=0.3)
-fig.tight_layout()
-plt.show()
-```
-
-Kao što je vidljivo na grafu, s porastom stanja mora (veći $H_S$ i $T_P$) spektar postaje širi i viši, što znači da more sadrži više energije raspoređene na nižim frekvencijama. Stanja mora SS 3--4 tipična su za Jadran pri umjerenim vjetrovima, dok SS 6--7 odgovaraju olujnim uvjetima na otvorenom oceanu.
-
-## Teorija linearnih valova
-
-Za hidrodinamičku analizu opterećenja i odziva broda, složeno stanje mora potrebno je svesti na osnovnu matematičku komponentu tj. pravilni harmonijski val. Najpoznatiji i u inženjerskoj praksi najčešće korišteni model je **Airyjeva teorija linearnih valova (e: *Airy linear wave theory*)**, razvijena još u 19. stoljeću. Ona se temelji na teoriji potencijalnog strujanja (e: *potential flow theory*) kako bi se složene jednadžbe (Navier-Stokes) mogle linearno riješiti:
-
-1. Morska voda se promatra kao **idealna** tekućina: **nestlačiva** (e: *incompressible*) i **neviskozna** (e: *inviscid*), čime se zanemaruje trenje unutar fluida.
-2. Pretpostavlja se da je strujanje **bezvrtložno** (e: *irrotational flow*), što omogućava definiranje potencijala brzine (e: *velocity potential*), $\Phi$.
-3. Ključna pretpostavka linearizacije je **mala strmina** vala. Pretpostavlja se da je visina vala ($H$) mala u usporedbi s njegovom duljinom ($\lambda$), odnosno da je strmina vala (e: *wave steepness*) $H/\lambda \ll 1$. Tako se granični uvjeti na slobodnoj površini mogu primijeniti na razini mirnog mora ($z = 0$), umjesto na stvarnoj, valovitoj površini.
-
-Pravilni linearni val napreduje u jednom smjeru bez promjene svog oblika. Osnovni geometrijski i kinematički parametri koji ga definiraju su:
-
-- **Valna duljina (e: *wavelength*),** $\lambda$**:** Horizontalna udaljenost između dva uzastopna brijega (ili dola) vala.
-- **Visina vala (e: *wave height*),** $H$**:** Vertikalna udaljenost od dola do brijega vala.
-- **Amplituda vala (e: *wave amplitude*),** $\zeta_a$**:** Udaljenost od razine mirnog mora do brijega vala. Kod linearnih valova vrijedi $\zeta_a = H/2$.
-- **Period vala (e: *wave period*),** $T$**:** Vrijeme potrebno da val prijeđe udaljenost jedne valne duljine $\lambda$.
-- **Brzina faze (e: *phase velocity / celerity*),** $c$**:** Brzina kojom se širi profil vala, definirana kao $c = \lambda / T$.
-
-Iz ovih osnovnih veličina, za potrebe matematičkih jednadžbi izvodimo:
-
-- **Kružnu frekvenciju (e: *angular frequency*):** $\omega = \frac{2\pi}{T}$
-- **Valni broj (e: *wave number*):** $k = \frac{2\pi}{\lambda}$
-
-Jednadžba koja opisuje izdizanje slobodne površine mora (e: *surface elevation*), $\zeta(x,t)$, u smjeru osi $x$ i u vremenu $t$ zadana je jednostavnom harmonijskom funkcijom:
-
-$$\zeta(x,t) = \zeta_a \cos(kx - \omega t)$$
-
-Najvažniji rezultat Airyjeve teorije je povezanost između valne duljine, perioda i dubine mora ($d$). Ta se povezanost naziva **disperzijska relacija (e: *dispersion relation*)**:
-
-$$\omega^2 = g k \tanh(kd)$$
-
-U brodogradnji se najčešće proučava plovidba otvorenim oceanima, gdje je dubina mora znatno veća od polovice valne duljine ($d > \lambda/2$). To područje nazivamo **dubokom vodom (e: *deep water*)**. U dubokoj vodi član $\tanh(kd)$ teži prema $1$, pa se disperzijska relacija drastično pojednostavljuje:
-
-$$\omega^2 = gk$$
-
-Iz ove relacije proizlazi temeljni inženjerski izraz za izračun valne duljine u dubokoj vodi (ako nam je poznat period, koji se najlakše mjeri):
-
-$$\lambda = \frac{g}{2\pi} T^2 \approx 1.56 T^2$$
-
-U dubokoj vodi, čestice vode opisuju **kružne putanje (e: *circular orbits*)**. Promjer tih kružnica na samoj površini jednak je visini vala ($H$). Međutim, kako se spuštamo u dubinu mora (os $z$ usmjerena prema dolje), radijus tih putanja te amplitude brzina i ubrzanja čestica opadaju po **eksponencijalnom zakonu** ($e^{kz}$). Već na dubini jednakoj polovici valne duljine ($z = -\lambda/2$), gibanje čestica postaje zanemarivo (radijus putanje pada na oko 4% površinskog). Upravo zato podmornice u zaronu ne osjećaju utjecaj oluja na površini, a dinamički tlakovi valova na dno velikih brodova znatno su manji od onih na vodenoj liniji.
-
-## Ostale valne teorije
-
-Iako je Airyjeva linearna teorija temelj za većinu standardnih hidrodinamičkih proračuna broda na dubokoj vodi, ona postaje neprecizna kada valovi postanu izrazito strmi (velika visina u odnosu na duljinu) ili kada se valovi šire u plitkoj vodi.
-
-Za razliku od idealnih sinusoida, stvarni olujni valovi su asimetrični: imaju oštre, uske i visoke brijegove te plitke, dugačke i zaravnjene dolove. Za precizan opis takvih valova, hidrodinamika koristi **nelinearne valne teorije (e: *non-linear wave theories*)**.
-
-Glavne nelinearne teorije koje se primjenjuju u brodogradnji i odobalnom inženjerstvu su:
-
-- **Stokesove teorije višeg reda (e: *Higher-order Stokes wave theories*):** Matematička proširenja linearne teorije primjenom perturbacijskih metoda. U inženjerskoj praksi najčešće se koriste teorije 2., 3. i 5. reda. Prikladne su za strme valove u dubokoj i prijelaznoj vodi (e: *deep and transitional water*).
-- **Knoidalna teorija (e: *Cnoidal wave theory*):** Temelji se na eliptičkim funkcijama (Korteweg-de Vries jednadžba). Primjenjuje se isključivo za valove u plitkoj vodi (e: *shallow water*), gdje Stokesove teorije prestaju vrijediti.
-- **Teorija usamljenog vala (e: *Solitary wave theory*):** Predstavlja granični slučaj knoidalne teorije za izrazito plitku vodu, gdje se val sastoji samo od jednog brijega koji se kreće potpuno iznad razine mirnog mora, bez dola (npr. tsunami pri dolasku u obalno područje).
-- **Teorija strujne funkcije (e: *Stream function theory*):** Numerički pristup koji je razvio R.G. Dean. Ne oslanja se na analitičke aproksimacije i pokazuje izvrsno podudaranje sa stvarnim, ekstremnim asimetričnim valovima u gotovo svim dubinama.
-
-Odabir ispravne matematičke teorije ključan je korak prije početka bilo kakvog proračuna opterećenja. U tu se svrhu u inženjerskoj praksi standardno koristi dijagram područja primjenjivosti (najpoznatiji je tzv. **Le Méhautéov dijagram**).
-
-Dijagram jasno razgraničava koja je teorija fizikalno najtočnija u ovisnosti o dva bezdimenzionalna parametra:
-
-1. **Parametar plitkosti / relativne dubine vode:** $d / (gT^2)$
-2. **Parametar strmine vala:** $H / (gT^2)$
-
-Pored granica pojedinih teorija, ovaj dijagram definira i apsolutnu fizikalnu **granicu loma vala (e: *breaking limit*)**, iznad koje val više ne može postojati u zadanom obliku već se ruši i pretvara u bijelu pjenu.

@@ -1,0 +1,94 @@
+%% LyX 2.5.0 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,croatian]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin2]{inputenc}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\section*{Odreðivanje pada brzine broda na valovitom moru}
+
+\subsection*{Pojmovi}
+\begin{itemize}
+\item $R_{CW}$ - ukupni otpor broda na mirnoj vodi (ukljuèuje otpor trupa,
+privjesci, zraka, ...)
+\item $R_{Wind}$ - dodatni otpor vjetra
+\item $\overline{R_{W}}$ - osrednjeni dodatni otpor uslijed valova
+\item $P_{B}$ - snaga motora na koènici
+\item $V$ - brzina broda na mirnom moru
+\item $V_{W}$ - brzina broda na valovitom moru
+\item $\Delta V$ - pad brzine
+\end{itemize}
+
+\subsection*{Metodologija}
+
+Za brod u plovidbi na odreðenom stanju mora, ukupni otpor zbroj je
+svih komponenti otpora:
+\[
+R_{T}=R_{CW}+R_{Wind}+\overline{R_{W}}.
+\]
+Pad brzine mo¾e se izraèunati ukoliko se pretpostavi da se koristi
+jednaka snaga na mirnoj vodi kao i pri plovidbi na odreðenom stanju
+valovitog mora:
+\[
+P_{B}\left(V\right)=P_{B,W}\left(V_{W}\right),
+\]
+jer je poznata snaga $P_{B}$ za mirno more i projektnu brzinu $V$.
+Pad brzine je definiran kao:
+\[
+\Delta V=V-V_{W}.
+\]
+Najbr¾a aproksimacija mo¾e se dobiti ako pretpostavimo da je iskoristivost
+propulzije jednaka na mirnoj vodi odnosu na valovito more (iako nije).
+Tada mo¾emo izjednaèiti ne samo snage motora (kao u jednad¾bi gore),
+veæ i efektivne snage $P_{E}$, ¹to je produkt otpora i brzine:
+\[
+R_{CW}\left(V\right)\,V=R_{T}\left(V_{W}\right)\,V_{W}.
+\]
+Problem je ¹to je brzina $V_{W}$ trenutno nepoznata. Dolje je dana
+procedura proraèuna pada brine bez kori¹tenja derivacije krivulja
+otpora.
+
+\subsection*{Procedura}
+\begin{enumerate}
+\item Izraèunati krivulju otpora na mirnoj vodi $R_{CW}$, npr. pomoæu Maxsurf
+Resistance + privjesci i sl.
+\item Izraèunati krivulju dodatnog otpora na odreðenom stanju mora $\overline{R_{W}}$,
+npr. prema Maxsurf Motions
+\item Izraèunati krivulju otpora vjetra na odreðenom stanju mora $R_{Wind}$,
+prema brzini vjetra za zadano stanje, projiciranoj povr¹ini broda
+i koeficijentu otpora.
+\item Zbrojiti krivulje u krivulju ukupnog otpora na odreðenom stanju mora,
+$R_{T}$
+\item Izraèunati brzinu uvoðenjem aproksimacije $V\approx V_{W}$, tj. $\Delta V\rightarrow0$,
+oèitavanjem otpora $R_{CW}$ i $R_{T}$ na brzini $V$: 
+\[
+V_{W0}=V\,\frac{R_{CW}\left(V\right)}{R_{T}\left(V\right)}
+\]
+\item Za dobivenu brzinu ponoviti proraèun, oèitavanjem otpora $R_{T}$
+na gore izraèunatoj brzini $V_{W0}$:
+\[
+V_{W}=V\,\frac{R_{CW}\left(V\right)}{R_{T}\left(V_{W0}\right)}
+\]
+\item Korak 6 mo¾ete ponoviti vi¹e puta za bolju konvergenciju.
+\item Izraèunati pad brzine: $\Delta V=V-V_{W}$.
+\end{enumerate}
+
+\subsection*{Zadatak}
+
+Prema danoj proceduri i zadanom brodu potrebno je izraèunati pad brzine
+broda uslijed valova, ukoliko brod inaèe plovi brzinom od 17 èvorova
+na mirnom moru. Razmatrati valove u pramac i jednoparametarski spektar
+za koji znaèajna valna visina iznosi 3 m.
+\end{document}

@@ -14,8 +14,8 @@ book:
         - opterecenja-na-konstrukciju.md
         - morski-valovi.md
         - matematicki-opis-valova.qmd
-        - spektralni-opis.md
-        - odziv-broda.md
+        - spektralni-opis.qmd
+        - odziv-broda.qmd
         - operativnost.md
     - part: "Vježbe"
       chapters:

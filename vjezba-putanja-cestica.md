@@ -1,8 +1,8 @@
 ---
-title: 'Vježba: Putanja valnih čestica'
-description: ''
+title: Putanja valnih čestica
+description: ""
 tags: []
-date: '2026-03-06'
+date: 2026-03-06
 keywords: []
 ---
 

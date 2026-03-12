@@ -1,8 +1,8 @@
 ---
-title: 'Vježba: Razdioba slučajne varijable'
-description: ''
+title: Razdioba slučajne varijable
+description: ""
 tags: []
-date: '2026-03-06'
+date: 2026-03-06
 keywords: []
 ---
 

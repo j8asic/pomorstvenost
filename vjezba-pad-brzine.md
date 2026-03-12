@@ -1,5 +1,5 @@
 ---
-title: 'Vježba: Pad brzine broda na valovitom moru'
+title: Pad brzine broda na valovitom moru
 ---
 
 ## Uvod

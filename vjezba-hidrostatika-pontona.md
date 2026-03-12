@@ -1,8 +1,8 @@
 ---
-title: 'Vježba: Hidrostatičke značajke poprečno nagnutog pontona '
-description: ''
+title: Hidrostatičke značajke poprečno nagnutog pontona
+description: ""
 tags: []
-date: '2025-03-04'
+date: 2025-03-04
 keywords: []
 ---
 

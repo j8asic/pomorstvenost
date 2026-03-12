@@ -1,8 +1,8 @@
 ---
-title: 'Vježba: Ljuljanje broda '
-description: ''
+title: Ljuljanje broda
+description: ""
 tags: []
-date: '2025-03-04'
+date: 2025-03-04
 keywords: []
 ---
 

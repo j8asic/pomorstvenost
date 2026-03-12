@@ -1,5 +1,5 @@
 ---
-title: 'Vježba: Spuštanje tendera'
+title: Spuštanje tendera
 ---
 
 

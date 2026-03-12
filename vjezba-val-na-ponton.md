@@ -1,8 +1,8 @@
 ---
-title: 'Vježba: Val na ponton'
-description: ''
+title: Val na ponton
+description: ""
 tags: []
-date: '2026-03-06'
+date: 2026-03-06
 keywords: []
 ---
 
