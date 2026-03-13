@@ -10,24 +10,24 @@ book:
     - index.qmd
     - part: "Teorija"
       chapters:
-        - osnovni-pojmovi.md
-        - opterecenja-na-konstrukciju.md
-        - morski-valovi.md
+        - osnovni-pojmovi.qmd
+        - opterecenja-na-konstrukciju.qmd
+        - morski-valovi.qmd
         - matematicki-opis-valova.qmd
         - spektralni-opis.qmd
         - odziv-broda.qmd
-        - operativnost.md
+        - operativnost.qmd
     - part: "Vježbe"
       chapters:
-        - vjezba-hidrostatika-pontona.md
-        - vjezba-ljuljanje-broda.md
-        - vjezba-slamming-green-water.md
-        - vjezba-val-na-ponton.md
-        - vjezba-kontejnerski-brod.md
-        - vjezba-razdioba-slucajne-varijable.md
-        - vjezba-putanja-cestica.md
-        - vjezba-spustanje-tendera.md
-        - vjezba-pad-brzine.md
+        - vjezba-hidrostatika-pontona.qmd
+        - vjezba-ljuljanje-broda.qmd
+        - vjezba-slamming-green-water.qmd
+        - vjezba-val-na-ponton.qmd
+        - vjezba-kontejnerski-brod.qmd
+        - vjezba-razdioba-slucajne-varijable.qmd
+        - vjezba-putanja-cestica.qmd
+        - vjezba-spustanje-tendera.qmd
+        - vjezba-pad-brzine.qmd
 
 format:
   html:
