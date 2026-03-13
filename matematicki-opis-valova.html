@@ -408,11 +408,16 @@ window.Quarto = {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Physics solver for Wave Number (k) using Newton-Raphson or Iteration
+    // Physics solver for Wave Number (k) using Newton-Raphson
     function getWaveNumber(omega, d) {
         let k = (omega * omega) / g; // Deep water guess
-        for(let i=0; i<20; i++) {
-            k = (omega * omega) / (g * Math.tanh(k * d));
+        if (k * d < 1) {
+            k = omega / Math.sqrt(g * d); // Shallow water guess
+        }
+        for(let i=0; i<10; i++) {
+            const f = g * k * Math.tanh(k * d) - omega * omega;
+            const df = g * Math.tanh(k * d) + g * k * d / Math.pow(Math.cosh(k * d), 2);
+            k = k - f / df;
         }
         return k;
     }
@@ -456,17 +461,30 @@ window.Quarto = {
         ctx.lineTo(width, bottomY);
         ctx.stroke();
 
-        // Draw Wave Surface
+        // Draw Wave Surface (Lagrangian / Parametric approach)
+        // This ensures the animated surface particle stays exactly on the free surface
         ctx.beginPath();
-        ctx.moveTo(0, zeroY);
-        for(let px = 0; px <= width; px += 5) {
-            const mx = px / pixelsPerMeter; // convert screen x to meters
-            // surface elevation: zeta = A * cos(kx - wt)
-            const zeta = amplitude * Math.cos(k * mx - omega * time);
-            ctx.lineTo(px, zeroY - zeta * pixelsPerMeter); // minus because Y goes down
+        const a_surf = amplitude * (Math.cosh(k * d) / Math.sinh(k * d));
+        const b_surf = amplitude;
+        
+        let first = true;
+        for(let px0 = -100; px0 <= width + 100; px0 += 5) {
+            const mx0 = px0 / pixelsPerMeter;
+            const xi_s = -a_surf * Math.sin(k * mx0 - omega * time);
+            const zeta_s = b_surf * Math.cos(k * mx0 - omega * time);
+            
+            const px = px0 + xi_s * pixelsPerMeter;
+            const py = zeroY - zeta_s * pixelsPerMeter;
+            
+            if (first) {
+                ctx.moveTo(px, py);
+                first = false;
+            } else {
+                ctx.lineTo(px, py);
+            }
         }
-        ctx.lineTo(width, bottomY);
-        ctx.lineTo(0, bottomY);
+        ctx.lineTo(width + 100, bottomY);
+        ctx.lineTo(-100, bottomY);
         ctx.fillStyle = "rgba(0, 150, 255, 0.2)";
         ctx.fill();
         ctx.strokeStyle = "#0288d1";
@@ -549,6 +567,16 @@ Figure&nbsp;4.1: Vizualizacija putanja čestica prema Airyjevoj teoriji.
 <li><strong>Parametar strmine vala:</strong> <span class="math inline">\(H / (gT^2)\)</span></li>
 </ol>
 <p>Pored granica pojedinih teorija, ovaj dijagram definira i apsolutnu fizikalnu <strong>granicu loma vala (e: <em>breaking limit</em>)</strong>, iznad koje val više ne može postojati u zadanom obliku već se ruši i pretvara u bijelu pjenu.</p>
+<div id="fig-valne-teorije" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-valne-teorije-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Water_wave_theories.svg" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-valne-teorije-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Područja primjenjivosti različitih valnih teorija (Le Méhautéov dijagram, izvor: Wikimedia Commons).
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="dugoročna-prognoza-valova" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="dugoročna-prognoza-valova"><span class="header-section-number">4.4</span> Dugoročna prognoza valova</h2>
@@ -569,7 +597,7 @@ Figure&nbsp;4.1: Vizualizacija putanja čestica prema Airyjevoj teoriji.
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Beaufortskala.svg" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beaufort-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.2: Beaufortova ljestvica vjetra i stanja mora (izvor: Wikimedia Commons).
+Figure&nbsp;4.3: Beaufortova ljestvica vjetra i stanja mora (izvor: Wikimedia Commons).
 </figcaption>
 </figure>
 </div>
@@ -581,13 +609,13 @@ Table&nbsp;4.1: Beaufortova ljestvica vjetra
 <div aria-describedby="tbl-beaufort-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 1%">
+<col style="width: 12%">
+<col style="width: 3%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 67%">
+<col style="width: 5%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -803,6 +831,16 @@ Table&nbsp;4.2: Međunarodna ljestvica stanja mora (WMO Sea State Code)
 </tbody>
 </table>
 </div>
+</figure>
+</div>
+<div id="fig-wmo-sea-state" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wmo-sea-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sea-state-code-height.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wmo-sea-state-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.4: Vizualni prikaz stanja mora prema WMO klasifikaciji s prosječnim značajnim visinama valova (izvor: Wikipedia).
+</figcaption>
 </figure>
 </div>
 

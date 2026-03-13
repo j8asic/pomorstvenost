@@ -338,7 +338,7 @@ window.Quarto = {
         </div>
         <div style="flex: 1; min-width: 200px;">
             <label style="font-weight: bold; font-size: 14px;">Period vala, <span style="font-style: italic;">T</span>: <span id="val-T-enc" style="color: #212529;">8.0</span> s</label><br>
-            <input type="range" id="slider-T-enc" min="3" max="15" value="8.0" step="0.5" style="width: 100%;">
+            <input type="range" id="slider-T-enc" min="1" max="10" value="4.0" step="0.5" style="width: 100%;">
             
             <div style="margin-top: 20px; padding: 10px; background: #fff; border: 1px solid #dee2e6; border-radius: 4px;">
                 <div style="font-size: 13px;">ω = <span id="res-omega">0.79</span> rad/s</div>
@@ -414,23 +414,31 @@ window.Quarto = {
         const width = canvas.width;
         const height = canvas.height;
         ctx.clearRect(0, 0, width, height);
-
-        // Fixed pixels per meter scale
-        const pxPerM = width / 250; // show 200m
         
         ctx.save();
         ctx.translate(width/2, height/2);
         
-        // Waves relative motion: speed = omega_e / k
-        // x_crest = (n * L_wave - omega_e * t) / k
-        const phaseOffset = (omega_e * time) % (2 * Math.PI);
+        // Fiksna valna duljina (jednaka duljini nacrtanog broda, 100px)
+        const visual_L_wave = 100;
+        
+        // Želimo da brzina pomicanja valova na ekranu (pix/s) bude 
+        // direktno proporcionalna frekvenciji susreta (omega_e).
+        // Neka osnovni faktor skaliranja za brzinu animacije bude npr. 20
+        const animation_speed = omega_e * 20; 
+        
+        // Udaljenost koju su valovi prešli do sada (akumulirana na temelju brzine i vremena)
+        // phaseOffset raste s vremenom.
+        const phaseOffset = animation_speed * time; 
+        
+        // Modulo osigurava da valovi idu u beskonačnost
+        const shift = phaseOffset % visual_L_wave;
         
         ctx.strokeStyle = "rgba(2, 136, 209, 0.4)";
         ctx.lineWidth = 3;
         
-        const numWaves = Math.ceil(width / (L_wave * pxPerM)) + 2;
+        const numWaves = Math.ceil(width / visual_L_wave) + 2;
         for(let n = -numWaves; n <= numWaves; n++) {
-            const x = (n * L_wave - phaseOffset / k) * pxPerM;
+            const x = n * visual_L_wave - shift;
             ctx.beginPath();
             ctx.moveTo(x, -height);
             ctx.lineTo(x, height);
@@ -438,7 +446,7 @@ window.Quarto = {
             
             // Draw subtle shading for wave shape
             ctx.fillStyle = "rgba(2, 136, 209, 0.05)";
-            ctx.fillRect(x - (L_wave/2) * pxPerM, -height, (L_wave/2) * pxPerM, height*2);
+            ctx.fillRect(x - visual_L_wave/2, -height, visual_L_wave/2, height*2);
         }
         
         // Draw Ship
@@ -507,7 +515,7 @@ window.Quarto = {
 </script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frekvencija-susreta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1: Vizualizacija utjecaja brzine i kuta kursa na frekvenciju susreta. Primijetite kako se valna duljina (razmak između linija) mijenja s periodom <span class="math inline">\(T\)</span>, a frekvencija kojom linije prolaze pored broda ovisi o brzini i smjeru plovidbe. U pramčanim valovima (<span class="math inline">\(\mu = 180^\circ\)</span>) susreti su učestali (<span class="math inline">\(\omega_e &gt; \omega\)</span>), dok su u krmenim valovima (<span class="math inline">\(\mu = 0^\circ\)</span>) rjeđi (<span class="math inline">\(\omega_e &lt; \omega\)</span>).
+Figure&nbsp;6.1: Vizualizacija utjecaja brzine i kuta kursa na frekvenciju susreta. Radi lakšeg uočavanja, valna duljina u animaciji fiksirana je na duljinu broda. Primijetite kako period vala <span class="math inline">\(T\)</span>, brzina <span class="math inline">\(V\)</span> i smjer plovidbe diktiraju brzinu kojom valovi prolaze pored broda (frekvenciju susreta). U pramčanim valovima (<span class="math inline">\(\mu = 180^\circ\)</span>) susreti su učestali (<span class="math inline">\(\omega_e &gt; \omega\)</span>), dok su u krmenim valovima (<span class="math inline">\(\mu = 0^\circ\)</span>) rjeđi (<span class="math inline">\(\omega_e &lt; \omega\)</span>).
 </figcaption>
 </figure>
 </div>
@@ -543,14 +551,227 @@ Figure&nbsp;6.1: Vizualizacija utjecaja brzine i kuta kursa na frekvenciju susre
 <h2 data-number="6.4" class="anchored" data-anchor-id="jednadžbe-gibanja"><span class="header-section-number">6.4</span> Jednadžbe gibanja</h2>
 <p>Kada brod plovi na valovima, njegovo gibanje opisuje se sustavom diferencijalnih jednadžbi drugog reda (temeljenih na Newtonovom drugom zakonu). Za svaki stupanj slobode gibanja (<span class="math inline">\(i = 1, \dots, 6\)</span>), suma inercijalnih, prigušnih i povratnih sila mora biti u ravnoteži s vanjskom uzbudnom silom mora:</p>
 <p><span class="math display">\[\sum_{j=1}^{6} \left[ (M_{ij} + A_{ij})\ddot{\eta}_j + B_{ij}\dot{\eta}_j + C_{ij}\eta_j \right] = F_i\]</span></p>
-<p>gdje je <span class="math inline">\(M_{ij}\)</span> matrica mase broda, <span class="math inline">\(\eta_j\)</span> pomak (kretanje), <span class="math inline">\(\dot{\eta}_j\)</span> brzina, a <span class="math inline">\(\ddot{\eta}_j\)</span> ubrzanje. Ostali članovi jednadžbe predstavljaju specifične hidrodinamičke i hidrostatičke sile koje dijelimo u dvije glavne skupine: <strong>uzbudne sile</strong> (desna strana jednadžbe) i <strong>radijacijske/hidrostatičke sile</strong> (lijeva strana jednadžbe).</p>
+<p>gdje je <span class="math inline">\(M_{ij}\)</span> matrica vlastite mase i momenata inercije masa samog broda (koja je statična, izračunata iz raspodjele težina), <span class="math inline">\(\eta_j\)</span> pomak (kretanje), <span class="math inline">\(\dot{\eta}_j\)</span> brzina, a <span class="math inline">\(\ddot{\eta}_j\)</span> ubrzanje. Ostali članovi jednadžbe predstavljaju specifične hidrodinamičke i hidrostatičke sile koje dijelimo u tri skupine: <strong>uzbudne sile</strong> (desna strana jednadžbe) te <strong>radijacijske sile</strong> i <strong>povratne (hidrostatičke) sile</strong> (lijeva strana jednadžbe).</p>
 <section id="uzbudne-sile-e-excitation-forces" class="level3" data-number="6.4.1">
 <h3 data-number="6.4.1" class="anchored" data-anchor-id="uzbudne-sile-e-excitation-forces"><span class="header-section-number">6.4.1</span> Uzbudne sile (e: Excitation forces)</h3>
-<p>Ovo su sile kojima nadolazeći valovi djeluju na brod, nastojeći ga pomaknuti iz stanja ravnoteže. Oznaka u jednadžbi je <span class="math inline">\(F_i\)</span>, a računaju se uz pretpostavku da je brod <em>nepomičan</em> na valovima. Sastoje se od dvije komponente:</p>
+<p>Ovo su sile kojima nadolazeći valovi djeluju na brod ili odobalni objekt, nastojeći ga pomaknuti iz stanja ravnoteže. Oznaka u jednadžbi je <span class="math inline">\(F_i\)</span>, a računaju se uz pretpostavku da je objekt <em>nepomičan</em> na valovima. Metoda proračuna ovih opterećenja u potpunosti ovisi o veličini i obliku (vitkosti) samog objekta u odnosu na duljinu vala.</p>
+<section id="strukture-velikog-volumena-brodovi" class="level4" data-number="6.4.1.1">
+<h4 data-number="6.4.1.1" class="anchored" data-anchor-id="strukture-velikog-volumena-brodovi"><span class="header-section-number">6.4.1.1</span> Strukture velikog volumena (Brodovi)</h4>
+<p>Karakteristična dimenzija broda (npr. širina <span class="math inline">\(B\)</span>) nije zanemariva u usporedbi s duljinom vala (<span class="math inline">\(\lambda\)</span>), što znači da brod značajno mijenja polje tlakova oko sebe. Za takve objekte uzbudna sila sastoji se od dvije komponente:</p>
 <ul>
 <li><strong>Froude-Krylovljeva sila (e: <em>Froude-Krylov force</em>):</strong> Sila koja nastaje uslijed neometanog tlaka samog vala. Računa se integracijom dinamičkog tlaka vala (iz Airyjeve teorije) po uronjenoj površini trupa, uz pretpostavku da prisutnost broda uopće ne ometa i ne mijenja oblik vala. Ovisi isključivo o geometriji vala i geometriji uronjenog dijela trupa.</li>
-<li><strong>Difrakcijska sila (e: <em>Diffraction force</em>):</strong> U stvarnosti, brod je čvrsto tijelo koje predstavlja prepreku. Kada val udari u nepomični trup, on se odbija i deformira (raspršuje). Difrakcijska sila je korekcija koja uzima u obzir tu promjenu polja tlaka zbog prisutnosti broda. Za brodove čije su dimenzije velike u odnosu na duljinu vala, ova komponenta postaje izuzetno značajna.</li>
+<li><strong>Difrakcijska sila (e: <em>Diffraction force</em>):</strong> U stvarnosti, brod je čvrsto tijelo koje predstavlja prepreku. Kada val udari u nepomični trup, on se odbija i deformira (raspršuje). Difrakcijska sila je hidrodinamička korekcija koja uzima u obzir tu promjenu polja tlaka zbog prisutnosti broda. Za brodove se difrakcija rješava numerički (strip teorijom ili 3D panel metodama).</li>
 </ul>
+</section>
+<section id="vitke-strukture-morisonova-jednadžba" class="level4" data-number="6.4.1.2">
+<h4 data-number="6.4.1.2" class="anchored" data-anchor-id="vitke-strukture-morisonova-jednadžba"><span class="header-section-number">6.4.1.2</span> Vitke strukture (Morisonova jednadžba)</h4>
+<p>Za razliku od brodskih trupova, odobalne platforme (e: <em>offshore platforms</em>), vjetroagregati i cjevovodi često se sastoje od vitkih elemenata. Smatra se da je element vitak ako je njegov karakteristični promjer (<span class="math inline">\(D\)</span>) znatno manji od valne duljine (uobičajeni kriterij je <span class="math inline">\(D &lt; 0.2\lambda\)</span>). U tom slučaju, objekt zanemarivo malo mijenja oblik vala (nema značajne difrakcijske sile), ali zbog malog presjeka dominiraju sile viskoznog trenja.</p>
+<p>Za računanje valnih opterećenja na takve vitke objekte koristi se poluempirijska <strong>Morisonova jednadžba (e: <em>Morison equation</em>)</strong>. Ona ukupnu horizontalnu hidrodinamičku silu po jedinici duljine cilindra u oscilatornom strujanju vala računa kao zbroj <strong>inercijske sile</strong> i sile <strong>viskoznog otpora (e: <em>drag force</em>)</strong>:</p>
+<p><span class="math display">\[f = \underbrace{C_m \rho \frac{\pi D^2}{4} \dot{u}}_{\text{Inercijska sila}} + \underbrace{\frac{1}{2} C_d \rho D u |u|}_{\text{Sila otpora}}\]</span></p>
+<p>gdje su:</p>
+<ul>
+<li><span class="math inline">\(u\)</span> i <span class="math inline">\(\dot{u}\)</span> — horizontalna brzina i ubrzanje čestica vode (iz npr. Airyjeve teorije linearnih valova),</li>
+<li><span class="math inline">\(\rho\)</span> — gustoća morske vode,</li>
+<li><span class="math inline">\(C_m\)</span> — koeficijent inercije (<span class="math inline">\(C_m = 1 + C_a\)</span>, gdje je <span class="math inline">\(C_a\)</span> koeficijent dodane mase),</li>
+<li><span class="math inline">\(C_d\)</span> — koeficijent otpora.</li>
+</ul>
+<p>Morisonova jednadžba uvelike pojednostavljuje proračun opterećenja za inženjere u odobalnoj industriji i brodogradnji kada dimenzioniraju vitke appendages (dodatke) broda.</p>
+<div id="fig-morison-widget" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-morison-widget-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="morison-widget" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin: 20px 0;">
+    <h4 style="margin-top: 0; color: #333; margin-bottom: 15px;" class="anchored">Morisonova jednadžba za isječak cilindra D = 1m</h4>
+    
+    <div style="display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; background: #f8f9fa; padding: 15px; border-radius: 6px;">
+        <div style="flex: 1; min-width: 200px;">
+            <label style="font-weight: bold; font-size: 14px; display: block;">Visina vala (H): <span id="val-H-mor" style="color: #212529;">5.0</span> m</label>
+            <input type="range" id="slider-H-mor" min="1" max="20" value="5.0" step="0.5" style="width: 100%;">
+            
+            <label style="font-weight: bold; font-size: 14px; margin-top: 10px; display: block;">Period vala (T): <span id="val-T-mor" style="color: #212529;">8.0</span> s</label>
+            <input type="range" id="slider-T-mor" min="4" max="20" value="8.0" step="0.5" style="width: 100%;">
+        </div>
+        <div style="flex: 1; min-width: 200px;">
+            <label style="font-weight: bold; font-size: 14px;">Koeficijent inercije (Cm): <span id="val-Cm-mor" style="color: #212529;">2.0</span></label><br>
+            <input type="range" id="slider-Cm-mor" min="1" max="3" value="2.0" step="0.1" style="width: 100%;">
+            
+            <label style="font-weight: bold; font-size: 14px; margin-top: 10px; display: block;">Koeficijent otpora (Cd): <span id="val-Cd-mor" style="color: #212529;">1.0</span></label>
+            <input type="range" id="slider-Cd-mor" min="0.5" max="2" value="1.0" step="0.1" style="width: 100%;">
+        </div>
+        <div style="flex-basis: 100%; margin-top: 10px; padding: 15px; background: #fff; border: 1px solid #dee2e6; border-radius: 4px; font-size: 14px; display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 10px;">
+            <div style="color: #d32f2f; font-weight: bold;">Maks. Sila otpora<br><span id="res-Fdrag" style="font-size: 18px;">0</span> kN/m</div>
+            <div style="color: #1976d2; font-weight: bold;">Maks. Inercijska sila<br><span id="res-Finertia" style="font-size: 18px;">0</span> kN/m</div>
+            <div style="color: #388e3c; font-weight: bold;">Maks. Ukupna sila<br><span id="res-Ftotal" style="font-size: 18px;">0</span> kN/m</div>
+        </div>
+    </div>
+
+    <div style="position: relative; width: 100%; height: 300px; background: #fff; border-radius: 4px; border: 1px solid #ccc;">
+        <canvas id="morison-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px; font-size: 13px;">
+        <span style="color: #d32f2f; font-weight: bold;">— Sila otpora (Drag)</span>
+        <span style="color: #1976d2; font-weight: bold;">— Inercijska sila</span>
+        <span style="color: #388e3c; font-weight: bold; border-bottom: 2px dashed #388e3c;">--- Ukupna sila</span>
+    </div>
+</div>
+
+<script>
+(function() {
+    const canvas = document.getElementById('morison-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    const sldH = document.getElementById('slider-H-mor');
+    const sldT = document.getElementById('slider-T-mor');
+    const sldCm = document.getElementById('slider-Cm-mor');
+    const sldCd = document.getElementById('slider-Cd-mor');
+    
+    const valH = document.getElementById('val-H-mor');
+    const valT = document.getElementById('val-T-mor');
+    const valCm = document.getElementById('val-Cm-mor');
+    const valCd = document.getElementById('val-Cd-mor');
+    
+    const resFd = document.getElementById('res-Fdrag');
+    const resFi = document.getElementById('res-Finertia');
+    const resFt = document.getElementById('res-Ftotal');
+
+    function resizeCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        draw();
+    }
+    
+    window.addEventListener('resize', resizeCanvas);
+
+    function draw() {
+        const D = 1.0; // Fixed diameter
+        const H = parseFloat(sldH.value);
+        const T = parseFloat(sldT.value);
+        const Cm = parseFloat(sldCm.value);
+        const Cd = parseFloat(sldCd.value);
+        
+        valH.textContent = H.toFixed(1);
+        valT.textContent = T.toFixed(1);
+        valCm.textContent = Cm.toFixed(1);
+        valCd.textContent = Cd.toFixed(1);
+
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.clearRect(0, 0, width, height);
+
+        const rho = 1025; // kg/m^3
+        const omega = 2 * Math.PI / T;
+        const Um = Math.PI * H / T; // max velocity at surface (deep water approx)
+        
+        // Data arrays
+        const steps = 100;
+        const f_drag = [];
+        const f_inertia = [];
+        const f_total = [];
+        
+        let max_Fd = 0;
+        let max_Fi = 0;
+        let max_Ft = 0;
+
+        for(let i = 0; i <= steps; i++) {
+            const t = (i / steps) * T; // One full wave period
+            const phase = omega * t;
+            
+            // Kinematics at surface
+            const u = Um * Math.cos(phase);
+            const a = -Um * omega * Math.sin(phase);
+            
+            // Forces per unit length
+            const fd = 0.5 * Cd * rho * D * u * Math.abs(u);
+            const fi = Cm * rho * (Math.PI * D * D / 4) * a;
+            const ft = fd + fi;
+            
+            f_drag.push(fd);
+            f_inertia.push(fi);
+            f_total.push(ft);
+            
+            max_Fd = Math.max(max_Fd, Math.abs(fd));
+            max_Fi = Math.max(max_Fi, Math.abs(fi));
+            max_Ft = Math.max(max_Ft, Math.abs(ft));
+        }
+        
+        resFd.textContent = (max_Fd / 1000).toFixed(2);
+        resFi.textContent = (max_Fi / 1000).toFixed(2);
+        resFt.textContent = (max_Ft / 1000).toFixed(2);
+
+        // Drawing chart
+        const margin = 30;
+        const graphWidth = width - 2 * margin;
+        const graphHeight = height - 2 * margin;
+        
+        // Dynamic scale based on absolute max value
+        const absMaxForce = Math.max(max_Fd, max_Fi, max_Ft) * 1.1; // 10% padding
+        if (absMaxForce === 0) return; // Prevent division by zero
+        
+        const scaleY = (graphHeight / 2) / absMaxForce;
+        const centerY = height / 2;
+
+        // Draw Axes
+        ctx.strokeStyle = "#aaa";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        // X axis
+        ctx.moveTo(margin, centerY);
+        ctx.lineTo(width - margin + 10, centerY);
+        ctx.stroke();
+        
+        // Y axis
+        ctx.beginPath();
+        ctx.moveTo(margin, margin - 10);
+        ctx.lineTo(margin, height - margin);
+        ctx.stroke();
+        
+        // Axis Labels
+        ctx.fillStyle = "#666";
+        ctx.font = "italic 12px sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText("Vrijeme (t)", width - margin + 10, centerY + 15);
+        ctx.textAlign = "left";
+        ctx.fillText("Sila (kN/m)", margin + 5, margin - 10);
+
+        // Function to draw lines
+        function drawLine(data, color, isDashed = false) {
+            ctx.beginPath();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            if (isDashed) ctx.setLineDash([5, 5]);
+            else ctx.setLineDash([]);
+            
+            for(let i = 0; i <= steps; i++) {
+                const x = margin + (i / steps) * graphWidth;
+                const y = centerY - data[i] * scaleY;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            ctx.setLineDash([]); // Reset
+        }
+
+        drawLine(f_drag, "#d32f2f");      // Red for drag
+        drawLine(f_inertia, "#1976d2");   // Blue for inertia
+        drawLine(f_total, "#388e3c", true); // Green dashed for total
+    }
+
+    // Attach events to sliders
+    [sldH, sldT, sldCm, sldCd].forEach(slider => {
+        slider.addEventListener('input', draw);
+    });
+
+    // Initial setup
+    setTimeout(resizeCanvas, 0); // Allow DOM to layout first
+})();
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-morison-widget-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Vizualizacija omjera i faznog pomaka inercijske sile i sile otpora prema Morisonovoj jednadžbi.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="hidrodinamičke-sile-radijacije" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="hidrodinamičke-sile-radijacije"><span class="header-section-number">6.4.2</span> Hidrodinamičke sile radijacije</h3>
@@ -559,10 +780,188 @@ Figure&nbsp;6.1: Vizualizacija utjecaja brzine i kuta kursa na frekvenciju susre
 <li><strong>Dodana masa (e: <em>Added mass</em>),</strong> <span class="math inline">\(A_{ij}\)</span><strong>:</strong> Komponenta radijacijske sile koja je proporcionalna <strong>ubrzanju</strong> broda (<span class="math inline">\(\ddot{\eta}_j\)</span>). Budući da brod pri kretanju mora ubrzavati i određenu masu vode koja ga okružuje, ta se masa vode fiktivno “dodaje” vlastitoj masi broda u jednadžbi. Ovisi o frekvenciji osciliranja i obliku trupa.</li>
 <li><strong>Prigušenje (e: <em>Radiation damping</em>),</strong> <span class="math inline">\(B_{ij}\)</span><strong>:</strong> Komponenta radijacijske sile koja je proporcionalna <strong>brzini</strong> broda (<span class="math inline">\(\dot{\eta}_j\)</span>). Kada brod oscilira, on generira površinske valove koji putuju od broda odnoseći (zračeći) mehaničku energiju. Ovaj gubitak energije djeluje kao prigušivač kretanja broda. Najveće prigušenje javlja se pri valjanju (ljuljanju), zbog čega se često ugrađuju i dodatna viskozna prigušenja (ljuljne kobilice / e: <em>bilge keels</em>).</li>
 </ul>
+<p>Važno je napomenuti da, kada brod ima brzinu napredovanja (<span class="math inline">\(V &gt; 0\)</span>), matrice dodane mase i prigušenja više nisu nužno simetrične, a njihovi članovi (posebno oni koji povezuju poniranje i posrtanje) postaju izrazito zavisni o brzini broda. To znači da brod pri različitim brzinama “osjeća” različitu dodanu masu vode, što izravno utječe na njegove vlastite frekvencije i amplitude odziva.</p>
 </section>
 <section id="povratne-sile-e-restoring-forces" class="level3" data-number="6.4.3">
 <h3 data-number="6.4.3" class="anchored" data-anchor-id="povratne-sile-e-restoring-forces"><span class="header-section-number">6.4.3</span> Povratne sile (e: restoring forces)</h3>
 <p>Ove sile teže vratiti brod u početni, uspravni položaj ravnoteže nakon što ga je val pomaknuo. Oznaka u jednadžbi je <span class="math inline">\(C_{ij}\)</span>, a sila je proporcionalna samom <strong>pomaku</strong> (<span class="math inline">\(\eta_j\)</span>). <strong>Povratna sila (e: <em>Restoring force/moment</em>)</strong> je isključivo <strong>hidrostatička</strong> komponenta. Nastaje zbog promjene volumena istisnine (uzgona) i položaja težišta uzgona kada brod zaroni, izroni, nagne se ili posrne. Matrica krutosti <span class="math inline">\(C_{ij}\)</span> je povezana sa hidrostatikom broda, odnosno površinom vodne linije i metacentarskom visinom (e: <em>metacentric height - GM</em>).</p>
+<p>Zajedničko djelovanje inercijalnih sila (M + A), hidrodinamičkog prigušenja (B) i hidrostatičke krutosti (C) najlakše je shvatiti kroz klasični “Free Decay” test (test slobodnog opadanja), u kojem se brod nagne u mirnoj vodi i pusti da slobodno oscilira dok se potpuno ne umiri.</p>
+<div id="fig-decay-widget" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-decay-widget-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="decay-widget" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin: 20px 0;">
+    <h4 style="margin-top: 0; color: #333; margin-bottom: 15px;" class="anchored">Slobodno ljuljanje (Roll Free Decay)</h4>
+    
+    <div style="display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; background: #f8f9fa; padding: 15px; border-radius: 6px;">
+        <div style="flex: 1; min-width: 200px;">
+            <label style="font-weight: bold; font-size: 14px; display: block;">Dodana masa valjanja (A₄₄): <span id="val-A-dec" style="color: #212529;">20</span>% M₄₄</label>
+            <input type="range" id="slider-A-dec" min="5" max="50" value="20" step="5" style="width: 100%;">
+            <div style="font-size: 11px; color: #666; margin-bottom: 10px;">Povećava ukupnu tromost sustava.</div>
+            
+            <label style="font-weight: bold; font-size: 14px; display: block;">Hidrostatska povratna krutost (GM): <span id="val-C-dec" style="color: #212529;">1.5</span> m</label>
+            <input type="range" id="slider-C-dec" min="0.5" max="4.0" value="1.5" step="0.1" style="width: 100%;">
+            <div style="font-size: 11px; color: #666;">Teži vratiti brod u uspravan položaj.</div>
+        </div>
+        <div style="flex: 1; min-width: 200px;">
+            <label style="font-weight: bold; font-size: 14px; display: block;">Prigušenje valjanja (B₄₄): <span id="val-B-dec" style="color: #212529;">5</span>% kritičnog</label>
+            <input type="range" id="slider-B-dec" min="1" max="20" value="5" step="1" style="width: 100%;">
+            <div style="font-size: 11px; color: #666; margin-bottom: 10px;">Odvođenje energije radijacijom i viskoznim otporom.</div>
+            
+            <div style="margin-top: 15px; padding: 10px; background: #fff; border: 1px solid #dee2e6; border-radius: 4px; font-size: 14px;">
+                <div style="color: #455a64;">Prirodni period ljuljanja (T₄): <span id="res-T-dec" style="font-weight: bold; color: #0d6efd;">0</span> s</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="position: relative; width: 100%; height: 250px; background: #fff; border-radius: 4px; border: 1px solid #ccc;">
+        <canvas id="decay-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
+    </div>
+</div>
+
+<script>
+(function() {
+    const canvas = document.getElementById('decay-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    const sldA = document.getElementById('slider-A-dec');
+    const sldB = document.getElementById('slider-B-dec');
+    const sldC = document.getElementById('slider-C-dec');
+    
+    const valA = document.getElementById('val-A-dec');
+    const valB = document.getElementById('val-B-dec');
+    const valC = document.getElementById('val-C-dec');
+    
+    const resT = document.getElementById('res-T-dec');
+
+    function resizeCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        draw();
+    }
+    
+    window.addEventListener('resize', resizeCanvas);
+
+    function draw() {
+        const addedMassPerc = parseFloat(sldA.value);
+        const dampingPerc = parseFloat(sldB.value);
+        const GM = parseFloat(sldC.value);
+        
+        valA.textContent = addedMassPerc;
+        valB.textContent = dampingPerc;
+        valC.textContent = GM.toFixed(1);
+
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.clearRect(0, 0, width, height);
+
+        // Fictional ship properties
+        const M44 = 10000; // base moment of inertia
+        const disp = 10000; // displacement * g
+        
+        const A44 = M44 * (addedMassPerc / 100);
+        const M_total = M44 + A44;
+        
+        const C44 = disp * GM; // Restoring coefficient
+        
+        // Undamped natural frequency
+        const omega_n = Math.sqrt(C44 / M_total);
+        const T_n = 2 * Math.PI / omega_n;
+        
+        resT.textContent = T_n.toFixed(2);
+        
+        // Damping
+        const B_crit = 2 * Math.sqrt(C44 * M_total);
+        const B44 = B_crit * (dampingPerc / 100);
+        const zeta = B44 / B_crit; // damping ratio
+        
+        // Damped natural frequency
+        const omega_d = omega_n * Math.sqrt(1 - zeta * zeta);
+        
+        // Drawing chart
+        const margin = 30;
+        const graphWidth = width - 2 * margin;
+        const graphHeight = height - 2 * margin;
+        const centerY = height / 2;
+
+        // Draw Axes
+        ctx.strokeStyle = "#aaa";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(margin, centerY);
+        ctx.lineTo(width - margin + 10, centerY);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(margin, margin - 10);
+        ctx.lineTo(margin, height - margin);
+        ctx.stroke();
+        
+        ctx.fillStyle = "#666";
+        ctx.font = "italic 12px sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText("Vrijeme (t)", width - margin + 10, centerY + 15);
+        ctx.textAlign = "left";
+        ctx.fillText("Kut nagiba (°)", margin + 5, margin - 10);
+
+        // Calculate data points
+        const steps = 200;
+        const maxTime = 40; // simulate 40 seconds
+        const initialAngle = 15; // 15 degrees initial roll
+        
+        const scaleY = (graphHeight / 2) / 20; // scale for max 20 degrees
+        
+        ctx.beginPath();
+        ctx.strokeStyle = "#ff5722";
+        ctx.lineWidth = 2;
+        
+        for(let i = 0; i <= steps; i++) {
+            const t = (i / steps) * maxTime;
+            
+            // Free decay equation: e^(-zeta * omega_n * t) * cos(omega_d * t)
+            const decayEnv = Math.exp(-zeta * omega_n * t);
+            const angle = initialAngle * decayEnv * Math.cos(omega_d * t);
+            
+            const x = margin + (t / maxTime) * graphWidth;
+            const y = centerY - angle * scaleY;
+            
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        
+        // Draw exponential decay envelope
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(0,0,0,0.15)";
+        ctx.lineWidth = 1;
+        ctx.setLineDash([5, 5]);
+        for(let i = 0; i <= steps; i++) {
+            const t = (i / steps) * maxTime;
+            const decayEnv = initialAngle * Math.exp(-zeta * omega_n * t);
+            
+            const x = margin + (t / maxTime) * graphWidth;
+            const y = centerY - decayEnv * scaleY;
+            
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+
+    [sldA, sldB, sldC].forEach(slider => {
+        slider.addEventListener('input', draw);
+    });
+
+    setTimeout(resizeCanvas, 0);
+})();
+</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-decay-widget-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Vizualizacija utjecaja dodane mase, prigušenja i povratne sile (GM) na slobodno prigušeno valjanje broda (Free Decay test).
+</figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="metode-proračuna" class="level2" data-number="6.5">
