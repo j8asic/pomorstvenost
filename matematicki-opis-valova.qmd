@@ -109,11 +109,16 @@ U dubokoj vodi, čestice vode opisuju **kružne putanje (e: *circular orbits*)**
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Physics solver for Wave Number (k) using Newton-Raphson or Iteration
+    // Physics solver for Wave Number (k) using Newton-Raphson
     function getWaveNumber(omega, d) {
         let k = (omega * omega) / g; // Deep water guess
-        for(let i=0; i<20; i++) {
-            k = (omega * omega) / (g * Math.tanh(k * d));
+        if (k * d < 1) {
+            k = omega / Math.sqrt(g * d); // Shallow water guess
+        }
+        for(let i=0; i<10; i++) {
+            const f = g * k * Math.tanh(k * d) - omega * omega;
+            const df = g * Math.tanh(k * d) + g * k * d / Math.pow(Math.cosh(k * d), 2);
+            k = k - f / df;
         }
         return k;
     }
@@ -157,17 +162,30 @@ U dubokoj vodi, čestice vode opisuju **kružne putanje (e: *circular orbits*)**
         ctx.lineTo(width, bottomY);
         ctx.stroke();
 
-        // Draw Wave Surface
+        // Draw Wave Surface (Lagrangian / Parametric approach)
+        // This ensures the animated surface particle stays exactly on the free surface
         ctx.beginPath();
-        ctx.moveTo(0, zeroY);
-        for(let px = 0; px <= width; px += 5) {
-            const mx = px / pixelsPerMeter; // convert screen x to meters
-            // surface elevation: zeta = A * cos(kx - wt)
-            const zeta = amplitude * Math.cos(k * mx - omega * time);
-            ctx.lineTo(px, zeroY - zeta * pixelsPerMeter); // minus because Y goes down
+        const a_surf = amplitude * (Math.cosh(k * d) / Math.sinh(k * d));
+        const b_surf = amplitude;
+        
+        let first = true;
+        for(let px0 = -100; px0 <= width + 100; px0 += 5) {
+            const mx0 = px0 / pixelsPerMeter;
+            const xi_s = -a_surf * Math.sin(k * mx0 - omega * time);
+            const zeta_s = b_surf * Math.cos(k * mx0 - omega * time);
+            
+            const px = px0 + xi_s * pixelsPerMeter;
+            const py = zeroY - zeta_s * pixelsPerMeter;
+            
+            if (first) {
+                ctx.moveTo(px, py);
+                first = false;
+            } else {
+                ctx.lineTo(px, py);
+            }
         }
-        ctx.lineTo(width, bottomY);
-        ctx.lineTo(0, bottomY);
+        ctx.lineTo(width + 100, bottomY);
+        ctx.lineTo(-100, bottomY);
         ctx.fillStyle = "rgba(0, 150, 255, 0.2)";
         ctx.fill();
         ctx.strokeStyle = "#0288d1";
@@ -252,6 +270,8 @@ Dijagram jasno razgraničava koja je teorija fizikalno najtočnija u ovisnosti o
 
 Pored granica pojedinih teorija, ovaj dijagram definira i apsolutnu fizikalnu **granicu loma vala (e: *breaking limit*)**, iznad koje val više ne može postojati u zadanom obliku već se ruši i pretvara u bijelu pjenu.
 
+![Područja primjenjivosti različitih valnih teorija (Le Méhautéov dijagram, izvor: Wikimedia Commons).](https://upload.wikimedia.org/wikipedia/commons/e/e0/Water_wave_theories.svg){#fig-valne-teorije width="70%"}
+
 ## Dugoročna prognoza valova
 
 Dok spektralne metode opisuju stanje mora u trajanju od par sati, **dugoročna prognoza valova (e: *long-term wave forecasting*)** je statistički postupak predviđanja valnih amplituda i stanja mora koji se primjenjuje na životni vijek broda (obično 20 do 25 godina).
@@ -268,21 +288,21 @@ U pomorstvu je uobičajeno korištenje Beaufortove ljestvice vjetra, koja u sebi
 
 ![Beaufortova ljestvica vjetra i stanja mora (izvor: Wikimedia Commons).](https://upload.wikimedia.org/wikipedia/commons/e/e5/Beaufortskala.svg){#fig-beaufort width="100%"}
 
-| Bf | Opis | V, čv | V, m/s | V, km/h | Učinak | H 1/3 , m |
-|---|---|---|---|---|---|---|
-| 0 | Tišina | 0-1 | 0-0.2 | 0-1 | More mirno i glatko kao zrcalo. | 0 |
-| 1 | Lahor | 1-3 | 0.3-1.5 | 2-5 | Čovjek ga još ne osjeća. Na moru mali nabori bez pjene. | 0.1-0.2 |
-| 2 | Povjetarac | 4-6 | 1.6-3.3 | 6-12 | Upravo se osjeća na licu. Na moru sitni valovi, kratki ali izraziti. | 0.3-0.5 |
-| 3 | Slabi vjetar | 7-10 | 3.4-5.4 | 13-19 | Lagano pokreće zastavu. Na moru mali valovi, kreste se počinju lomiti. | 0.6-1 |
-| 4 | Umjereni vjetar | 11-16 | 5.5-7.9 | 20-28 | Na moru sve duži valovi, pjena česta. | 1.5 |
-| 5 | Umjereno jaki vjetar | 17-21 | 8.0-10.7 | 29-38 | Na moru umjereni valovi, puno pjene, moguća morska prašina. | 2 |
-| 6 | Jaki vjetar | 22-27 | 10.8-13.8 | 39-49 | Stvaraju se veliki valovi, bijele kreste svuda su rasprostranjene. | 3.5 |
-| 7 | Žestoki vjetar | 28-33 | 13.9-17.1 | 50-61 | More raste. Bijela pjena javlja se u dugim prugama. | 5 |
-| 8 | Olujni vjetar | 34-40 | 17.2-20.7 | 53-74 | Umjereno visoki valovi. Od vrhova kresta otkidaju se vrtlozi morskih kapljica. | 7.5 |
-| 9 | Jaki olujni vjetar | 41-47 | 20.8-24.4 | 75-87 | Visoki valovi, debele pruge pjene niz vjetar, morski dim. | 9.5 |
-| 10 | Orkanski | 48-55 | 24.5-28.4 | 88-102 | Cijela površina mora ima bijeli izgled. Vidljivost smanjena. | 12 |
-| 11 | Jaki orkanski | 56-63 | 28.5-32.6 | 103-117 | Neobično visoki valovi, brodovi se povremeno mogu gubiti iz vida. Posvuda se kreste valova pretvaraju u pjenu. | 15 |
-| 12 | Orkan | 64-71 | 32.7-36.9 | 118-133 | Zrak je pun morske prašine, a more je zbog toga potpuno bijelo. Vidljivost je vrlo smanjena. | >15 |
+| Bf  | Opis                 | V, čv | V, m/s    | V, km/h | Učinak                                                                                                         | H 1/3 , m |
+| --- | -------------------- | ----- | --------- | ------- | -------------------------------------------------------------------------------------------------------------- | --------- |
+| 0   | Tišina               | 0-1   | 0-0.2     | 0-1     | More mirno i glatko kao zrcalo.                                                                                | 0         |
+| 1   | Lahor                | 1-3   | 0.3-1.5   | 2-5     | Čovjek ga još ne osjeća. Na moru mali nabori bez pjene.                                                        | 0.1-0.2   |
+| 2   | Povjetarac           | 4-6   | 1.6-3.3   | 6-12    | Upravo se osjeća na licu. Na moru sitni valovi, kratki ali izraziti.                                           | 0.3-0.5   |
+| 3   | Slabi vjetar         | 7-10  | 3.4-5.4   | 13-19   | Lagano pokreće zastavu. Na moru mali valovi, kreste se počinju lomiti.                                         | 0.6-1     |
+| 4   | Umjereni vjetar      | 11-16 | 5.5-7.9   | 20-28   | Na moru sve duži valovi, pjena česta.                                                                          | 1.5       |
+| 5   | Umjereno jaki vjetar | 17-21 | 8.0-10.7  | 29-38   | Na moru umjereni valovi, puno pjene, moguća morska prašina.                                                    | 2         |
+| 6   | Jaki vjetar          | 22-27 | 10.8-13.8 | 39-49   | Stvaraju se veliki valovi, bijele kreste svuda su rasprostranjene.                                             | 3.5       |
+| 7   | Žestoki vjetar       | 28-33 | 13.9-17.1 | 50-61   | More raste. Bijela pjena javlja se u dugim prugama.                                                            | 5         |
+| 8   | Olujni vjetar        | 34-40 | 17.2-20.7 | 53-74   | Umjereno visoki valovi. Od vrhova kresta otkidaju se vrtlozi morskih kapljica.                                 | 7.5       |
+| 9   | Jaki olujni vjetar   | 41-47 | 20.8-24.4 | 75-87   | Visoki valovi, debele pruge pjene niz vjetar, morski dim.                                                      | 9.5       |
+| 10  | Orkanski             | 48-55 | 24.5-28.4 | 88-102  | Cijela površina mora ima bijeli izgled. Vidljivost smanjena.                                                   | 12        |
+| 11  | Jaki orkanski        | 56-63 | 28.5-32.6 | 103-117 | Neobično visoki valovi, brodovi se povremeno mogu gubiti iz vida. Posvuda se kreste valova pretvaraju u pjenu. | 15        |
+| 12  | Orkan                | 64-71 | 32.7-36.9 | 118-133 | Zrak je pun morske prašine, a more je zbog toga potpuno bijelo. Vidljivost je vrlo smanjena.                   | >15       |
 
 : Beaufortova ljestvica vjetra {#tbl-beaufort}
 
@@ -302,3 +322,5 @@ Osim Beaufortove ljestvice vjetra, u brodogradnji se koristi i **međunarodna lj
 | 9 | Fenomenalno (e: *phenomenal*) | >14.0 | >18.6 |
 
 : Međunarodna ljestvica stanja mora (WMO Sea State Code) {#tbl-stanje-mora}
+
+![Vizualni prikaz stanja mora prema WMO klasifikaciji s prosječnim značajnim visinama valova (izvor: Wikipedia).](images/sea-state-code-height.png){#fig-wmo-sea-state width="100%"}
