@@ -28,6 +28,7 @@ book:
         - vjezba-putanja-cestica.qmd
         - vjezba-spustanje-tendera.qmd
         - vjezba-pad-brzine.qmd
+        - vjezba-wedge-entry.qmd
 
 format:
   html:
