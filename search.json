@@ -842,5 +842,181 @@
       "Vježbe",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Pad brzine broda na valovitom moru</span>"
     ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html",
+    "href": "vjezba-wedge-entry.html",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "",
+    "text": "17.1 1. Uvod",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#uvod",
+    "href": "vjezba-wedge-entry.html#uvod",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "",
+    "text": "17.1.1 1.1 Opis problema\nSimuliramo pad krutog klinastog presjeka u mirnu vodenu površinu konstantnom vertikalnom brzinom. To je klasični benchmark problem za validaciju VOF metoda u kontekstu slamminga — udaranja pramca broda o valove.\nKlin aproksimira poprečni presjek pramca jedrilice. Kada pramac broda izranja iz vode i ponovno uranja velikom brzinom, nastaje impulsno opterećenje (slamming). U vježbi iz pomorstvenosti izračunali ste kritičnu brzinu po Ochiju — ovdje ćemo tu brzinu koristiti kao ulazni parametar simulacije i vidjeti što se fizikalno događa pri udaru.\n\n\n17.1.2 1.2 Fizika problema\nPri udaru klina u vodu:\n\nFormira se tlačni pik na kontaktnoj liniji klina i vode\nVoda se istiskuje prema van formirajući mlaz (jet) uz stjenku klina\nTlak na stjenku je funkcija kuta deadrise-a β i brzine ulaska V\nZa male kutove deadrise-a (β &lt; 5°) tlakovi su ekstremno visoki — zato su fina pramčana rebra podložnija slammingu\n\n\n\n17.1.3 1.3 Validacija\nReferentni analitički rezultat (Wagner, 1932) za maksimalni tlačni koeficijent:\n\\[C_p = \\frac{p}{\\frac{1}{2}\\rho V^2} \\approx \\frac{\\pi}{\\tan^2 \\beta}\\]\nZa β = 25°, \\(C_p\\) ≈ 14.5\nZa β = 30°, \\(C_p\\) ≈ 9.4\nEksperimentalni podaci: Zhao & Faltinsen (1993) — široko korišteni za validaciju CFD kodova.\n\n\n17.1.4 1.4 Parametri simulacije\n\n\n\nParametar\nOznaka\nVrijednost\nNapomena\n\n\n\n\nKut deadrise-a\nβ\n25°\nili iz body plana jedrilice\n\n\nDuljina stranice klina\nc\n0.5 m\npolovina širine presjeka\n\n\nBrzina ulaska\nV\n7.67 m/s\n= u* iz vježbe pomorstvenosti\n\n\nGustoća vode\nρ_w\n1025 kg/m³\nmorska voda\n\n\nGustoća zraka\nρ_a\n1.18 kg/m³\n\n\n\nGravitacija\ng\n9.81 m/s²",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#strategija-simulacije",
+    "href": "vjezba-wedge-entry.html#strategija-simulacije",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.2 2. Strategija simulacije",
+    "text": "17.2 2. Strategija simulacije\nKoristimo overset mesh pristup:\n\nPozadinska regija — veliki pravokutnik, fiksiran, sadrži vodu i zrak\nOverset regija — mali pravokutnik oko klina, giba se zajedno s klinom\n\nPrednost overset pristupa: mesh oko klina se ne deformira, pa nema degradacije kvalitete mreže čak i pri dubokom prodiranju.\nFizikalni modeli:\n\nEulerian Multiphase → Volume of Fluid (VOF)\nImplicit Unsteady\nSegregated Flow\nHRIC shema za transport volumnog udjela\nLaminarni tok (Re je dovoljno nizak za ovaj kratkotrajni udar)\n2D simulacija",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#geometrija-korak-po-korak",
+    "href": "vjezba-wedge-entry.html#geometrija-korak-po-korak",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.3 3. Geometrija (korak po korak)",
+    "text": "17.3 3. Geometrija (korak po korak)\n\n17.3.1 3.1 Kreiranje nove simulacije\n\nPokreni STAR-CCM+\nFile → New Simulation\nSpremi kao wedge_entry_2D.sim\n\n\n\n17.3.2 3.2 Pozadinska domena (Background)\n\nDesni klik na Geometry → Parts → New Shape Part → Block\nPostavi koordinate:\n\nCorner 1: (-1.0, -1.5, -0.025)\nCorner 2: (1.0, 0.5, 0.025)\n\nImenuj part: Background\n\nDomena je 2.0 m široka i 2.0 m visoka. Slobodna površina vode je na y = 0. Ispod vode je 1.5 m (dovoljno dubine za prodiranje klina), iznad vode 0.5 m (dovoljno za zrak).\nDebljina u z-smjeru (0.05 m) je minimalna — koristimo 2D simulaciju.\n\n\n17.3.3 3.3 Klin (Wedge)\nKlin ćemo definirati kao trokut s kutom deadrise-a β = 25°.\nVisina klina: h = c · sin(β) = 0.5 · sin(25°) ≈ 0.211 m\nPoluširina klina: w = c · cos(β) = 0.5 · cos(25°) ≈ 0.453 m\n\nDesni klik na Geometry → 3-D CAD Models → New\nU CAD okruženju, kreiraj Sketch na XY ravnini\nNacrtaj trokut s vrhovima:\n\nVrh klina (dno): (0.0, 0.0)\nLijevi gornji kut: (-0.453, 0.211)\nDesni gornji kut: (0.453, 0.211)\nZatvori gornju stranicu ravnom linijom (od lijevog do desnog kuta)\n\nKoristi Extrude za ekstruziju u z-smjeru za 0.05 m (od z = -0.025 do z = 0.025)\nImenuj body: Wedge\nClose 3-D CAD Model i klikni OK za kreiranje parta\n\n\n\n17.3.4 3.4 Overset domena oko klina\n\nDesni klik na Geometry → Parts → New Shape Part → Block\nPostavi koordinate:\n\nCorner 1: (-0.6, -0.05, -0.025)\nCorner 2: (0.6, 0.35, 0.025)\n\nImenuj part: Overset\n\nOverset blok je nešto veći od klina — ostavlja prostor od ~0.15 m oko klina za interpolaciju između mreža.\n\n\n17.3.5 3.5 Booleanska operacija — izreži klin iz overset domene\n\nDesni klik na Geometry → Parts → New Shape Part → Subtract\n\nTarget Part: Overset\nTool Parts: Wedge\n\nRezultat: overset domena s rupom u obliku klina\n\n\n\n17.3.6 3.6 Provjera geometrije\nProvjeri da imaš dva parta:\n\nBackground — puni pravokutnik\nOverset (ili Subtract) — pravokutnik s klinastom rupom",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#regije-i-rubni-uvjeti",
+    "href": "vjezba-wedge-entry.html#regije-i-rubni-uvjeti",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.4 4. Regije i rubni uvjeti",
+    "text": "17.4 4. Regije i rubni uvjeti\n\n17.4.1 4.1 Kreiranje regija\n\nOznači oba parta u Geometry → Parts\nDesni klik → Assign Parts to Regions\nOdaberi: Create One Region for Each Part\nBoundary mode: Create One Boundary per Part Surface\n\n\n\n17.4.2 4.2 Rubni uvjeti — Background regija\nOtvori Regions → Background:\n\n\n\n\n\n\n\n\nGranica (Surface)\nTip (Type)\nNapomena\n\n\n\n\nTop (y = 0.5)\nPressure Outlet\nAtmosferski tlak, volumni udio zraka = 1\n\n\nBottom (y = -1.5)\nPressure Outlet\nHidrostatski tlak, volumni udio vode = 1\n\n\nLeft (x = -1.0)\nPressure Outlet\nSlobodni izlaz\n\n\nRight (x = 1.0)\nPressure Outlet\nSlobodni izlaz\n\n\nFront (z = 0.025)\nSymmetry\n2D simulacija\n\n\nBack (z = -0.025)\nSymmetry\n2D simulacija\n\n\n\nZa postavljanje tipa: desni klik na granicu → Type → odaberi tip.\nDetaljne postavke bočnih i donjih Pressure Outlet granica:\nZa svaki pressure outlet koji je u kontaktu s vodom (Bottom, Left, Right):\n\nKlikni na granicu → Physics Values → Pressure\nPostavi: Field Function → ručno definiraj hidrostatski tlak (vidi Sekciju 7)\nPhysics Values → Volume Fraction → postavi profil: voda = 1 ispod y = 0, zrak = 1 iznad y = 0\n\nZa Top pressure outlet: tlak = 0 Pa (gauge), Volume Fraction zraka = 1.0.\n\n\n17.4.3 4.3 Rubni uvjeti — Overset regija\nOtvori Regions → Overset (Subtract):\n\n\n\n\n\n\n\n\nGranica\nTip\nNapomena\n\n\n\n\nWedge surface (unutarnje stjenke klina)\nWall\nNo-slip, nepropusna stjenka\n\n\nSve vanjske plohe overset bloka\nOverset Mesh\nInterpolacijska zona\n\n\nFront/Back (z-plohe)\nSymmetry\n2D\n\n\n\nVažno: Vanjske plohe overset bloka (top, bottom, left, right) moraju biti tipa Overset Mesh, NE wall ili symmetry. To je ključno za funkcioniranje overset interpolacije.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#fizikalni-modeli-physics-continuum",
+    "href": "vjezba-wedge-entry.html#fizikalni-modeli-physics-continuum",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.5 5. Fizikalni modeli (Physics Continuum)",
+    "text": "17.5 5. Fizikalni modeli (Physics Continuum)\n\n17.5.1 5.1 Kreiranje physics continuuma\n\nDesni klik na Continua → Physics 1\nRedom odaberi modele:\n\n\n\n\n\n\n\n\nKategorija\nOdabir\n\n\n\n\nSpace\nTwo Dimensional\n\n\nTime\nImplicit Unsteady\n\n\nMaterial\nEulerian Multiphase\n\n\nEulerian Multiphase Model\nVolume of Fluid (VOF)\n\n\nOptional Models\nSegregated Flow\n\n\nOptional Models\nGradients\n\n\nOptional Models\nVOF Waves (NEMOJ uključiti — koristimo Field Function za inicijalizaciju)\n\n\n\n\n\n17.5.2 5.2 Definiranje faza\nPod Continua → Physics 1 → Models → Eulerian Multiphase → Eulerian Phases:\nFaza 1: Voda 1. Desni klik → New → imenuj Water 2. Pod Water → Models: Gas/Liquid → Liquid, odaberi Constant Density 3. Pod Water → Material Properties: - Density: 1025 kg/m³\nFaza 2: Zrak 1. Desni klik → New → imenuj Air 2. Pod Air → Models: Gas/Liquid → Gas, odaberi Constant Density 3. Pod Air → Material Properties: - Density: 1.18 kg/m³ - Dynamic Viscosity: 1.85e-5 Pa·s\n\n\n17.5.3 5.3 Gravitacija\n\nPod Continua → Physics 1 → Reference Values → Gravity\nPostavi: [0.0, -9.81, 0.0] m/s²\n\n\n\n17.5.4 5.4 Turbulencija\nZa ovaj problem ne trebamo turbulentni model — udarni fenomen je kratkotrajni i konvekcijski dominiran. Pod Models postavi:\n\nViscous Regime: Laminar",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#mreža-mesh",
+    "href": "vjezba-wedge-entry.html#mreža-mesh",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.6 6. Mreža (Mesh)",
+    "text": "17.6 6. Mreža (Mesh)\n\n17.6.1 6.1 Mesher odabir\nZa obje regije:\n\nDesni klik na regiju → Mesh → Select Meshing Model\nOdaberi: Trimmed Cell Mesher + Surface Remesher\nZa Overset regiju dodatno: Prism Layer Mesher (za granični sloj na klinu)\n\n\n\n17.6.2 6.2 Postavke mreže — Background\n\n\n\nParametar\nVrijednost\n\n\n\n\nBase Size\n0.02 m\n\n\nTarget Surface Size\n100% of Base (0.02 m)\n\n\nMinimum Surface Size\n25% of Base (0.005 m)\n\n\n\nProfinjena zona oko slobodne površine:\n\nDesni klik na Background → Mesh → Custom Controls → New → Volumetric Control\nKreiraj Shape Part → Block za refinement:\n\nCorner 1: (-1.0, -0.1, -0.025)\nCorner 2: (1.0, 0.1, 0.025)\n\nPridruži taj block volumetric controlu\nPostavi Custom Size → Relative to Base: 25% (= 0.005 m)\n\nOvo profinjenje hvata slobodnu površinu s ~5 mm rezolucijom.\nDodatno profinjenje zone udara:\n\nJoš jedan volumetric control:\n\nCorner 1: (-0.6, -0.5, -0.025)\nCorner 2: (0.6, 0.15, 0.025)\n\nCustom Size: 50% of Base (= 0.01 m)\n\n\n\n17.6.3 6.3 Postavke mreže — Overset\n\n\n\nParametar\nVrijednost\n\n\n\n\nBase Size\n0.005 m\n\n\nPrism Layers\n3\n\n\nPrism Layer Total Thickness\n0.002 m\n\n\nPrism Layer Stretching\n1.3\n\n\n\nMreža oko klina je finija jer trebamo dobro razlučiti tlačni pik na stjenki.\n\n\n17.6.4 6.4 Generiranje mreže\n\nDesni klik na Mesh u stablu → Generate Volume Mesh\nProvjeri mesh u vizualizaciji — trebao bi imati ~10 000–30 000 ćelija ukupno (brzo za 2D!)\n\nProvjera: Overset blok mora imati barem 4–5 slojeva ćelija između stjenke klina i ruba overset zone za ispravnu interpolaciju.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#početni-i-rubni-uvjeti-za-vof",
+    "href": "vjezba-wedge-entry.html#početni-i-rubni-uvjeti-za-vof",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.7 7. Početni i rubni uvjeti za VOF",
+    "text": "17.7 7. Početni i rubni uvjeti za VOF\n\n17.7.1 7.1 Definiranje hidrostatskog tlaka (Field Function)\n\nDesni klik na Tools → Field Functions → New → Scalar\nImenuj: HydrostaticPressure\nDefinition (formula):\n\n($Centroid[1] &lt; 0) ? -1025*9.81*$Centroid[1] : 0\nOvo daje p = ρ·g·|y| za y &lt; 0 (ispod slobodne površine), i p = 0 iznad.\n$Centroid[1] je y-koordinata centra ćelije u STAR-CCM+.\n\n\n17.7.2 7.2 Inicijalizacija volumnog udjela\n\nPod Continua → Physics 1 → Initial Conditions → Volume Fraction\nZa fazu Water: Postavi Field Function:\n\n($Centroid[1] &lt; 0) ? 1.0 : 0.0\n\nZa fazu Air: automatski je komplement (1 - water)\n\n\n\n17.7.3 7.3 Inicijalizacija tlaka\n\nPod Initial Conditions → Pressure\nPostavi na field function HydrostaticPressure\n\n\n\n17.7.4 7.4 Inicijalizacija brzine\n\nPod Initial Conditions → Velocity\nPostavi: [0.0, 0.0, 0.0] m/s — tekućina je u mirovanju",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#gibanje-klina-prescribed-motion",
+    "href": "vjezba-wedge-entry.html#gibanje-klina-prescribed-motion",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.8 8. Gibanje klina (Prescribed Motion)",
+    "text": "17.8 8. Gibanje klina (Prescribed Motion)\n\n17.8.1 8.1 Kreiranje Motion objekta\n\nDesni klik na Tools → Motions → New → Translation\nImenuj: WedgeDrop\nPod WedgeDrop:\n\nVelocity: [0.0, -7.67, 0.0] m/s\n\n\nNegativna y-brzina — klin pada prema dolje. Vrijednost 7.67 m/s odgovara kritičnoj brzini u* iz vježbe pomorstvenosti.\n\n\n17.8.2 8.2 Pridruživanje gibanja Overset regiji\n\nKlikni na Regions → Overset\nU Properties panelu, pod Motion → odaberi WedgeDrop\n\nCijela overset regija (s klinom) sada se giba prema dolje konstantnom brzinom.\n\n\n17.8.3 8.3 Pozicija klina na početku\nVrh klina na početku treba biti na y = 0 (na slobodnoj površini) ili neposredno iznad (y = 0.001 m). Ako treba, prilagodi geometriju.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#overset-interface",
+    "href": "vjezba-wedge-entry.html#overset-interface",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.9 9. Overset Interface",
+    "text": "17.9 9. Overset Interface\n\n17.9.1 9.1 Kreiranje overset interfacea\n\nDesni klik na Interfaces → New → Overset Mesh Interface\nRegion 1: Background\nRegion 2: Overset\nTip: Overset Mesh\n\n\n\n17.9.2 9.2 Provjera\nU postavkama interfacea provjeri da je Hole Cutting na Automatic. STAR-CCM+ će automatski odrediti koje ćelije pozadinske mreže su “izrezane” (prekrivene overset regijom).",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#postavke-solvera",
+    "href": "vjezba-wedge-entry.html#postavke-solvera",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.10 10. Postavke solvera",
+    "text": "17.10 10. Postavke solvera\n\n17.10.1 10.1 Vremenski korak\n\nPod Solvers → Implicit Unsteady:\n\nTime-Step: 1.0e-4 s (0.1 ms)\n\n\nObrazloženje: Klin se kreće 7.67 m/s. S ćelijom od 0.005 m, CFL ≈ V·Δt/Δx = 7.67·1e-4/0.005 ≈ 0.15. To je dovoljno nisko za stabilnu VOF simulaciju.\n\n\n17.10.2 10.2 Ukupno trajanje\n\nPod Stopping Criteria → Maximum Physical Time:\n\nValue: 0.03 s (30 ms)\n\n\nZa 30 ms, klin prodre ~23 cm u vodu. To je dovoljno za potpuni razvoj tlačnog pika i mlaza.\n\n\n17.10.3 10.3 Broj unutarnjih iteracija\n\nPod Stopping Criteria → Maximum Inner Iterations:\n\nValue: 5\n\n\n\n\n17.10.4 10.4 Podrelaksacijski faktori (URF)\nZadrži defaultne vrijednosti:\n\nVelocity: 0.7\nPressure: 0.3",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#post-processing",
+    "href": "vjezba-wedge-entry.html#post-processing",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.11 11. Post-processing",
+    "text": "17.11 11. Post-processing\n\n17.11.1 11.1 Vizualizacija slobodne površine\n\nKreiraj Scene → Scalar Scene\nPod Displayer → Scalar Field: odaberi Volume Fraction → Water\nPrikaži se kontura volumnog udjela vode — jasno vidljiva slobodna površina, formiranje mlaza\n\n\n\n17.11.2 11.2 Tlak na stjenki klina\n\nKreiraj Plot → XY Plot\nParts: odaberi Wedge surface iz Overset regije\nX-Axis: Position → y-koordinata duž stjenke klina\nY-Axis: Pressure\nOvo prikazuje raspodjelu tlaka duž klina u bilo kojem trenutku\n\n\n\n17.11.3 11.3 Sila na klin\n\nKreiraj Report → Force Report\nParts: Wedge surface\nDirection: [0, 1, 0] (vertikalna sila)\nKreiraj Monitor iz reporta i Plot iz monitora\nDobivamo vremenski graf vertikalne sile na klin — vidjet ćete impulsni oblik sile pri udaru\n\n\n\n17.11.4 11.4 Animacija\n\nOtvori Scalar Scene (Volume Fraction)\nScene → Update → Animation\nSpremi kao .mp4 — izuzetno efektna vizualizacija formiranja mlaza",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#očekivani-rezultati",
+    "href": "vjezba-wedge-entry.html#očekivani-rezultati",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.12 12. Očekivani rezultati",
+    "text": "17.12 12. Očekivani rezultati\n\n17.12.1 12.1 Kvalitativno\n\nPri kontaktu klina s vodom, formira se tanak mlaz koji teče uz stjenku klina prema gore\nTlačni pik se javlja neposredno iza kontaktne linije mlaza (jet root)\nTlačni pik se pomiče prema gore duž klina kako klin dublje ulazi u vodu\nSlobodna površina se lokalno deformira — voda se istiskuje bočno\n\n\n\n17.12.2 12.2 Kvantitativno\nZa β = 25° i V = 7.67 m/s:\n\nMaksimalni tlak na stjenki: p ≈ ½ · ρ · V² · C_p ≈ ½ · 1025 · 7.67² · 14.5 ≈ 437 kPa (Wagnerova aproksimacija, gornja granica)\nVertikalna sila raste otprilike linearno s dubinom prodiranja (za konstantnu brzinu)\nSimulirane vrijednosti trebale bi biti 10–20% niže od Wagnera (Wagner pretpostavlja potencijalni tok bez viskoznosti i beskonačno tanak mlaz)\n\n\n\n17.12.3 12.3 Parametarska studija\nStudentima se preporučuje ponoviti simulaciju za:\n\nRazličite kutove deadrise-a: β = 15°, 20°, 25°, 30° → vidi se dramatičan porast tlaka za manje kutove\nRazličite brzine ulaska: V = 3, 5, 7.67, 10 m/s → tlak raste s V²\nUsporedi sa analitičkim rezultatom i zaključi o primjenjivosti Wagnerove teorije",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#tipične-greške-i-troubleshooting",
+    "href": "vjezba-wedge-entry.html#tipične-greške-i-troubleshooting",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.13 13. Tipične greške i troubleshooting",
+    "text": "17.13 13. Tipične greške i troubleshooting\n\n\n\n\n\n\n\n\nSimptom\nUzrok\nRješenje\n\n\n\n\nDivergencija nakon 2–3 koraka\nPrevelik vremenski korak\nSmanji Δt na 5e-5 s\n\n\nSlobodna površina je “razmazana”\nPremalo ćelija na interfaceu\nProfini mesh u zoni slobodne površine\n\n\nOverset interpolation errors\nPremalo slojeva u overset zoni\nPovećaj overset blok ili profini mesh\n\n\nKlin “prolazi” kroz vodu bez otpora\nGravity nije uključena ili krivi predznak\nProvjeri g = [0, -9.81, 0]\n\n\nNema mlaza na klinu\nMesh pregrub na stjenki\nSmanji base size u overset regiji na 0.002 m\n\n\nNumeričke oscilacije tlaka\nNedovoljno inner iteracija\nPovećaj na 8–10",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#veza-s-vježbom-iz-pomorstvenosti",
+    "href": "vjezba-wedge-entry.html#veza-s-vježbom-iz-pomorstvenosti",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.14 14. Veza s vježbom iz pomorstvenosti",
+    "text": "17.14 14. Veza s vježbom iz pomorstvenosti\nOva simulacija ilustrira fiziku iza formule za kritičnu brzinu slamminga:\n\\[u_* = 0.0195 \\frac{B}{b_{25}} \\sqrt{Lg}\\]\nOmjer B/b₂₅ opisuje koliko je pramac oštar — što je veći omjer (uži pramac), to je veća kritična brzina, jer je oštriji presjek otporniji na slamming. To je ekvivalent većeg kuta deadrise-a β u ovoj simulaciji.\nU simulaciji to možete provjeriti: klin s β = 30° (širi, otvoreniji) daje niže tlakove od klina s β = 15° (uži, oštriji je efektivni udar, ali u praksi brodovi s nižim β imaju veće tlakove).\nKonkretno za jedrilicu iz vježbe: - B/b₂₅ = 3.66/0.109 = 33.6 → vrlo uski pramac - u* = 7.67 m/s → relativno visoka kritična brzina - P(slamming) = 0.028% → brod dobro podnosi uvjete\nSimulacija s V = 7.67 m/s pokazuje granični slučaj — što se događa kada brod upravo dosegne kritičnu brzinu udara. Za brzine ispod u, udar nije razoran. Za brzine iznad u, strukturno opterećenje može biti opasno.",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
+  },
+  {
+    "objectID": "vjezba-wedge-entry.html#checklist-pod-zadataka",
+    "href": "vjezba-wedge-entry.html#checklist-pod-zadataka",
+    "title": "17  Udar klina u vodu, STAR-CCM+",
+    "section": "17.15 15. Checklist pod-zadataka",
+    "text": "17.15 15. Checklist pod-zadataka\n\nGeometrija: pozadinska domena + overset s klinom\nRegije: ispravno pridružene, Background + Overset\nRubni uvjeti: Pressure Outlet na svim stranicama Background-a, Symmetry na z-plohama, Wall na klinu, Overset Mesh na rubovima overset bloka\nPhysics: VOF, Implicit Unsteady, Segregated Flow, Laminar, 2D, gravitacija\nFaze: Water (1025 kg/m³) + Air (1.18 kg/m³)\nMesh: profinjenje na slobodnoj površini i oko klina\nOverset interface kreiran između Background i Overset regije\nMotion: Translation s brzinom [0, -7.67, 0] m/s pridružena Overset regiji\nInicijalizacija: volumni udio, hidrostatski tlak, brzina = 0\nΔt = 1e-4 s, trajanje = 0.03 s, 5 inner iteracija\nPost-processing: Volume Fraction scena, tlak na klinu (XY plot), sila na klin (monitor)\nPokrenuti simulaciju, provjeriti rezidualne, animirati rezultate",
+    "crumbs": [
+      "Vježbe",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Udar klina u vodu, STAR-CCM+</span>"
+    ]
   }
 ]
